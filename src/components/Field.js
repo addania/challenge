@@ -1,7 +1,6 @@
 import React from 'react';
-import { Bootstrap, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 export function Field() {
   const styles={

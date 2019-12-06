@@ -1,8 +1,9 @@
 import React from 'react';
-import { Bootstrap, Container } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from "react-bootstrap";
 import './App.css';
+import data from "./data/DAMKBAoDBwoDBAkOBAYFCw.csv"
 import { Header } from "./components/Header.js";
+import { Subheader } from "./components/Subheader.js";
 import { Field } from "./components/Field.js";
 
 function App() {
@@ -10,7 +11,9 @@ function App() {
     <div className="App">
       <Container>
         <Header />
+        <Subheader />
         <Field />
+        <h1>{data}</h1>
       </Container>
     </div>
   );

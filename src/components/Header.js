@@ -1,7 +1,6 @@
 import React from 'react';
-import { Bootstrap, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 export function Header() {
   return (
@@ -16,7 +15,7 @@ export function Header() {
               	borderBottom: "0.5px solid #E8E8EA", 
               	paddingBottom: "20px"
               }}>
-                Adverity Coding Challenge
+                Advertising Data ETL-V Challenge
             </h2>
           </Col>
       </Row>
