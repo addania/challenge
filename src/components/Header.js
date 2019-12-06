@@ -1,0 +1,25 @@
+import React from 'react';
+import { Bootstrap, Row, Col } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+export function Header() {
+  return (
+    <div>
+      <Row>
+          <Col sm={12}>
+            <h2 style=
+              {{
+              	margin: "30px 0px", 
+              	textAlign: "left", 
+              	color:"#7F6A93", 
+              	borderBottom: "0.5px solid #E8E8EA", 
+              	paddingBottom: "20px"
+              }}>
+                Adverity Coding Challenge
+            </h2>
+          </Col>
+      </Row>
+    </div>
+  );
+}
