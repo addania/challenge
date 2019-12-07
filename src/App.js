@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from "react-bootstrap";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Header } from "./components/Header.js";
 import { Subheader } from "./components/Subheader.js";
-import { Field } from "./components/Field.js";
+//import Multiselect from 'react-bootstrap-multiselect';
+import { Chart } from "./components/Chart.js";
+import { Filter } from "./components/Filter.js";
 import _ from 'lodash';
-import Multiselect from 'react-bootstrap-multiselect';
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
+
 
 function App() {
   const [data, setData] = useState([
@@ -24,6 +26,11 @@ function App() {
     ])
   const [columns, setColumns] = useState([]);
 
+  const styles={
+    margin: "30px 0px", 
+    textAlign: "left", 
+    color:"#8DA1B9"
+    }
   
   console.log(JSON.stringify(data));
   
@@ -47,79 +54,30 @@ function App() {
   
 
   const dataMulti = [{ value:'One', selected:true }, { value: 'Two' }, { value:'Three' }]
+  
   function handleChange(){
     return 0
-  }
-  const mia="Mia";
-  const options = {
-    chart: {
-    type: 'spline'
-    },
-    xAxis: {
-      categories: ["2019-01-01", "2019-02-01", "2019-03-01", "2019-04-01", "2019-05-01", "2019-06-01" ]
-    },
-    
-    yAxis:[{ // Primary yAxis
-        labels: {
-            format: '{value}',
-            type: "datetime",
-            style: {
-                color: Highcharts.getOptions().colors[0]
-            }
-        },
-        title: {
-            text: 'Clicks',
-            style: {
-                color: Highcharts.getOptions().colors[0]
-            }
-        },
-        opposite: false
-
-    }, { // Secondary yAxis
-        gridLineWidth: 0,
-        title: {
-            text: 'Impressions',
-            style: {
-                color: Highcharts.getOptions().colors[1]
-            }
-        },
-        labels: {
-            format: '{value}',
-            style: {
-                color: Highcharts.getOptions().colors[1]
-            }
-        },
-       opposite: true
-    }, ],
-
-    title: {
-      text: 'Datasources'+dimensions, 
-      align: 'left'
-    },
-    series: [
-    { 
-        name: "Clicks",
-        
-        data: [12, 4, 3, 4, 4, 4]
-      },
-   
-      { 
-        name: "Impressions",
-        yAxis: 1,
-        
-        data: [10, 20, 30, 40, 30, 60]
-      },
-   ]
   };
+  const testDates = [
+    sortedData[0].Date, 
+    sortedData[1].Date, 
+    sortedData[2].Date, 
+    sortedData[3].Date, 
+    sortedData[4].Date, 
+  ];
 
   return (
     <div className="App">
       <Container>
         <Header />
-        <Subheader dimensionsColumns={dimensions} metricsColumns={metrics}/>
-        <Field />
-        <Multiselect onChange={handleChange} data={dataMulti} multiple />
-        <HighchartsReact highcharts={Highcharts} options={options} />
+        <Subheader dimensionsColumns={dimensions} metricsColumns={metrics}/>       <Row>
+        <Col sm={4}>
+          <Filter styling={styles} filterColumns={dimensions}/>
+        </Col>
+        <Col sm={8}>
+          <Chart styling={styles} coreData={sortedData}/>
+        </Col>
+      </Row>
       </Container>
     </div>
   );
