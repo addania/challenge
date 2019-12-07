@@ -10,7 +10,7 @@ export function Subheader(props) {
 
   const  listItems=[];
   for (let listItem=0;listItem<props.dimensionsColumns.length;listItem++){
-    listItems.push(<List message={message} columns={props.dimensionsColumns[listItem]} styling={italics}/>)
+    listItems.push(<List message={message} columns={props.dimensionsColumns[listItem]} styling={italics} key={listItem}/>)
   }
   
   
