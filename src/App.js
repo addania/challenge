@@ -24,8 +24,9 @@ function App() {
       {Date: "20.01.2019", Datasource: "Google Adwords", 
       Campaign: "GDN Prospecting - App - Prio 1 Offer", Clicks: 25, Impressions: 10535},
     ])
-  const [columns, setColumns] = useState([]);
-
+  const [selectedColumns, setColumns] = useState([]);
+  const [selectedValues, setSelectedValues] = useState([]);
+  
   const styles={
     margin: "30px 0px", 
     textAlign: "left", 
@@ -55,9 +56,15 @@ function App() {
 
   const dataMulti = [{ value:'One', selected:true }, { value: 'Two' }, { value:'Three' }]
   
-  function handleChange(){
+  function handleChange(e, data){
+    setSelectedValues(data.value);
+    console.log("data.value", data.value);
+  }
+  
+  function handleClick(){
     return 0
   };
+
   const testDates = [
     sortedData[0].Date, 
     sortedData[1].Date, 
@@ -66,18 +73,23 @@ function App() {
     sortedData[4].Date, 
   ];
 
+  console.log("selected values", selectedValues);
   return (
     <div className="App">
       <Container>
         <Header />
-        <Subheader dimensionsColumns={dimensions} metricsColumns={metrics}/>       <Row>
-        <Col sm={4}>
-          <Filter styling={styles} filterColumns={dimensions}/>
-        </Col>
-        <Col sm={8}>
-          <Chart styling={styles} coreData={sortedData}/>
-        </Col>
-      </Row>
+        <Subheader dimensionsColumns={dimensions} metricsColumns={metrics}/>
+        <Row>
+          <Col sm={4}>
+            <h2>
+              Selected values are: {selectedValues}
+            </h2>
+            <Filter styling={styles} filterColumns={dimensions} onChange={handleChange}/>
+          </Col>
+          <Col sm={8}>
+            <Chart styling={styles} coreData={sortedData} />
+          </Col>
+        </Row>
       </Container>
     </div>
   );

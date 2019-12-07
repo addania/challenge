@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Dropdown } from 'semantic-ui-react';
 
-export function Filter(props) {
+export function Filter({ styling, filterColumns, onChange }) {
 
   const [selectedValues, setSelectedValues] = useState();
-  console.log("props.filterColumns", props.filterColumns);
+  console.log("filterColumns", filterColumns);
   const columns=[];
  
 
   
-  for(let item=0;item<props.filterColumns.length;item++ ){
+  for(let item=0;item<filterColumns.length;item++ ){
     //debugger;
-    columns.push(<button key={item} name={props.filterColumns[item]} onClick={()=>onclick(props.filterColumns[item])}>{props.filterColumns[item]}</button>)
+    columns.push(<button key={item} name={filterColumns[item]} onClick={()=>onclick(filterColumns[item])}>{filterColumns[item]}</button>)
     console.log("columns", columns);
   };
   console.log("columns", columns);
@@ -43,19 +43,19 @@ styleLink.rel = "stylesheet";
 styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
 document.head.appendChild(styleLink);
 
-function handleChange(e, data){
-  setSelectedValues(e.target.value);
+/*function handleChange(e, data){
+  setSelectedValues(data.value);
   console.log(data.value)
-}
-console.log(selectedValues);
+}**/
+
   return (
     <div>  
-      <h2 style={props.styling}>
+      <h2 style={styling}>
         Selected values are: {selectedValues}
       </h2>
       {columns}
 
-      <Dropdown style={styleLink} placeholder='Skills' fluid multiple selection options={options} onChange={handleChange} />
+      <Dropdown style={styleLink} placeholder='Skills' fluid multiple selection options={options} onChange={onChange} />
 
     </div>
   );
