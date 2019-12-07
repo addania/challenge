@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dropdown } from 'semantic-ui-react';
 
-export function Filter({ styling, filterColumns, onChange }) {
+export function Filter({ styling, filterColumns, onChange, dataSet }) {
 
   const [selectedValues, setSelectedValues] = useState();
   console.log("filterColumns", filterColumns);
@@ -9,12 +9,15 @@ export function Filter({ styling, filterColumns, onChange }) {
  
 
   
-  for(let item=0;item<filterColumns.length;item++ ){
+  /*for(let item=0;item<filterColumns.length;item++ ){
     //debugger;
     columns.push(<button key={item} name={filterColumns[item]} onClick={()=>onclick(filterColumns[item])}>{filterColumns[item]}</button>)
     console.log("columns", columns);
   };
-  console.log("columns", columns);
+  console.log("columns", columns);*/
+  
+  
+  
 
 
   const options = [
@@ -48,6 +51,17 @@ document.head.appendChild(styleLink);
   console.log(data.value)
 }**/
 
+  for(let item=0;item<filterColumns.length;item++ ){
+    //debugger;
+    const generatedOptions=[];
+    const genOptions=generateOptions(filterColumns[item], dataSet);
+    console.log("genOptions", genOptions);
+    columns.push(<Dropdown style={styleLink} placeholder={filterColumns[item]} fluid multiple selection options={genOptions} onChange={onChange} />)
+    console.log("columns", columns);
+  };
+  console.log("columns", columns);
+
+
   return (
     <div>  
       <h2 style={styling}>
@@ -59,4 +73,22 @@ document.head.appendChild(styleLink);
 
     </div>
   );
+}
+
+function generateOptions(inputItem, inputDataSet){
+  let uniqueValues=[];
+  for (let entry=0;entry<inputDataSet.length;entry++){
+    if(!uniqueValues.includes(inputDataSet[entry][inputItem]) ){
+      uniqueValues.push(inputDataSet[entry][inputItem]);
+      console.log("uniqueValues", uniqueValues);
+    }
+  }
+  let newOptions=[];
+  for (let optionItem=0; optionItem<uniqueValues.length;optionItem++){
+    let optionRow={key: uniqueValues[optionItem], text:uniqueValues[optionItem], value: uniqueValues[optionItem]}
+    newOptions.push(optionRow);
+    console.log("optionRow", optionRow);
+  }
+  console.log("newOptions", newOptions)
+  return newOptions;
 }

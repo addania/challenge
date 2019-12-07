@@ -26,7 +26,8 @@ function App() {
     ])
   const [selectedColumns, setColumns] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
-  
+  const [selectedValues2, setSelectedValues2] = useState([]);
+
   const styles={
     margin: "30px 0px", 
     textAlign: "left", 
@@ -57,7 +58,17 @@ function App() {
   const dataMulti = [{ value:'One', selected:true }, { value: 'Two' }, { value:'Three' }]
   
   function handleChange(e, data){
-    setSelectedValues(data.value);
+    
+    console.log("e", e);
+    console.log("data", data);
+    console.log("data/placeholder", data.placeholder);
+    if (data.placeholder =="Datasource"){
+      setSelectedValues(data.value);
+    } else if (data.placeholder =="Campaign"){
+      setSelectedValues2(data.value);
+    }
+
+    
     console.log("data.value", data.value);
   }
   
@@ -82,9 +93,12 @@ function App() {
         <Row>
           <Col sm={4}>
             <h2>
-              Selected values are: {selectedValues}
+              Selected values Datasource: {selectedValues}
             </h2>
-            <Filter styling={styles} filterColumns={dimensions} onChange={handleChange}/>
+            <h2>
+              Selected values Campaigns: {selectedValues2}
+            </h2>
+            <Filter styling={styles} filterColumns={dimensions} onChange={handleChange} dataSet={sortedData}/>
           </Col>
           <Col sm={8}>
             <Chart styling={styles} coreData={sortedData} />
