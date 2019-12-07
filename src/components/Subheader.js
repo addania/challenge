@@ -7,6 +7,12 @@ export function Subheader(props) {
   const message ="Select zero to N ";
   //const columnsArray= ["Datasources", "Campaigns", "Impressions", "Clicks", "Date"];
   const italics={fontStyle: "italic"};
+
+  const  listItems=[];
+  for (let listItem=0;listItem<props.dimensionsColumns.length;listItem++){
+    listItems.push(<List message={message} columns={props.dimensionsColumns[listItem]} styling={italics}/>)
+  }
+  
   
   return (
     <div>
@@ -22,8 +28,7 @@ export function Subheader(props) {
                 paddingBottom: "20px"
               }}>
                 <ul style={{paddingLeft: "20px"}}>
-                  <List message={message} columns={props.dimensionsColumns[0]} styling={italics}/>
-                  <List message={message} columns={props.dimensionsColumns[1]} styling={italics}/>
+                  {listItems}
                 </ul>
                 <p style= {{fontSize: "12px"}} >
                   [where zero means "All"] 
