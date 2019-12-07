@@ -34,34 +34,34 @@ function App() {
     color:"#8DA1B9"
     }
   
-  console.log(JSON.stringify(data));
+  //console.log(JSON.stringify(data));
   
 
   const tableColumns=getColumns(data);
 
-  console.log("tableColumns", tableColumns);
+  //console.log("tableColumns", tableColumns);
   
   const dataWithDateFormat=formatDate(data);
-  console.log("dataWithDateFormat", dataWithDateFormat);
+  //console.log("dataWithDateFormat", dataWithDateFormat);
   const sortedData=sortArray(dataWithDateFormat, );
-  console.log("sorted data", sortedData);
+  //console.log("sorted data", sortedData);
   
 
   const metrics=getMetrics(sortedData, tableColumns);
-  console.log("metrics", metrics);
+  //console.log("metrics", metrics);
   const dimensions=getDimensions(sortedData, tableColumns);
-  console.log("dimension", dimensions);
+  //console.log("dimension", dimensions);
   const dates=getDates(sortedData, tableColumns);
-  console.log("dates", dates);
+  //console.log("dates", dates);
   
 
   const dataMulti = [{ value:'One', selected:true }, { value: 'Two' }, { value:'Three' }]
   
   function handleChange(e, data){
     
-    console.log("e", e);
-    console.log("data", data);
-    console.log("data/placeholder", data.placeholder);
+    //console.log("e", e);
+    //console.log("data", data);
+    //console.log("data/placeholder", data.placeholder);
     if (data.placeholder =="Datasource"){
       setSelectedValues(data.value);
     } else if (data.placeholder =="Campaign"){
@@ -69,12 +69,12 @@ function App() {
     }
 
     
-    console.log("data.value", data.value);
+    //console.log("data.value", data.value);
   }
   
-  function handleClick(){
+  /*function handleClick(){
     return 0
-  };
+  };*/
 
   const testDates = [
     sortedData[0].Date, 
@@ -92,13 +92,14 @@ function App() {
         <Subheader dimensionsColumns={dimensions} metricsColumns={metrics}/>
         <Row>
           <Col sm={4}>
-            <h2>
-              Selected values Datasource: {selectedValues}
-            </h2>
-            <h2>
-              Selected values Campaigns: {selectedValues2}
-            </h2>
+            
             <Filter styling={styles} filterColumns={dimensions} onChange={handleChange} dataSet={sortedData}/>
+            <p>
+              Selected values Datasource: {selectedValues}
+            </p>
+            <p>
+              Selected values Campaigns: {selectedValues2}
+            </p>
           </Col>
           <Col sm={8}>
             <Chart styling={styles} coreData={sortedData} />

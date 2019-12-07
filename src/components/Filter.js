@@ -4,7 +4,7 @@ import { Dropdown } from 'semantic-ui-react';
 export function Filter({ styling, filterColumns, onChange, dataSet }) {
 
   const [selectedValues, setSelectedValues] = useState();
-  console.log("filterColumns", filterColumns);
+  //console.log("filterColumns", filterColumns);
   const columns=[];
  
 
@@ -20,7 +20,7 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
   
 
 
-  const options = [
+  /*const options = [
   { key: 'angular', text: 'Angular', value: 'angular', name: "Angular"},
   { key: 'css', text: 'CSS', value: 'css' },
   { key: 'design', text: 'Graphic Design', value: 'design' },
@@ -39,7 +39,7 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
   { key: 'ruby', text: 'Ruby', value: 'ruby' },
   { key: 'ui', text: 'UI Design', value: 'ui' },
   { key: 'ux', text: 'User Experience', value: 'ux' },
-];
+];*/
 
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
@@ -57,20 +57,20 @@ document.head.appendChild(styleLink);
     const genOptions=generateOptions(filterColumns[item], dataSet);
     console.log("genOptions", genOptions);
     columns.push(<Dropdown style={styleLink} placeholder={filterColumns[item]} fluid multiple selection options={genOptions} onChange={onChange} />)
-    console.log("columns", columns);
+    //console.log("columns", columns);
   };
-  console.log("columns", columns);
+  //console.log("columns", columns);
 
 
   return (
     <div>  
       <h2 style={styling}>
-        Selected values are: {selectedValues}
+        Filters
       </h2>
       {columns}
 
-      <Dropdown style={styleLink} placeholder='Skills' fluid multiple selection options={options} onChange={onChange} />
-
+     {/* <Dropdown style={styleLink} placeholder='Skills' fluid multiple selection options={options} onChange={onChange} />
+*/}
     </div>
   );
 }
@@ -80,15 +80,15 @@ function generateOptions(inputItem, inputDataSet){
   for (let entry=0;entry<inputDataSet.length;entry++){
     if(!uniqueValues.includes(inputDataSet[entry][inputItem]) ){
       uniqueValues.push(inputDataSet[entry][inputItem]);
-      console.log("uniqueValues", uniqueValues);
+      //console.log("uniqueValues", uniqueValues);
     }
   }
   let newOptions=[];
   for (let optionItem=0; optionItem<uniqueValues.length;optionItem++){
     let optionRow={key: uniqueValues[optionItem], text:uniqueValues[optionItem], value: uniqueValues[optionItem]}
     newOptions.push(optionRow);
-    console.log("optionRow", optionRow);
+    //console.log("optionRow", optionRow);
   }
-  console.log("newOptions", newOptions)
+  //console.log("newOptions", newOptions)
   return newOptions;
 }
