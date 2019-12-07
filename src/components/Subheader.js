@@ -3,9 +3,9 @@ import { Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { List } from "./List.js"
 
-export function Subheader() {
+export function Subheader(props) {
   const message ="Select zero to N ";
-  const columnsArray= ["Datasources", "Campaigns", "Impressions", "Clicks", "Date"];
+  //const columnsArray= ["Datasources", "Campaigns", "Impressions", "Clicks", "Date"];
   const italics={fontStyle: "italic"};
   
   return (
@@ -22,14 +22,14 @@ export function Subheader() {
                 paddingBottom: "20px"
               }}>
                 <ul style={{paddingLeft: "20px"}}>
-                  <List message={message} columns={columnsArray[0]} styling={italics}/>
-                  <List message={message} columns={columnsArray[1]} styling={italics}/>
+                  <List message={message} columns={props.dimensionsColumns[0]} styling={italics}/>
+                  <List message={message} columns={props.dimensionsColumns[1]} styling={italics}/>
                 </ul>
                 <p style= {{fontSize: "12px"}} >
-                  [where zero means "All"]
+                  [where zero means "All"] 
                 </p>
                 <p>
-                  Hitting "Apply" filters the chart to show a timeseries for both <span style={italics}>Clicks</span> and <span style={italics}>Impressions</span> for given <span style={italics}>{columnsArray[0]}</span> and <span style={italics}>{columnsArray[1]}</span> - logical AND
+                  Hitting "Apply" filters the chart to show a timeseries for both <span style={italics}>{props.metricsColumns[0]}</span> and <span style={italics}>{props.metricsColumns[1]}</span> for given <span style={italics}>{props.dimensionsColumns[0]}s</span> and <span style={italics}>{props.dimensionsColumns[1]}s</span> - logical AND
                 </p>
             </div>
           </Col>

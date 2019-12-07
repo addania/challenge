@@ -6,7 +6,7 @@ export function List(props) {
     <li>
      {props.message}
         <span style={props.styling}>
-          {props.columns}
+          {props.columns}s
         </span>
     </li>              
   );
