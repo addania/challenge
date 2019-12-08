@@ -121,7 +121,7 @@ function generateOptions(data, filter, apply) {
       dataRow++
     ) {
 
-       if(apply==true){
+       if(apply==true && !_.isEmpty(filter)){
         //console.log("APPLY FILTEER");
         console.log("filtr", filter);
         //groupByDate[uniqueDates[dayEntry]][dataRow]

@@ -228,12 +228,13 @@ function App() {
       setSelectedValues2(data.value);
     }*/
     console.log("data.value", data.value);
-    
+    setUseFilters(false);
     if (data.value === undefined || data.value == 0){
       //debugger;
       let newState = { ...selectedValues };
       delete newState[data.placeholder];
       setSelectedValues(newState);
+
     } else {
 
 
@@ -242,6 +243,7 @@ function App() {
 
     newState = Object.assign(newState, { [key]: data.value });
     setSelectedValues(newState);
+
    // setUseFilters(false);
     //console.log ("selectedValues", selectedValues);
 
@@ -260,7 +262,7 @@ function App() {
   function handleReset() {
     let newState = false;
     setUseFilters(newState);
-    setSelectedValues({});
+    //setSelectedValues({});
   }
   console.log("useFilters", useFilters);
 
