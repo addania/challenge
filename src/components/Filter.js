@@ -55,7 +55,7 @@ document.head.appendChild(styleLink);
     //debugger;
     const generatedOptions=[];
     const genOptions=generateOptions(filterColumns[item], dataSet);
-    console.log("genOptions", genOptions);
+    //console.log("genOptions", genOptions);
     columns.push(
       <div>
         <p style={{textAlign:"left", color: "#828282", marginTop: "20px"}}  >{filterColumns[item]}</p>

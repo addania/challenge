@@ -1,8 +1,10 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col } from "react-bootstrap";
 
-export function Chart(props) {
+export function Chart({onClick, coreData, styling }) {
   
   function handleChange(){
     return 0
@@ -14,7 +16,7 @@ export function Chart(props) {
     type: 'spline'
     },
     xAxis: {
-      categories: props.data,
+      categories: coreData,
      
     },    
     yAxis:[{ // Primary yAxis
@@ -71,8 +73,31 @@ export function Chart(props) {
   };
 
   return (
-    <div>
-      <h2 style={props.styling}>Chart</h2>
+    <div >
+      <Row >
+      <Col sm={10}>
+      <h2 style={styling}>Chart</h2>
+      </Col>
+      <Col sm={2}>
+       <button
+              type="submit"  
+              style={{
+                backgroundColor: "#8DA1B9",
+                color: "white",
+                borderRadius: "2px",
+                width: "80px",
+                padding: "5px 0px",
+                position: "left",
+                marginTop: "10px",
+                position: "absolute",
+                right:    0,
+                bottom:   0,
+              }}
+            >
+              <span onClick={onClick}>Reset</span>
+            </button>
+            </Col>
+            </Row>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
