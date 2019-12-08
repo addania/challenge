@@ -9,9 +9,34 @@ import { Subheader } from "./components/Subheader.js";
 import { Chart } from "./components/Chart.js";
 import { Filter } from "./components/Filter.js";
 import { Button } from "./components/Button.js";
+import { TestData } from "./components/TestData.js";
 import _ from "lodash";
+import dataSet from "./data/data2.json";
+
+
+  const tableColumns = getColumns(dataSet);
+
+  //console.log("tableColumns", tableColumns);
+
+  const dataWithDateFormat = formatDate(dataSet);
+  //console.log("dataWithDateFormat", dataWithDateFormat);
+  const sortedData = sortArray(dataWithDateFormat);
+  //console.log("sorted data", sortedData);
+
+  const metrics = getMetrics(sortedData, tableColumns);
+  //console.log("metrics", metrics);
+  const dimensions = getDimensions(sortedData, tableColumns);
+  //console.log("dimension", dimensions);
+  const dates = getDates(sortedData, tableColumns);
+  //console.log("dates", dates);
+
 
 function App() {
+  const [data, setData] = useState(sortedData);
+
+
+
+  /*
   const [data, setData] = useState([ 
     {
       Date: "01.01.2019",
@@ -46,6 +71,7 @@ function App() {
       Impressions: 10535
     }
   ]);
+  */
   /*
   const [data, setData] = useState([
     {
@@ -200,21 +226,7 @@ function App() {
 
   //console.log(JSON.stringify(data));
 
-  const tableColumns = getColumns(data);
-
-  //console.log("tableColumns", tableColumns);
-
-  const dataWithDateFormat = formatDate(data);
-  //console.log("dataWithDateFormat", dataWithDateFormat);
-  const sortedData = sortArray(dataWithDateFormat);
-  //console.log("sorted data", sortedData);
-
-  const metrics = getMetrics(sortedData, tableColumns);
-  //console.log("metrics", metrics);
-  const dimensions = getDimensions(sortedData, tableColumns);
-  //console.log("dimension", dimensions);
-  const dates = getDates(sortedData, tableColumns);
-  //console.log("dates", dates);
+  
 
   //const dataMulti = [{ value:'One', selected:true }, { value: 'Two' }, { value:'Three' }]
 
@@ -227,7 +239,7 @@ function App() {
     } else if (data.placeholder =="Campaign"){
       setSelectedValues2(data.value);
     }*/
-    console.log("data.value", data.value);
+    //console.log("data.value", data.value);
     setUseFilters(false);
     if (data.value === undefined || data.value == 0){
       //debugger;
@@ -264,7 +276,7 @@ function App() {
     setUseFilters(newState);
     //setSelectedValues({});
   }
-  console.log("useFilters", useFilters);
+  //console.log("useFilters", useFilters);
 
   /*const testDates = [
     sortedData[0].Date,
@@ -289,8 +301,7 @@ function App() {
               dataSet={sortedData}
             />
             <Button onClick={handleClick} />
-            <p>Selected values Datasource: {selectedValues.Datasource}</p>
-            <p>Selected values Campaigns: {selectedValues.Campaign}</p>
+            
           </Col>
           <Col sm={8}>
             <Chart
@@ -302,6 +313,7 @@ function App() {
             />
           </Col>
         </Row>
+        <TestData/>
       </Container>
     </div>
   );
