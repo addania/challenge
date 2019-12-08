@@ -20,10 +20,10 @@ export function Subheader(props) {
           <Col sm={12}>
             <div style=
               {{
-                margin: "30px 0px", 
+                margin: "20px 0px", 
                 textAlign: "left", 
                 color:"#828282",
-                fontSize: "18px", 
+                fontSize: "15px", 
                 borderBottom: "0.5px solid #E8E8EA", 
                 paddingBottom: "20px"
               }}>

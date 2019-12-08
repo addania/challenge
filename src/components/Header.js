@@ -9,14 +9,17 @@ export function Header() {
           <Col sm={12}>
             <h2 style=
               {{
-              	margin: "30px 0px", 
+              	margin: "20px 0px", 
               	textAlign: "left", 
               	color:"#7F6A93", 
               	borderBottom: "0.5px solid #E8E8EA", 
               	paddingBottom: "20px"
               }}>
                 Advertising Data ETL-V Challenge
+                
             </h2>
+            
+          
           </Col>
       </Row>
     </div>

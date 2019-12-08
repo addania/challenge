@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import './Button.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col } from "react-bootstrap";
 import { Container } from "react-bootstrap";
@@ -25,13 +26,14 @@ function App() {
       Campaign: "GDN Prospecting - App - Prio 1 Offer", Clicks: 25, Impressions: 10535},
     ])
   const [selectedColumns, setColumns] = useState([]);
-  const [selectedValues, setSelectedValues] = useState([]);
-  const [selectedValues2, setSelectedValues2] = useState([]);
-
+  /*const [selectedValues, setSelectedValues] = useState([]);
+  const [selectedValues2, setSelectedValues2] = useState([]);*/
+  const [selectedValues, setSelectedValues] = useState({});
+  
   const styles={
     margin: "30px 0px", 
     textAlign: "left", 
-    color:"#8DA1B9"
+    color:"#8DA1B9",
     }
   
   //console.log(JSON.stringify(data));
@@ -55,19 +57,26 @@ function App() {
   //console.log("dates", dates);
   
 
-  const dataMulti = [{ value:'One', selected:true }, { value: 'Two' }, { value:'Three' }]
+  //const dataMulti = [{ value:'One', selected:true }, { value: 'Two' }, { value:'Three' }]
   
   function handleChange(e, data){
     
     //console.log("e", e);
     //console.log("data", data);
     //console.log("data/placeholder", data.placeholder);
-    if (data.placeholder =="Datasource"){
+    /*if (data.placeholder =="Datasource"){
       setSelectedValues(data.value);
     } else if (data.placeholder =="Campaign"){
       setSelectedValues2(data.value);
-    }
-
+    }*/
+    let newState={...selectedValues}
+    let key=data.placeholder;
+    
+    newState=Object.assign(newState, {[key]:data.value});
+    setSelectedValues(newState);
+    //console.log ("selectedValues", selectedValues);
+    
+    console.log ("newState", newState);
     
     //console.log("data.value", data.value);
   }
@@ -84,21 +93,25 @@ function App() {
     sortedData[4].Date, 
   ];
 
-  console.log("selected values", selectedValues);
+  //console.log("selected values", selectedValues);
   return (
     <div className="App">
       <Container>
         <Header />
         <Subheader dimensionsColumns={dimensions} metricsColumns={metrics}/>
         <Row>
-          <Col sm={4}>
-            
+          <Col sm={4} style={{backgroundColor:"#EFF2F1"}}>  
             <Filter styling={styles} filterColumns={dimensions} onChange={handleChange} dataSet={sortedData}/>
+            <button type="submit" style={{ backgroundColor: "#8DA1B9", color: "white", borderRadius: "2px", width: "80px", padding: "5px 0px", position: "left", marginTop: "10px"}}>
+              <span>
+                Apply
+              </span>
+            </button>
             <p>
-              Selected values Datasource: {selectedValues}
+              Selected values Datasource: {selectedValues.Datasource}
             </p>
             <p>
-              Selected values Campaigns: {selectedValues2}
+              Selected values Campaigns: {selectedValues.Campaign}
             </p>
           </Col>
           <Col sm={8}>

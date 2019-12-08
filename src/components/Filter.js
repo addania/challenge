@@ -56,7 +56,12 @@ document.head.appendChild(styleLink);
     const generatedOptions=[];
     const genOptions=generateOptions(filterColumns[item], dataSet);
     console.log("genOptions", genOptions);
-    columns.push(<Dropdown style={styleLink} placeholder={filterColumns[item]} fluid multiple selection options={genOptions} onChange={onChange} />)
+    columns.push(
+      <div>
+        <p style={{textAlign:"left", color: "#828282", marginTop: "20px"}}  >{filterColumns[item]}</p>
+        <Dropdown style={styleLink} placeholder={filterColumns[item]} fluid multiple selection options={genOptions} onChange={onChange} style={{marginTop: "5px"}}/>
+      </div>
+      )
     //console.log("columns", columns);
   };
   //console.log("columns", columns);
