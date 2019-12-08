@@ -6,13 +6,13 @@ import { Row, Col } from "react-bootstrap";
 import _ from "lodash";
 
 export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
-  console.log(coreData.Date);
-  console.log(filters);
-  console.log(applyFilters);
-
+  //console.log(coreData.Date);
+  //console.log(filters);
+  //console.log(applyFilters);
+  let generateCondition 
   let generatedOptions = generateOptions(coreData, filters, applyFilters);
 
-  console.log("generatedOptions", generatedOptions);
+  //console.log("generatedOptions", generatedOptions);
   /*const options = {
     chart: {
     type: 'spline'
@@ -107,9 +107,9 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
 
 function generateOptions(data, filter, apply) {
   let groupByDate = _.groupBy(data, "Date");
-  console.log("groupByDate", groupByDate);
+  console.log("filtere", filter);
   let uniqueDates = _.keys(groupByDate);
-  console.log("uniqueDates", uniqueDates);
+  //console.log("uniqueDates", uniqueDates);
   let impressionsArray = [];
   let clicksArray = [];
   for (let dayEntry = 0; dayEntry < uniqueDates.length; dayEntry++) {
@@ -120,25 +120,78 @@ function generateOptions(data, filter, apply) {
       dataRow < groupByDate[uniqueDates[dayEntry]].length;
       dataRow++
     ) {
-      console.log("dayEntry", dayEntry, "dataRow", dataRow);
-      //debugger;
+
+       if(apply==true){
+        //console.log("APPLY FILTEER");
+        console.log("filtr", filter);
+        //groupByDate[uniqueDates[dayEntry]][dataRow]
+        let uniqueFilterEntries=_.keys(filter);
+        console.log("uniqueFilterEntries", uniqueFilterEntries);
+        
+        let conditionsCheck=[];
+        
+        for (let filterKey=0;filterKey<uniqueFilterEntries.length;filterKey++){
+      
+          if (filter[uniqueFilterEntries[filterKey]].includes(groupByDate[uniqueDates[dayEntry]][dataRow][uniqueFilterEntries[filterKey]])){
+            
+            conditionsCheck.push(true)
+            console.log(filter[uniqueFilterEntries[filterKey]], " includes ", groupByDate[uniqueDates[dayEntry]][dataRow][uniqueFilterEntries[filterKey]] )
+          } else{
+            conditionsCheck.push(false);
+          }
+
+        }
+        console.log("conditionsCheck", conditionsCheck);
+
+
+
+      } else{
       totalImpressions =
         totalImpressions +
         groupByDate[uniqueDates[dayEntry]][dataRow].Impressions;
       totalClicks =
         totalClicks + groupByDate[uniqueDates[dayEntry]][dataRow].Clicks;
+      }
+
+
+
+      /*if(apply==true){
+        //console.log("APPLY FILTEER");
+        console.log("filtr", filter);
+        //groupByDate[uniqueDates[dayEntry]][dataRow]
+        let uniqueFilterEntries=_.keys(filter);
+        console.log("uniqueFilterEntries", uniqueFilterEntries);
+        let condition="";
+        
+        for (let filterKey=0;filterKey<uniqueFilterEntries.length;filterKey++){
+           condition=condition+filter[uniqueFilterEntries[filterKey]].includes(groupByDate[uniqueDates[dayEntry]][dataRow][uniqueFilterEntries[filterKey]]+ "&&"
+          if (filter[uniqueFilterEntries[filterKey]].includes(groupByDate[uniqueDates[dayEntry]][dataRow][uniqueFilterEntries[filterKey]])){
+            console.log(filter[uniqueFilterEntries[filterKey]], " includes ", groupByDate[uniqueDates[dayEntry]][dataRow][uniqueFilterEntries[filterKey]] )
+          }
+        }
+
+
+
+
+      } else{
+      totalImpressions =
+        totalImpressions +
+        groupByDate[uniqueDates[dayEntry]][dataRow].Impressions;
+      totalClicks =
+        totalClicks + groupByDate[uniqueDates[dayEntry]][dataRow].Clicks;
+      }*/
     }
     impressionsArray.push(totalImpressions);
     clicksArray.push(totalClicks);
   }
-  console.log("impressionsArray", impressionsArray);
-  console.log("clicksArray", clicksArray);
+  //console.log("impressionsArray", impressionsArray);
+  //console.log("clicksArray", clicksArray);
 
   let groupByCampaign = _.groupBy(data, "Campaign");
-  console.log("groupByCampaign", groupByCampaign);
+  //console.log("groupByCampaign", groupByCampaign);
 
   let groupByDatasource = _.groupBy(data, "Datasource");
-  console.log("groupByDatasource", groupByDatasource);
+  //console.log("groupByDatasource", groupByDatasource);
 
   const options = {
     chart: {

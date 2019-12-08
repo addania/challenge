@@ -12,6 +12,41 @@ import { Button } from "./components/Button.js";
 import _ from "lodash";
 
 function App() {
+  const [data, setData] = useState([ 
+    {
+      Date: "01.01.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.01.2019",
+      Datasource: "Google Adwords",
+      Campaign: "B2B - Leads",
+      AdGroup: "A",
+      Clicks: 7,
+      Impressions: 444
+    },
+    {
+      Date: "01.01.2019",
+      Datasource: "Google Adwords",
+      Campaign: "GDN Prospecting - App - Prio 1 Offer",
+      AdGroup: "B",
+      Clicks: 16,
+      Impressions: 12535
+    },
+    {
+      Date: "20.01.2019",
+      Datasource: "Google Adwords",
+      Campaign: "GDN Prospecting - App - Prio 1 Offer",
+      AdGroup: "A",
+      Clicks: 250,
+      Impressions: 10535
+    }
+  ]);
+  /*
   const [data, setData] = useState([
     {
       Date: "23.01.2019",
@@ -150,6 +185,7 @@ function App() {
       Impressions: 764627
     }
   ]);
+  */
   const [selectedColumns, setColumns] = useState([]);
   /*const [selectedValues, setSelectedValues] = useState([]);
   const [selectedValues2, setSelectedValues2] = useState([]);*/
@@ -191,35 +227,50 @@ function App() {
     } else if (data.placeholder =="Campaign"){
       setSelectedValues2(data.value);
     }*/
+    console.log("data.value", data.value);
+    
+    if (data.value === undefined || data.value == 0){
+      //debugger;
+      let newState = { ...selectedValues };
+      delete newState[data.placeholder];
+      setSelectedValues(newState);
+    } else {
+
+
     let newState = { ...selectedValues };
     let key = data.placeholder;
 
     newState = Object.assign(newState, { [key]: data.value });
     setSelectedValues(newState);
+   // setUseFilters(false);
     //console.log ("selectedValues", selectedValues);
 
     //console.log("newState", newState);
+    
+    }
+    
 
-    //console.log("data.value", data.value);
   }
   function handleClick() {
     let newState = true;
     setUseFilters(newState);
+   // setSelectedValues({});
   }
 
   function handleReset() {
     let newState = false;
     setUseFilters(newState);
+    setSelectedValues({});
   }
-  //console.log("useFilters", useFilters);
+  console.log("useFilters", useFilters);
 
-  const testDates = [
+  /*const testDates = [
     sortedData[0].Date,
     sortedData[1].Date,
     sortedData[2].Date,
     sortedData[3].Date,
     sortedData[4].Date
-  ];
+  ];*/
 
   //console.log("selected values", selectedValues);
   return (
