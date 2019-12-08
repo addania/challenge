@@ -14,6 +14,22 @@ import _ from "lodash";
 function App() {
   const [data, setData] = useState([
     {
+      Date: "23.01.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Like Ads",
+      AdGroup: "A",
+      Clicks: 274,
+      Impressions: 1979
+    },
+    {
+      Date: "08.02.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Like Ads",
+      AdGroup: "A",
+      Clicks: 274,
+      Impressions: 1979
+    },
+    {
       Date: "01.01.2019",
       Datasource: "Facebook Ads",
       Campaign: "Like Ads",
@@ -26,7 +42,7 @@ function App() {
       Datasource: "Facebook Ads",
       Campaign: "Offer Campaigns - Conversions",
       AdGroup: "A",
-      Clicks: 10245,
+      Clicks: 245,
       Impressions: 764627
     },
     {
@@ -50,8 +66,88 @@ function App() {
       Datasource: "Google Adwords",
       Campaign: "GDN Prospecting - App - Prio 1 Offer",
       AdGroup: "A",
-      Clicks: 25,
+      Clicks: 250,
       Impressions: 10535
+    },
+    {
+      Date: "01.03.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.04.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.05.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.06.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.07.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.08.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.09.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.10.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.11.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
+    },
+    {
+      Date: "01.12.2019",
+      Datasource: "Facebook Ads",
+      Campaign: "Offer Campaigns - Conversions",
+      AdGroup: "A",
+      Clicks: 245,
+      Impressions: 764627
     }
   ]);
   const [selectedColumns, setColumns] = useState([]);
@@ -59,7 +155,7 @@ function App() {
   const [selectedValues2, setSelectedValues2] = useState([]);*/
   const [selectedValues, setSelectedValues] = useState({});
   const [useFilters, setUseFilters] = useState(false);
-  
+
   const styles = {
     margin: "30px 0px",
     textAlign: "left",
@@ -102,25 +198,20 @@ function App() {
     setSelectedValues(newState);
     //console.log ("selectedValues", selectedValues);
 
-    console.log("newState", newState);
+    //console.log("newState", newState);
 
     //console.log("data.value", data.value);
   }
   function handleClick() {
-    let newState=true;
+    let newState = true;
     setUseFilters(newState);
-    
   }
 
   function handleReset() {
-    let newState=false;
+    let newState = false;
     setUseFilters(newState);
-    
   }
-  console.log("useFilters", useFilters);
-  /*function handleClick(){
-    return 0
-  };*/
+  //console.log("useFilters", useFilters);
 
   const testDates = [
     sortedData[0].Date,
@@ -133,7 +224,7 @@ function App() {
   //console.log("selected values", selectedValues);
   return (
     <div className="App">
-      <Container >
+      <Container>
         <Header />
         <Subheader dimensionsColumns={dimensions} metricsColumns={metrics} />
         <Row>
@@ -144,12 +235,18 @@ function App() {
               onChange={handleChange}
               dataSet={sortedData}
             />
-            <Button onClick={handleClick}/>
+            <Button onClick={handleClick} />
             <p>Selected values Datasource: {selectedValues.Datasource}</p>
             <p>Selected values Campaigns: {selectedValues.Campaign}</p>
           </Col>
           <Col sm={8}>
-            <Chart styling={styles} coreData={sortedData} onClick={handleReset}/>
+            <Chart
+              coreData={sortedData}
+              filters={selectedValues}
+              applyFilters={useFilters}
+              onClick={handleReset}
+              styling={styles}
+            />
           </Col>
         </Row>
       </Container>
