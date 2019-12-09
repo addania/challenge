@@ -48,19 +48,31 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
 function calculateOptions(data, filter, apply) {
   
   //console.log("filter", filter);
+  let aggregatedImpressions;
+  let aggregatedClicks;
+  let aggregatedDates;
+  if (apply){
   const arrayAfterFiltering= filterArray(filter, data);
   console.log("arrayAfterFiltering", arrayAfterFiltering);
+  
   const aggregatedData=calculateAggregates(arrayAfterFiltering);
   console.log("aggregatedData", aggregatedData);
-  const aggregatedImpressions=aggregatedData[0];
+  aggregatedImpressions=aggregatedData[0];
   console.log("aggregatedImpressions", aggregatedImpressions);
-  const aggregatedClicks=aggregatedData[1];
+  aggregatedClicks=aggregatedData[1];
   console.log("aggregatedClicks", aggregatedClicks);
-  const aggregatedDates=aggregatedData[2];
-  
-  const aggregatedData2=calculateAggregates(data);
-  console.log("aggregatedData2", aggregatedData2);
-  
+  aggregatedDates=aggregatedData[2];
+  }
+   else {
+  const aggregatedData=calculateAggregates(data);
+  console.log("aggregatedData", aggregatedData);
+  aggregatedImpressions=aggregatedData[0];
+  console.log("aggregatedImpressions", aggregatedImpressions);
+  aggregatedClicks=aggregatedData[1];
+  console.log("aggregatedClicks", aggregatedClicks);
+  aggregatedDates=aggregatedData[2];
+  console.log("aggregatedDates", aggregatedDates);
+  }
   const optionsFilteredData=generateOptions(aggregatedImpressions,aggregatedClicks, aggregatedDates )
   //const optionsAllData=generateOptions(aggregatedData2)
   //return options;
