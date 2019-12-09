@@ -19,8 +19,10 @@ import dataSet from "./data/data2.json";
   //console.log("tableColumns", tableColumns);
 
   const dataWithDateFormat = formatDate(dataSet);
+
+  const formattedImpressions=formatImpressions(dataWithDateFormat);
   //console.log("dataWithDateFormat", dataWithDateFormat);
-  const sortedData = sortArray(dataWithDateFormat);
+  const sortedData = sortArray(formattedImpressions);
   //console.log("sorted data", sortedData);
 
   const metrics = getMetrics(sortedData, tableColumns);
@@ -321,10 +323,31 @@ function App() {
 
 export default App;
 
+function formatImpressions(input) {
+  for (let row = 0; row < input.length; row++) {
+
+    if(!input[row].Impressions){
+                input[row].Impressions=0;
+                //console.log("row", row, "impressions", input[row].Impressions, "typeof", typeof input[row].Impressions);
+             }
+    if(!input[row].Clicks){
+                input[row].Clicks=0;
+                //console.log(input[row].Clicks);
+             }
+  }
+ return input
+}
+
 function formatDate(input) {
+
   const dataWithDate = [];
+
   for (let row = 0; row < input.length; row++) {
     const entry = { ...input[row] };
+
+  
+
+
     //console.log("entry", entry)
     const oldDate = input[row].Date;
     //console.log(oldDate);
