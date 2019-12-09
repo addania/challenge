@@ -17,7 +17,7 @@ export function TestData(props) {
     setData(csvJSON(result.data));
   }, []);
 
-  console.log(data);
+  //console.log(data);
   
   //console.log(typeof data);
 

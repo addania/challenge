@@ -46,6 +46,38 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
 }
 
 function generateOptions(data, filter, apply) {
+  console.log("filter", filter);
+  let string="";
+
+    const name=Object.keys(filter);
+    const value=Object.values(filter);
+    console.log("name", name, "value", value)
+    string=".includes"
+    const a=filter.Datasource;
+    console.log("a", a)
+    const b=filter.Campaign;
+  for (let i=0;i<filter.length;i++){
+    string=string
+  }
+  //debugger;
+
+  if(!(Object.entries(filter).length === 0 && filter.constructor === Object)&&(a === undefined || a.length == 0)){
+  const filteredArray=_.filter(data, function(i) {
+    //debugger;
+    return b.includes(i.Campaign) });
+    console.log("filteredArray",filteredArray);
+} else if(!(Object.entries(filter).length === 0 && filter.constructor === Object)&&(b === undefined || b.length == 0)){
+  const filteredArray=_.filter(data, function(i) {
+    //debugger;
+    return a.includes(i.Datasource) });
+    console.log("filteredArray",filteredArray);
+ } else if(!(Object.entries(filter).length === 0 && filter.constructor === Object)) {
+  const filteredArray=_.filter(data, function(i) {
+    //debugger;
+    return a.includes(i.Datasource) && b.includes(i.Campaign)  });
+  console.log("filteredArray",filteredArray);
+ }
+
   let groupByDate = _.groupBy(data, "Date");
   //console.log("filtere", filter);
   let uniqueDates = _.keys(groupByDate);
