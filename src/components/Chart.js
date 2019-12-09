@@ -53,25 +53,25 @@ function calculateOptions(data, filter, apply) {
   let aggregatedDates;
   if (apply){
   const arrayAfterFiltering= filterArray(filter, data);
-  console.log("arrayAfterFiltering", arrayAfterFiltering);
+ // console.log("arrayAfterFiltering", arrayAfterFiltering);
   
   const aggregatedData=calculateAggregates(arrayAfterFiltering);
-  console.log("aggregatedData", aggregatedData);
+ // console.log("aggregatedData", aggregatedData);
   aggregatedImpressions=aggregatedData[0];
-  console.log("aggregatedImpressions", aggregatedImpressions);
+  //console.log("aggregatedImpressions", aggregatedImpressions);
   aggregatedClicks=aggregatedData[1];
-  console.log("aggregatedClicks", aggregatedClicks);
+  //console.log("aggregatedClicks", aggregatedClicks);
   aggregatedDates=aggregatedData[2];
   }
    else {
   const aggregatedData=calculateAggregates(data);
-  console.log("aggregatedData", aggregatedData);
+  //console.log("aggregatedData", aggregatedData);
   aggregatedImpressions=aggregatedData[0];
-  console.log("aggregatedImpressions", aggregatedImpressions);
+  //console.log("aggregatedImpressions", aggregatedImpressions);
   aggregatedClicks=aggregatedData[1];
-  console.log("aggregatedClicks", aggregatedClicks);
+  //console.log("aggregatedClicks", aggregatedClicks);
   aggregatedDates=aggregatedData[2];
-  console.log("aggregatedDates", aggregatedDates);
+  //console.log("aggregatedDates", aggregatedDates);
   }
   const optionsFilteredData=generateOptions(aggregatedImpressions,aggregatedClicks, aggregatedDates )
   //const optionsAllData=generateOptions(aggregatedData2)
@@ -122,10 +122,10 @@ function filterArray(filtering, dataForFiltering){
 } 
 
 function calculateAggregates(array){
-    console.log("array", array);
+    //console.log("array", array);
     let groupByDate = _.groupBy(array, "Date");
     //console.log("filtere", filtering);
-    console.log("groupByDate", groupByDate);
+    //console.log("groupByDate", groupByDate);
     let uniqueDates = _.keys(groupByDate);
     //console.log("uniqueDates", uniqueDates);
     let impressionsArray = [];
@@ -180,8 +180,8 @@ function calculateAggregates(array){
           //console.log();
        // }
       }
-      console.log("totalImpressions", totalImpressions);
-      console.log("totalClicks", totalClicks);
+      //console.log("totalImpressions", totalImpressions);
+      //console.log("totalClicks", totalClicks);
       impressionsArray.push(totalImpressions);
       clicksArray.push(totalClicks);
       /**/

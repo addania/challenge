@@ -141,6 +141,7 @@ function App() {
 export default App;
 
 function csvJSON(csv) {
+  //console.log(csv);
   var lines = csv.split("\n");
 
   var result = [];
@@ -160,10 +161,12 @@ function csvJSON(csv) {
         obj[headers[j]] = columnValue;
       }
     }
-
+ 
     result.push(obj);
   }
-
+  let removeLast=result.pop();
+  //console.log(removeLast);
+  //console.log(result);
   return result; 
 }
 
