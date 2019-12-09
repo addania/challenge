@@ -5,9 +5,7 @@ import { List } from "./List.js";
 
 export function Subheader(props) {
   const message = "Select zero to N ";
-  //const columnsArray= ["Datasources", "Campaigns", "Impressions", "Clicks", "Date"];
   const italics = { fontStyle: "italic" };
-
   const listItems = [];
   for (
     let listItem = 0;
