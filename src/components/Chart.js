@@ -9,7 +9,7 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
   //console.log(coreData.Date);
   //console.log(filters);
   //console.log(applyFilters);
-  let generateCondition 
+  let generateCondition;
   let generatedOptions = generateOptions(coreData, filters, applyFilters);
 
   //console.log("generatedOptions", generatedOptions);
@@ -47,116 +47,126 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
 
 function generateOptions(data, filter, apply) {
   console.log("filter", filter);
-  let string="";
+  let string = "";
 
-    const name=Object.keys(filter);
-    const value=Object.values(filter);
-    console.log("name", name, "value", value)
-    string=".includes"
-    const a=filter.Datasource;
-    console.log("a", a)
-    const b=filter.Campaign;
+  const name = Object.keys(filter);
+  const value = Object.values(filter);
+  console.log("name", name, "value", value);
+  string = ".includes";
+  const a = filter.Datasource;
+  //console.log("a", a)
+  const b = filter.Campaign;
   /*for (let i=0;i<filter.length;i++){
     string=string
   }*/
   //debugger;
-  
-  let filteredArray=[];
-  if(!(Object.entries(filter).length === 0 && filter.constructor === Object)&&(a === undefined || a.length == 0)){
-  filteredArray=_.filter(data, function(i) {
-    //debugger;
-    return b.includes(i.Campaign) });
-    //console.log("filteredArray",filteredArray);
-  } else if(!(Object.entries(filter).length === 0 && filter.constructor === Object)&&(b === undefined || b.length == 0)){
-  filteredArray=_.filter(data, function(i) {
-    //debugger;
-    return a.includes(i.Datasource) });
-    //console.log("filteredArray",filteredArray);
- } else if(!(Object.entries(filter).length === 0 && filter.constructor === Object)) {
-  filteredArray=_.filter(data, function(i) {
-    //debugger;
-    return a.includes(i.Datasource) && b.includes(i.Campaign)  });
-  
- }
- console.log("filteredArray",filteredArray);
-  
 
-  let finalImpressionsArray2=[];
-  let finalClicksArray2=[];
-  if (apply==true){
-  let groupByDate2 = _.groupBy(filteredArray, "Date");
-  //console.log("filtere", filter);
-  let uniqueDates2= _.keys(groupByDate2);
-  //console.log("uniqueDates", uniqueDates);
-  let impressionsArray2 = [];
-  let clicksArray2 = [];
+  let filteredArray = [];
+  if (
+    !(Object.entries(filter).length === 0 && filter.constructor === Object) &&
+    (a === undefined || a.length == 0)
+  ) {
+    filteredArray = _.filter(data, function(i) {
+      //debugger;
+      return b.includes(i.Campaign);
+    });
+    //console.log("filteredArray",filteredArray);
+  } else if (
+    !(Object.entries(filter).length === 0 && filter.constructor === Object) &&
+    (b === undefined || b.length == 0)
+  ) {
+    filteredArray = _.filter(data, function(i) {
+      //debugger;
+      return a.includes(i.Datasource);
+    });
+    //console.log("filteredArray",filteredArray);
+  } else if (
+    !(Object.entries(filter).length === 0 && filter.constructor === Object)
+  ) {
+    filteredArray = _.filter(data, function(i) {
+      //debugger;
+      return a.includes(i.Datasource) && b.includes(i.Campaign);
+    });
+  }
+  console.log("filteredArray", filteredArray);
 
-  for (let dayEntry = 0; dayEntry < uniqueDates2.length; dayEntry++) {
-    let totalImpressions2 = 0;
-    let totalClicks2 = 0;
-    let message2="All data";
-    for (
-      let dataRow = 0;
-      dataRow < groupByDate2[uniqueDates2[dayEntry]].length;
-      dataRow++
-    ) {
-      console.log("dayEntry", dayEntry, "uniqueDates2[dayEntry]", uniqueDates2[dayEntry])
-      
-      let uniqueFilterEntries=_.keys(filter);
+  let finalImpressionsArray2 = [];
+  let finalClicksArray2 = [];
+  if (apply == true) {
+    let groupByDate2 = _.groupBy(filteredArray, "Date");
+    //console.log("filtere", filter);
+    let uniqueDates2 = _.keys(groupByDate2);
+    //console.log("uniqueDates", uniqueDates);
+    let impressionsArray2 = [];
+    let clicksArray2 = [];
+
+    for (let dayEntry = 0; dayEntry < uniqueDates2.length; dayEntry++) {
+      let totalImpressions2 = 0;
+      let totalClicks2 = 0;
+      let message2 = "All data";
+      for (
+        let dataRow = 0;
+        dataRow < groupByDate2[uniqueDates2[dayEntry]].length;
+        dataRow++
+      ) {
+        console.log(
+          "dayEntry",
+          dayEntry,
+          "uniqueDates2[dayEntry]",
+          uniqueDates2[dayEntry]
+        );
+
+        let uniqueFilterEntries = _.keys(filter);
         //console.log("uniqueFilterEntries", uniqueFilterEntries);
-        
-        let conditionsCheck=[];
-        
-        for (let filterKey=0;filterKey<uniqueFilterEntries.length;filterKey++){
-      
-          if (filter[uniqueFilterEntries[filterKey]].includes(groupByDate2[uniqueDates2[dayEntry]][dataRow][uniqueFilterEntries[filterKey]])){
-            
-            conditionsCheck.push(true)
+
+        let conditionsCheck = [];
+
+        for (
+          let filterKey = 0;
+          filterKey < uniqueFilterEntries.length;
+          filterKey++
+        ) {
+          if (
+            filter[uniqueFilterEntries[filterKey]].includes(
+              groupByDate2[uniqueDates2[dayEntry]][dataRow][
+                uniqueFilterEntries[filterKey]
+              ]
+            )
+          ) {
+            conditionsCheck.push(true);
             //console.log(filter[uniqueFilterEntries[filterKey]], " includes ", groupByDate[uniqueDates[dayEntry]][dataRow][uniqueFilterEntries[filterKey]] )
-          } else{
+          } else {
             conditionsCheck.push(false);
           }
-
         }
         //console.log("conditionsCheck", conditionsCheck);
 
-        if (!conditionsCheck.includes(false)){
+        if (!conditionsCheck.includes(false)) {
           totalImpressions2 =
-          totalImpressions2 +
-          groupByDate2[uniqueDates2[dayEntry]][dataRow].Impressions;
+            totalImpressions2 +
+            groupByDate2[uniqueDates2[dayEntry]][dataRow].Impressions;
           totalClicks2 =
-          totalClicks2 + groupByDate2[uniqueDates2[dayEntry]][dataRow].Clicks;
-          console.log()
+            totalClicks2 + groupByDate2[uniqueDates2[dayEntry]][dataRow].Clicks;
+          console.log();
         }
-
-
-
+      }
+      console.log("totalImpressions2", totalImpressions2);
+      console.log("totalClicks2", totalClicks2);
+      impressionsArray2.push(totalImpressions2);
+      clicksArray2.push(totalClicks2);
     }
-    console.log ("totalImpressions2", totalImpressions2);
-    console.log ("totalClicks2", totalClicks2);
-    impressionsArray2.push(totalImpressions2);
-    clicksArray2.push(totalClicks2);
+    console.log("impressionsArray2", impressionsArray2);
+    console.log("clicksArray2", clicksArray2);
+    finalImpressionsArray2 = impressionsArray2;
+    finalClicksArray2 = clicksArray2;
+    const sumImpressions2 = _.sum(impressionsArray2);
+    const sumClicks2 = _.sum(clicksArray2);
+    console.log("sumImpressions2", sumImpressions2);
+    console.log("sumClicks2", sumClicks2);
+
+    console.log("finalImpressionsArray2", finalImpressionsArray2);
+    console.log("finalClicksArray2", finalClicksArray2);
   }
-  console.log("impressionsArray2", impressionsArray2);
-  console.log("clicksArray2", clicksArray2);
-  finalImpressionsArray2=impressionsArray2;
-  finalClicksArray2=clicksArray2;
-  const sumImpressions2=_.sum(impressionsArray2);
-  const sumClicks2=_.sum(clicksArray2);
-  console.log("sumImpressions2", sumImpressions2);
-  console.log("sumClicks2",sumClicks2);
-
-  console.log("finalImpressionsArray2", finalImpressionsArray2);
-  console.log("finalClicksArray2", finalClicksArray2);
-}
-
-
-
-
-
-
-
-
 
   let groupByDate = _.groupBy(data, "Date");
   //console.log("filtere", filter);
@@ -164,74 +174,68 @@ function generateOptions(data, filter, apply) {
   //console.log("uniqueDates", uniqueDates);
   let impressionsArray = [];
   let clicksArray = [];
-   
-
-
-
-
-  
-
 
   for (let dayEntry = 0; dayEntry < uniqueDates.length; dayEntry++) {
     let totalImpressions = 0;
     let totalClicks = 0;
-    let message="All data";
+    let message = "All data";
     for (
       let dataRow = 0;
       dataRow < groupByDate[uniqueDates[dayEntry]].length;
       dataRow++
     ) {
-       //if(apply==true && !_.isEmpty(filter)){
+      //if(apply==true && !_.isEmpty(filter)){
 
-       if(apply==true){
+      if (apply == true) {
         //console.log("APPLY FILTEER");
         //console.log("filtr", filter);
         //groupByDate[uniqueDates[dayEntry]][dataRow]
-        let uniqueFilterEntries=_.keys(filter);
+        let uniqueFilterEntries = _.keys(filter);
         //console.log("uniqueFilterEntries", uniqueFilterEntries);
-        
-        let conditionsCheck=[];
-        
-        for (let filterKey=0;filterKey<uniqueFilterEntries.length;filterKey++){
-      
-          if (filter[uniqueFilterEntries[filterKey]].includes(groupByDate[uniqueDates[dayEntry]][dataRow][uniqueFilterEntries[filterKey]])){
-            
-            conditionsCheck.push(true)
+
+        let conditionsCheck = [];
+
+        for (
+          let filterKey = 0;
+          filterKey < uniqueFilterEntries.length;
+          filterKey++
+        ) {
+          if (
+            filter[uniqueFilterEntries[filterKey]].includes(
+              groupByDate[uniqueDates[dayEntry]][dataRow][
+                uniqueFilterEntries[filterKey]
+              ]
+            )
+          ) {
+            conditionsCheck.push(true);
             //console.log(filter[uniqueFilterEntries[filterKey]], " includes ", groupByDate[uniqueDates[dayEntry]][dataRow][uniqueFilterEntries[filterKey]] )
-          } else{
+          } else {
             conditionsCheck.push(false);
           }
-
         }
         //console.log("conditionsCheck", conditionsCheck);
 
-        if (!conditionsCheck.includes(false)){
+        if (!conditionsCheck.includes(false)) {
           totalImpressions =
+            totalImpressions +
+            groupByDate[uniqueDates[dayEntry]][dataRow].Impressions;
+          totalClicks =
+            totalClicks + groupByDate[uniqueDates[dayEntry]][dataRow].Clicks;
+        }
+      } else {
+        totalImpressions =
           totalImpressions +
           groupByDate[uniqueDates[dayEntry]][dataRow].Impressions;
-          totalClicks =
+        totalClicks =
           totalClicks + groupByDate[uniqueDates[dayEntry]][dataRow].Clicks;
-
-        }
-
-      } else {
-
-        
-      totalImpressions =
-        totalImpressions +
-        groupByDate[uniqueDates[dayEntry]][dataRow].Impressions;
-      totalClicks =
-        totalClicks + groupByDate[uniqueDates[dayEntry]][dataRow].Clicks;
-        let uniqueFilterEntries=_.keys(filter);
-        for (let filterItem=0;filterItem<filter.length;filterItem++){
+        let uniqueFilterEntries = _.keys(filter);
+        for (let filterItem = 0; filterItem < filter.length; filterItem++) {
           debugger;
-          message=message + filter[uniqueFilterEntries[filterItem]];
+          message = message + filter[uniqueFilterEntries[filterItem]];
           //console.log("message", message);
         }
-         //console.log("message", message);
+        //console.log("message", message);
       }
-
-
 
       /*if(apply==true){
         //console.log("APPLY FILTEER");

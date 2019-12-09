@@ -51,11 +51,12 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
     const genOptions = generateOptions(filterColumns[item], dataSet);
     //console.log("genOptions", genOptions);
     columns.push(
-      <div>
+      <div key={item}>
         <p style={{ textAlign: "left", color: "#828282", marginTop: "20px" }}>
           {filterColumns[item]}
         </p>
         <Dropdown
+          key={item}
           style={styleLink}
           placeholder={filterColumns[item]}
           fluid
