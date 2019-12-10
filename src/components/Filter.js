@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Dropdown } from "semantic-ui-react";
 
 export function Filter({ styling, filterColumns, onChange, dataSet }) {
   // Defines a filter which allows users to filter data displayed on graph
   // by selecting certain datasources and/or campaigns.
-  const [selectedValues, setSelectedValues] = useState();
   const columns = [];
   const styleLink = document.createElement("link");
   styleLink.rel = "stylesheet";

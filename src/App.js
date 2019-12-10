@@ -56,7 +56,7 @@ function App() {
     // Sets selectedValues state with information about which columns and their values were selected.
     // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
     setUseFilters(false);
-    if (data.value === undefined || data.value == 0) {
+    if (data.value === undefined || data.value === 0) {
       let newState = { ...selectedValues };
       delete newState[data.placeholder];
       setSelectedValues(newState);
@@ -130,7 +130,7 @@ function csvJSON(csv) {
     var currentline = lines[i].split(",");
     for (var j = 0; j < headers.length; j++) {
       const columnValue = currentline[j];
-      if (j == 3 || j == 4) {
+      if (j === 3 || j === 4) {
         obj[headers[j]] = parseInt(columnValue);
       } else {
         obj[headers[j]] = columnValue;
