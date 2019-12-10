@@ -2,6 +2,7 @@ import React from "react";
 import "./Button.css";
 
 export function Button({ onClick }) {
+  // Defines a button Apply to apply selected filter options on Chart component
   return (
     <button
       type="submit"

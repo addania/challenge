@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { List } from "./List.js";
 
 export function Subheader(props) {
+  // Defines a component Subheaher with more information about the application.
   const message = "Select zero to N ";
   const italics = { fontStyle: "italic" };
   const listItems = [];

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Dropdown } from "semantic-ui-react";
 
 export function Filter({ styling, filterColumns, onChange, dataSet }) {
+  // Defines a filter which allows users to filter data displayed on graph
+  // by selecting certain datasources and/or campaigns.
   const [selectedValues, setSelectedValues] = useState();
   const columns = [];
   const styleLink = document.createElement("link");
@@ -11,7 +13,6 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
   document.head.appendChild(styleLink);
 
   for (let item = 0; item < filterColumns.length; item++) {
-    const generatedOptions = [];
     const genOptions = generateOptions(filterColumns[item], dataSet);
     columns.push(
       <div key={item}>
@@ -31,20 +32,17 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
         />
       </div>
     );
-    //console.log("columns", columns);
   }
   return (
     <div>
       <h2 style={styling}>Filters</h2>
       {columns}
-
-      {/* <Dropdown style={styleLink} placeholder='Skills' fluid multiple selection options={options} onChange={onChange} />
-       */}
     </div>
   );
 }
 
 function generateOptions(inputItem, inputDataSet) {
+  // Receives input data and input item (based on filters) and dynamically generated options to be used for Dropdown component.
   let uniqueValues = [];
   for (let entry = 0; entry < inputDataSet.length; entry++) {
     if (!uniqueValues.includes(inputDataSet[entry][inputItem])) {

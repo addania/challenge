@@ -6,7 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
 
 export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
-  let generateCondition;
+  // Defines a visualization components which will render a HighchartsReact component
+  // based on options generated from data and filters
   let calculatedOptions = calculateOptions(coreData, filters, applyFilters);
 
   return (
@@ -41,7 +42,8 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
 }
 
 function calculateOptions(data, filter, apply) {
-  //console.log("filter", filter);
+  // As input receives data, filter and condition whether to apply filter or not.
+  // Outputs options for HighchartsReact to display either filtered data or entire data set.
   let aggregatedImpressions;
   let aggregatedClicks;
   let aggregatedDates;
@@ -66,6 +68,8 @@ function calculateOptions(data, filter, apply) {
 }
 
 function filterArray(filtering, dataForFiltering) {
+  // Receives data for filtering and filters in order to calculate subset of data which was filtered.
+  // Outputs filtered array.
   const value = Object.values(filtering);
   const filteredDatasources = filtering.Datasource;
   const filteredCampaigns = filtering.Campaign;
@@ -104,6 +108,10 @@ function filterArray(filtering, dataForFiltering) {
 }
 
 function calculateAggregates(array) {
+  // Receives an array of data as input and outputs an array of data aggregated per date.
+  // First element of the output array is array of aggregated impressions.
+  // Second element of the output array is array of aggregated clicks.
+  // Third element of the output array is array of unique dates.
   let groupByDate = _.groupBy(array, "Date");
   let uniqueDates = _.keys(groupByDate);
   let impressionsArray = [];
@@ -136,6 +144,8 @@ function generateOptions(
   clicksForOptions,
   datesForOptions
 ) {
+  // Recives array of impressions, array of clicks and array of unique dates as input.
+  // Outputs options to visualize data on a HighchartsReact component.
   const options = {
     chart: {
       type: "spline"

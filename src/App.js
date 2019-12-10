@@ -23,7 +23,7 @@ function App() {
     async function fetchData() {
       const response = await fetch(
         // VERSION FOR PUBLISHING ON GH-PAGES:
-        //"https://raw.githubusercontent.com/addania/challenge/master/src/data/source.csv?raw=true"
+        // "https://raw.githubusercontent.com/addania/challenge/master/src/data/source.csv?raw=true"
         "http://adverity-challenge.s3-website-eu-west-1.amazonaws.com/DAMKBAoDBwoDBAkOBAYFCw.csv"
       );
       const csvData = await response.text();
@@ -50,6 +50,9 @@ function App() {
   };
 
   function handleChange(e, data) {
+    // Function is triggered on every change of Filter component. Receives information about event as input.
+    // Sets selectedValues state with information about which columns and their values were selected.
+    // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
     setUseFilters(false);
     if (data.value === undefined || data.value == 0) {
       let newState = { ...selectedValues };
@@ -63,11 +66,15 @@ function App() {
     }
   }
   function handleClick() {
+    // Function is triggered on every click on the Button Apply component.
+    // Sets useFilter state to true when the button Apply was clicked.
     let newState = true;
     setUseFilters(newState);
   }
 
   function handleReset() {
+    // Function is triggered on every click on the Reset button in Chart component.
+    // Sets useFilter state to false when the button Reset was clicked.
     let newState = false;
     setUseFilters(newState);
   }
@@ -105,6 +112,7 @@ function App() {
 export default App;
 
 function csvJSON(csv) {
+  // Receives a comma separated csv file as input. Outputs array of objects as result.
   var lines = csv.split("\n");
   var result = [];
   var headers = lines[0].split(",");
@@ -126,6 +134,7 @@ function csvJSON(csv) {
 }
 
 function formatImpressions(input) {
+  // Receives an array of objects as inputs and substitutes empty or null impressions with 0.
   for (let row = 0; row < input.length; row++) {
     if (!input[row].Impressions) {
       input[row].Impressions = 0;
@@ -138,6 +147,7 @@ function formatImpressions(input) {
 }
 
 function formatDate(input) {
+  // Receives an array of objects as input and formats date entries into a Date format. Outputs data as "dataWithDate".
   const dataWithDate = [];
   for (let row = 0; row < input.length; row++) {
     const entry = { ...input[row] };
@@ -154,16 +164,20 @@ function formatDate(input) {
 }
 
 function sortArray(input) {
-  const output = _.sortBy(input, ["Date", "Datasource"]);
+  // Receives an array of objects as input and sorts the entries based on Date, Datasource and Campaign as output.
+  const output = _.sortBy(input, ["Date", "Datasource", "Campaign"]);
   return output;
 }
 
 function getColumns(input) {
+  // Receives an array of objects as input and outputs an array with unique keys (columns).
   const output = Object.keys(input);
   return output;
 }
 
 function getMetrics(inputData, inputColumns) {
+  // Receives an array of objects as inputData and array of unique keys as inputColumns.
+  // Outputs array of column names which holds numeric values.
   const output = [];
   for (let item = 0; item < inputColumns.length; item++) {
     const col = inputColumns[item];
@@ -175,6 +189,8 @@ function getMetrics(inputData, inputColumns) {
 }
 
 function getDimensions(inputData, inputColumns) {
+  // Receives an array of objects as inputData and array of unique keys as inputColumns.
+  // Outputs array of column names which holds string values (excluding date formats).
   const output = [];
   for (let item = 0; item < inputColumns.length; item++) {
     const col = inputColumns[item];
@@ -185,6 +201,8 @@ function getDimensions(inputData, inputColumns) {
   return output;
 }
 function getDates(inputData, inputColumns) {
+  // Receives an array of objects as inputData and array of unique keys as inputColumns.
+  // Outputs array of column names which holds date values.
   const output = [];
   for (let item = 0; item < inputColumns.length; item++) {
     const col = inputColumns[item];

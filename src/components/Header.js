@@ -3,6 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export function Header() {
+  // Defines a header to be displayed as a title on the pages
   return (
     <div>
       <Row>
