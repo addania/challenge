@@ -4,6 +4,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
+const moment = require("moment");
 
 export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
   // Defines a visualization components which will render a HighchartsReact component
@@ -44,7 +45,6 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
 function calculateOptions(data, filter, apply) {
   // As input receives data, filter and condition whether to apply filter or not.
   // Outputs options for HighchartsReact to display either filtered data or entire data set.
-  console.log("filter", filter);
   let aggregatedImpressions;
   let aggregatedClicks;
   let aggregatedDates;

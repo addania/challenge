@@ -10,6 +10,8 @@ import { Chart } from "./components/Chart.js";
 import { Filter } from "./components/Filter.js";
 import { Button } from "./components/Button.js";
 
+const moment = require("moment");
+
 function App() {
   const [data, setData] = useState([]);
   const [metrics, setMetrics] = useState([]);
@@ -28,13 +30,14 @@ function App() {
       const csvData = await response.text();
       const jsonData = csvJSON(csvData);
       const formattedImpressions = formatImpressions(jsonData);
-      const formattedDates = formatDate(formattedImpressions);
+      const formattedDates = extractDate(formattedImpressions);
       const sortedData = sortArray(formattedDates);
       const tableColumns = getColumns(sortedData[0]);
       const metricColumns = getMetrics(sortedData[0], tableColumns);
       const dimensionColumns = getDimensions(sortedData[0], tableColumns);
       const dateColumns = getDates(sortedData[0], tableColumns);
-      setData(sortedData);
+      const finalData = formatDate(sortedData);
+      setData(finalData);
       setMetrics(metricColumns);
       setDimensions(dimensionColumns);
       setDates(dateColumns);
@@ -65,7 +68,6 @@ function App() {
     }
   }
   function handleClick() {
-    console.log(useFilters);
     // Function is triggered on every click on the Button Apply component.
     // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
     if (
@@ -153,12 +155,13 @@ function formatImpressions(input) {
   return input;
 }
 
-function formatDate(input) {
-  // Receives an array of objects as input and formats date entries into a Date format. Outputs data as "dataWithDate".
+function extractDate(input) {
+  // Receives an array of objects as input and extracts date entries into a Date format. Outputs data as "dataWithDate".
   const dataWithDate = [];
   for (let row = 0; row < input.length; row++) {
     const entry = { ...input[row] };
     const oldDate = input[row].Date;
+
     const year = oldDate.slice(6, 10);
     const month = oldDate.slice(3, 5);
     const day = oldDate.slice(0, 2);
@@ -218,4 +221,17 @@ function getDates(inputData, inputColumns) {
     }
   }
   return output;
+}
+
+function formatDate(input) {
+  // Receives an array of objects as input and formats date entries into a "DD. MMM" format. Outputs data as "dataWithDate".
+  const formattedDateArray = [];
+  for (let row = 0; row < input.length; row++) {
+    const entry = { ...input[row] };
+    const oldDate = input[row].Date;
+    const dateFormatted = moment(oldDate, "DD.MM.YYYY").format("DD. MMM");
+    entry.Date = dateFormatted;
+    formattedDateArray.push(entry);
+  }
+  return formattedDateArray;
 }
