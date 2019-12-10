@@ -23,7 +23,7 @@ function App() {
     async function fetchData() {
       const response = await fetch(
         // VERSION FOR PUBLISHING ON GH-PAGES:
-        // "https://raw.githubusercontent.com/addania/challenge/master/src/data/source.csv?raw=true"
+        //"https://raw.githubusercontent.com/addania/challenge/master/src/data/source.csv?raw=true"
         "http://adverity-challenge.s3-website-eu-west-1.amazonaws.com/DAMKBAoDBwoDBAkOBAYFCw.csv"
       );
       const csvData = await response.text();

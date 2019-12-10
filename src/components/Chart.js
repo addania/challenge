@@ -44,25 +44,30 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
 function calculateOptions(data, filter, apply) {
   // As input receives data, filter and condition whether to apply filter or not.
   // Outputs options for HighchartsReact to display either filtered data or entire data set.
+  console.log("filter", filter);
   let aggregatedImpressions;
   let aggregatedClicks;
   let aggregatedDates;
+  let message = "";
   if (apply) {
     const arrayAfterFiltering = filterArray(filter, data);
     const aggregatedData = calculateAggregates(arrayAfterFiltering);
     aggregatedImpressions = aggregatedData[0];
     aggregatedClicks = aggregatedData[1];
     aggregatedDates = aggregatedData[2];
+    message = generateMessage(filter);
   } else {
     const aggregatedData = calculateAggregates(data);
     aggregatedImpressions = aggregatedData[0];
     aggregatedClicks = aggregatedData[1];
     aggregatedDates = aggregatedData[2];
+    message = "All Datasources; All Campaigns";
   }
   const optionsFilteredData = generateOptions(
     aggregatedImpressions,
     aggregatedClicks,
-    aggregatedDates
+    aggregatedDates,
+    message
   );
   return optionsFilteredData;
 }
@@ -120,7 +125,6 @@ function calculateAggregates(array) {
   for (let dayEntry = 0; dayEntry < uniqueDates.length; dayEntry++) {
     let totalImpressions = 0;
     let totalClicks = 0;
-    let message2 = "All data";
 
     for (
       let dataRow = 0;
@@ -142,7 +146,8 @@ function calculateAggregates(array) {
 function generateOptions(
   impressionsForOptions,
   clicksForOptions,
-  datesForOptions
+  datesForOptions,
+  messageForOptions
 ) {
   // Recives array of impressions, array of clicks and array of unique dates as input.
   // Outputs options to visualize data on a HighchartsReact component.
@@ -191,7 +196,7 @@ function generateOptions(
     ],
 
     title: {
-      text: "Datasources",
+      text: messageForOptions,
       align: "left"
     },
     series: [
@@ -210,4 +215,57 @@ function generateOptions(
     ]
   };
   return options;
+}
+
+function generateMessage(filterForMessage) {
+  // Receives filter as input and generates corresponding message
+  let filterMessage = "";
+  let datasourceMessage = "";
+  let campaignMessage = "";
+
+  if (
+    filterForMessage["Campaign"] == undefined &&
+    filterForMessage["Datasource"] != undefined
+  ) {
+    campaignMessage = "All Campaigns";
+    let datasourcesList = generateList(filterForMessage.Datasource);
+    datasourceMessage = "Datasource " + datasourcesList;
+  } else if (
+    filterForMessage["Datasource"] == undefined &&
+    filterForMessage["Campaign"] != undefined
+  ) {
+    datasourceMessage = "All Datasources";
+    let campaignsList = generateList(filterForMessage.Campaign);
+    campaignMessage = "Campaign " + campaignsList;
+  } else if (
+    filterForMessage["Campaign"] == undefined &&
+    filterForMessage["Datasource"] == undefined
+  ) {
+    datasourceMessage = "All Datasources ";
+    campaignMessage = "All Campaigns";
+  } else {
+    let datasourcesList = generateList(filterForMessage.Datasource);
+    let campaignsList = generateList(filterForMessage.Campaign);
+    datasourceMessage = "Datasource " + datasourcesList;
+    campaignMessage = "Campaign " + campaignsList;
+  }
+  filterMessage = datasourceMessage + "; " + campaignMessage;
+  return filterMessage;
+}
+
+function generateList(filterItem) {
+  // Receives an array of filter values. Generates a string of maximum 3 values
+  // if multiple filter values are selected.
+  let string = "";
+  let newString;
+  for (let entry = 0; entry < filterItem.length && entry < 3; entry++) {
+    string = string + JSON.stringify(filterItem[entry]) + " and ";
+  }
+
+  if (filterItem.length <= 3) {
+    newString = string.slice(0, -4);
+  } else {
+    newString = string.slice(0, -5) + ", etc.";
+  }
+  return newString;
 }
