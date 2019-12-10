@@ -15,7 +15,6 @@ function App() {
   const [metrics, setMetrics] = useState([]);
   const [dimensions, setDimensions] = useState([]);
   const [dates, setDates] = useState([]);
-  const [selectedColumns, setColumns] = useState([]);
   const [selectedValues, setSelectedValues] = useState({});
   const [useFilters, setUseFilters] = useState(false);
 
@@ -66,10 +65,18 @@ function App() {
     }
   }
   function handleClick() {
+    console.log(useFilters);
     // Function is triggered on every click on the Button Apply component.
-    // Sets useFilter state to true when the button Apply was clicked.
-    let newState = true;
-    setUseFilters(newState);
+    // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
+    if (
+      !(
+        Object.entries(selectedValues).length === 0 &&
+        selectedValues.constructor === Object
+      )
+    ) {
+      let newState = true;
+      setUseFilters(newState);
+    }
   }
 
   function handleReset() {
