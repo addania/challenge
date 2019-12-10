@@ -56,7 +56,7 @@ function App() {
     // Sets selectedValues state with information about which columns and their values were selected.
     // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
     setUseFilters(false);
-    if (data.value === undefined || data.value === 0) {
+    if (data.value === undefined || data.value == 0) {
       let newState = { ...selectedValues };
       delete newState[data.placeholder];
       setSelectedValues(newState);
@@ -93,7 +93,7 @@ function App() {
       <Container>
         <Header />
         <Subheader dimensionsColumns={dimensions} metricsColumns={metrics} />
-        <Row>
+        <Row style={{ paddingLeft: "15px", paddingRight: "15px" }}>
           <Col sm={4} style={{ backgroundColor: "#EFF2F1" }}>
             <Filter
               styling={styles}

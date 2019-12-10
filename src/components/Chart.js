@@ -80,7 +80,7 @@ function filterArray(filtering, dataForFiltering) {
     !(
       Object.entries(filtering).length === 0 && filtering.constructor === Object
     ) &&
-    (filteredDatasources === undefined || filteredDatasources.length === 0)
+    (filteredDatasources === undefined || filteredDatasources.length == 0)
   ) {
     filteredArray = _.filter(dataForFiltering, function(i) {
       return filteredCampaigns.includes(i.Campaign);
@@ -89,7 +89,7 @@ function filterArray(filtering, dataForFiltering) {
     !(
       Object.entries(filtering).length === 0 && filtering.constructor === Object
     ) &&
-    (filteredCampaigns === undefined || filteredCampaigns.length === 0)
+    (filteredCampaigns === undefined || filteredCampaigns.length == 0)
   ) {
     filteredArray = _.filter(dataForFiltering, function(i) {
       return filteredDatasources.includes(i.Datasource);
@@ -219,24 +219,24 @@ function generateMessage(filterForMessage) {
   let filterMessage = "";
   let datasourceMessage = "";
   let campaignMessage = "";
-
+  console.log("FilterForMessage");
   if (
-    filterForMessage["Campaign"] === undefined &&
-    filterForMessage["Datasource"] !== undefined
+    filterForMessage["Campaign"] == undefined &&
+    filterForMessage["Datasource"] != undefined
   ) {
     campaignMessage = "All Campaigns";
     let datasourcesList = generateList(filterForMessage.Datasource);
     datasourceMessage = "Datasource " + datasourcesList;
   } else if (
-    filterForMessage["Datasource"] === undefined &&
-    filterForMessage["Campaign"] !== undefined
+    filterForMessage["Datasource"] == undefined &&
+    filterForMessage["Campaign"] != undefined
   ) {
     datasourceMessage = "All Datasources";
     let campaignsList = generateList(filterForMessage.Campaign);
     campaignMessage = "Campaign " + campaignsList;
   } else if (
-    filterForMessage["Campaign"] === undefined &&
-    filterForMessage["Datasource"] === undefined
+    filterForMessage["Campaign"] == undefined &&
+    filterForMessage["Datasource"] == undefined
   ) {
     datasourceMessage = "All Datasources ";
     campaignMessage = "All Campaigns";
