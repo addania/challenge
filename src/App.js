@@ -19,6 +19,7 @@ function App() {
   const [dates, setDates] = useState([]);
   const [selectedValues, setSelectedValues] = useState({});
   const [useFilters, setUseFilters] = useState(false);
+  const [filteredData, setFilteredData] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -55,7 +56,6 @@ function App() {
     // Function is triggered on every change of Filter component. Receives information about event as input.
     // Sets selectedValues state with information about which columns and their values were selected.
     // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
-    setUseFilters(false);
     if (data.value === undefined || data.value == 0) {
       let newState = { ...selectedValues };
       delete newState[data.placeholder];
@@ -78,14 +78,11 @@ function App() {
     ) {
       let newState = true;
       setUseFilters(newState);
+      setFilteredData(selectedValues);
+    } else {
+      let newState = false;
+      setUseFilters(newState);
     }
-  }
-
-  function handleReset() {
-    // Function is triggered on every click on the Reset button in Chart component.
-    // Sets useFilter state to false when the button Reset was clicked.
-    let newState = false;
-    setUseFilters(newState);
   }
 
   return (
@@ -106,9 +103,8 @@ function App() {
           <Col sm={8}>
             <Chart
               coreData={data}
-              filters={selectedValues}
+              filters={filteredData}
               applyFilters={useFilters}
-              onClick={handleReset}
               styling={styles}
             />
           </Col>
