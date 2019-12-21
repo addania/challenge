@@ -4,11 +4,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-jest": "^24.9.0",
     "bootstrap": "^4.4.1",
     "gh-pages": "^2.1.1",
     "highcharts": "^7.2.1",
     "highcharts-react-official": "^2.2.2",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
@@ -17,14 +24,15 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
+    "react-test-renderer": "^16.12.0",
     "semantic-ui-react": "^0.88.2"
   },
   "lint-staged": {
-     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-     "prettier --write",
-     "git add"
-   ]
- },
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

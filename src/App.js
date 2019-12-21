@@ -9,6 +9,10 @@ import { Subheader } from "./components/Subheader.js";
 import { Chart } from "./components/Chart.js";
 import { Filter } from "./components/Filter.js";
 import { Button } from "./components/Button.js";
+import { csvJSON } from "./functions/csvJSON";
+import { formatImpressions } from "./functions/formatImpressions";
+import { extractDate } from "./functions/extractDate";
+import { sortArray } from "./functions/sortArray";
 
 const moment = require("moment");
 
@@ -115,65 +119,6 @@ function App() {
 }
 
 export default App;
-
-function csvJSON(csv) {
-  // Receives a comma separated csv file as input. Outputs array of objects as result.
-  var lines = csv.split("\n");
-  var result = [];
-  var headers = lines[0].split(",");
-  for (var i = 1; i < lines.length; i++) {
-    var obj = {};
-    var currentline = lines[i].split(",");
-    for (var j = 0; j < headers.length; j++) {
-      const columnValue = currentline[j];
-      if (j === 3 || j === 4) {
-        obj[headers[j]] = parseInt(columnValue);
-      } else {
-        obj[headers[j]] = columnValue;
-      }
-    }
-    result.push(obj);
-  }
-  let removeLast = result.pop();
-  return result;
-}
-
-function formatImpressions(input) {
-  // Receives an array of objects as inputs and substitutes empty or null impressions with 0.
-  for (let row = 0; row < input.length; row++) {
-    if (!input[row].Impressions) {
-      input[row].Impressions = 0;
-    }
-    if (!input[row].Clicks) {
-      input[row].Clicks = 0;
-    }
-  }
-  return input;
-}
-
-function extractDate(input) {
-  // Receives an array of objects as input and extracts date entries into a Date format. Outputs data as "dataWithDate".
-  const dataWithDate = [];
-  for (let row = 0; row < input.length; row++) {
-    const entry = { ...input[row] };
-    const oldDate = input[row].Date;
-
-    const year = oldDate.slice(6, 10);
-    const month = oldDate.slice(3, 5);
-    const day = oldDate.slice(0, 2);
-    const newDate = year + "-" + month + "-" + day;
-    const dateFormatted = new Date(newDate);
-    entry.Date = dateFormatted;
-    dataWithDate.push(entry);
-  }
-  return dataWithDate;
-}
-
-function sortArray(input) {
-  // Receives an array of objects as input and sorts the entries based on Date, Datasource and Campaign as output.
-  const output = _.sortBy(input, ["Date", "Datasource", "Campaign"]);
-  return output;
-}
 
 function getColumns(input) {
   // Receives an array of objects as input and outputs an array with unique keys (columns).
