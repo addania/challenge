@@ -16,6 +16,7 @@ import { sortArray } from "./functions/sortArray";
 import { getColumns } from "./functions/getColumns";
 import { getMetrics } from "./functions/getMetrics";
 import { getDimensions } from "./functions/getDimensions";
+import { getDates } from "./functions/getDates";
 
 const moment = require("moment");
 
@@ -44,8 +45,8 @@ function App() {
       console.log("tableColumns", tableColumns);
       const metricColumns = getMetrics(sortedData[0], tableColumns);
       const dimensionColumns = getDimensions(sortedData[0], tableColumns);
-      console.log("dimensionColumns", dimensionColumns);
       const dateColumns = getDates(sortedData[0], tableColumns);
+      console.log("dateColumns", dateColumns);
       const finalData = formatDate(sortedData);
       setData(finalData);
       setMetrics(metricColumns);
@@ -156,6 +157,7 @@ function getDimensions(inputData, inputColumns) {
   }
   return output;
 }*/
+/*
 function getDates(inputData, inputColumns) {
   // Receives an array of objects as inputData and array of unique keys as inputColumns.
   // Outputs array of column names which holds date values.
@@ -168,7 +170,7 @@ function getDates(inputData, inputColumns) {
   }
   return output;
 }
-
+*/
 function formatDate(input) {
   // Receives an array of objects as input and formats date entries into a "DD. MMM" format. Outputs data as "dataWithDate".
   const formattedDateArray = [];
