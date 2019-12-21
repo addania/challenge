@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f30781bf365e72303f23ddb8625e49d0",
+    "revision": "8954d8ea9f52a1665c01976508a57d59",
     "url": "/challenge/index.html"
   },
   {
-    "revision": "b21d041bc51404879e4a",
+    "revision": "70f5b7b6ef3eb4f40ec4",
     "url": "/challenge/static/css/2.17e5ed98.chunk.css"
   },
   {
-    "revision": "de9278849716706764ed",
+    "revision": "02fc88745eb4308a6309",
     "url": "/challenge/static/css/main.d599bf61.chunk.css"
   },
   {
-    "revision": "b21d041bc51404879e4a",
-    "url": "/challenge/static/js/2.26f7b564.chunk.js"
+    "revision": "70f5b7b6ef3eb4f40ec4",
+    "url": "/challenge/static/js/2.d9943750.chunk.js"
   },
   {
     "revision": "bd58a53ea30c71d23a62143160dc052c",
-    "url": "/challenge/static/js/2.26f7b564.chunk.js.LICENSE"
+    "url": "/challenge/static/js/2.d9943750.chunk.js.LICENSE"
   },
   {
-    "revision": "de9278849716706764ed",
-    "url": "/challenge/static/js/main.ebafb608.chunk.js"
+    "revision": "02fc88745eb4308a6309",
+    "url": "/challenge/static/js/main.26daa8d4.chunk.js"
   },
   {
     "revision": "8ca62c94697f18a2fd0e",
