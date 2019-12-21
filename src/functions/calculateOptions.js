@@ -6,6 +6,9 @@ import { generateOptions } from "./generateOptions";
 export function calculateOptions(data, filter, apply) {
   // As input receives data, filter and condition whether to apply filter or not.
   // Outputs options for HighchartsReact to display either filtered data or entire data set.
+  console.log("data", data);
+  console.log("filter", filter);
+  console.log("apply", apply);
   let aggregatedImpressions;
   let aggregatedClicks;
   let aggregatedDates;
@@ -30,5 +33,6 @@ export function calculateOptions(data, filter, apply) {
     aggregatedDates,
     message
   );
+  console.log("optionsFilteredData", optionsFilteredData);
   return optionsFilteredData;
 }
