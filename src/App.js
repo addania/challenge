@@ -40,26 +40,11 @@ function App() {
       const formattedImpressions = formatImpressions(jsonData);
       const formattedDates = extractDate(formattedImpressions);
       const sortedData = sortArray(formattedDates);
-      console.log("sortedData", sortedData);
       const tableColumns = getColumns(sortedData[0]);
-
       const metricColumns = getMetrics(sortedData[0], tableColumns);
       const dimensionColumns = getDimensions(sortedData[0], tableColumns);
       const dateColumns = getDates(sortedData[0], tableColumns);
-
       const finalData = formatDate(sortedData);
-      console.log("finalData", finalData);
-
-      const x = formatDate([
-        {
-          Datasource: "Facebook Ads",
-          Campaign: "Like Ads",
-          Date: new Date(Date.UTC(2019, 11, 20, 3, 0, 0)),
-          Clicks: 100,
-          Impressions: 2000
-        }
-      ]);
-      console.log("x", x);
       setData(finalData);
       setMetrics(metricColumns);
       setDimensions(dimensionColumns);
