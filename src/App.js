@@ -13,6 +13,7 @@ import { csvJSON } from "./functions/csvJSON";
 import { formatImpressions } from "./functions/formatImpressions";
 import { extractDate } from "./functions/extractDate";
 import { sortArray } from "./functions/sortArray";
+import { getColumns } from "./functions/getColumns";
 
 const moment = require("moment");
 
@@ -37,7 +38,10 @@ function App() {
       const formattedImpressions = formatImpressions(jsonData);
       const formattedDates = extractDate(formattedImpressions);
       const sortedData = sortArray(formattedDates);
+      console.log("sortedData", sortedData);
+      console.log("sortedData[0]", sortedData[0]);
       const tableColumns = getColumns(sortedData[0]);
+      console.log("tableColumns", tableColumns);
       const metricColumns = getMetrics(sortedData[0], tableColumns);
       const dimensionColumns = getDimensions(sortedData[0], tableColumns);
       const dateColumns = getDates(sortedData[0], tableColumns);
@@ -120,11 +124,11 @@ function App() {
 
 export default App;
 
-function getColumns(input) {
+/*function getColumns(input) {
   // Receives an array of objects as input and outputs an array with unique keys (columns).
   const output = Object.keys(input);
   return output;
-}
+}*/
 
 function getMetrics(inputData, inputColumns) {
   // Receives an array of objects as inputData and array of unique keys as inputColumns.
