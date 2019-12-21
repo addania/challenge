@@ -8,12 +8,6 @@ export function generateOptions(
 ) {
   // Recives array of impressions, array of clicks and array of unique dates as input.
   // Outputs options to visualize data on a HighchartsReact component.
-
-  console.log("impressionsForOptions", impressionsForOptions);
-  console.log("clicksForOptions", clicksForOptions);
-  console.log("datesForOptions", datesForOptions);
-  console.log("messageForOptions", messageForOptions);
-
   const options = {
     chart: {
       type: "spline"
@@ -77,6 +71,5 @@ export function generateOptions(
       }
     ]
   };
-  console.log("options", options);
   return options;
 }
