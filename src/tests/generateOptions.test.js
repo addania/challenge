@@ -1,25 +1,20 @@
+import { generateOptions } from "../functions/generateOptions";
 import Highcharts from "highcharts";
 
-export function generateOptions(
-  impressionsForOptions,
-  clicksForOptions,
-  datesForOptions,
-  messageForOptions
-) {
-  // Recives array of impressions, array of clicks and array of unique dates as input.
-  // Outputs options to visualize data on a HighchartsReact component.
-
-  console.log("impressionsForOptions", impressionsForOptions);
-  console.log("clicksForOptions", clicksForOptions);
-  console.log("datesForOptions", datesForOptions);
-  console.log("messageForOptions", messageForOptions);
-
-  const options = {
+test("generate Options", () => {
+  expect(
+    generateOptions(
+      [766606, 444],
+      [10519, 7],
+      ["01. Jan", "02. Jan"],
+      "All Datasources; All Campaigns"
+    )
+  ).toStrictEqual({
     chart: {
       type: "spline"
     },
     xAxis: {
-      categories: datesForOptions
+      categories: ["01. Jan", "02. Jan"]
     },
     yAxis: [
       {
@@ -59,24 +54,22 @@ export function generateOptions(
     ],
 
     title: {
-      text: messageForOptions,
+      text: "All Datasources; All Campaigns",
       align: "left"
     },
     series: [
       {
         name: "Clicks",
 
-        data: clicksForOptions
+        data: [10519, 7]
       },
 
       {
         name: "Impressions",
         yAxis: 1,
 
-        data: impressionsForOptions
+        data: [766606, 444]
       }
     ]
-  };
-  console.log("options", options);
-  return options;
-}
+  });
+});
