@@ -4,6 +4,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
+import { calculateOptions } from "../functions/calculateOptions";
 
 export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
   // Defines a visualization components which will render a HighchartsReact component
@@ -20,7 +21,7 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
     </div>
   );
 }
-
+/*
 function calculateOptions(data, filter, apply) {
   // As input receives data, filter and condition whether to apply filter or not.
   // Outputs options for HighchartsReact to display either filtered data or entire data set.
@@ -246,3 +247,4 @@ function generateList(filterItem) {
   }
   return newString;
 }
+*/
