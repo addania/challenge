@@ -3,6 +3,8 @@ import _ from "lodash";
 export function filterArray(filtering, dataForFiltering) {
   // Receives data for filtering and filters in order to calculate subset of data which was filtered.
   // Outputs filtered array.
+  console.log("filtering", filtering);
+  console.log("dataForFiltering", dataForFiltering);
   const filteredDatasources = filtering.Datasource;
   const filteredCampaigns = filtering.Campaign;
   let filteredArray = [];
@@ -36,5 +38,6 @@ export function filterArray(filtering, dataForFiltering) {
       );
     });
   }
+  console.log("filteredArray", filteredArray);
   return filteredArray;
 }
