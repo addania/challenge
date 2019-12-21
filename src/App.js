@@ -17,8 +17,7 @@ import { getColumns } from "./functions/getColumns";
 import { getMetrics } from "./functions/getMetrics";
 import { getDimensions } from "./functions/getDimensions";
 import { getDates } from "./functions/getDates";
-
-const moment = require("moment");
+import { formatDate } from "./functions/formatDate";
 
 function App() {
   const [data, setData] = useState([]);
@@ -41,13 +40,26 @@ function App() {
       const formattedImpressions = formatImpressions(jsonData);
       const formattedDates = extractDate(formattedImpressions);
       const sortedData = sortArray(formattedDates);
+      console.log("sortedData", sortedData);
       const tableColumns = getColumns(sortedData[0]);
-      console.log("tableColumns", tableColumns);
+
       const metricColumns = getMetrics(sortedData[0], tableColumns);
       const dimensionColumns = getDimensions(sortedData[0], tableColumns);
       const dateColumns = getDates(sortedData[0], tableColumns);
-      console.log("dateColumns", dateColumns);
+
       const finalData = formatDate(sortedData);
+      console.log("finalData", finalData);
+
+      const x = formatDate([
+        {
+          Datasource: "Facebook Ads",
+          Campaign: "Like Ads",
+          Date: new Date(Date.UTC(2019, 11, 20, 3, 0, 0)),
+          Clicks: 100,
+          Impressions: 2000
+        }
+      ]);
+      console.log("x", x);
       setData(finalData);
       setMetrics(metricColumns);
       setDimensions(dimensionColumns);
@@ -125,61 +137,3 @@ function App() {
 }
 
 export default App;
-
-/*function getColumns(input) {
-  // Receives an array of objects as input and outputs an array with unique keys (columns).
-  const output = Object.keys(input);
-  return output;
-}*/
-/*
-function getMetrics(inputData, inputColumns) {
-  // Receives an array of objects as inputData and array of unique keys as inputColumns.
-  // Outputs array of column names which holds numeric values.
-  const output = [];
-  for (let item = 0; item < inputColumns.length; item++) {
-    const col = inputColumns[item];
-    if (_.isNumber(inputData[col])) {
-      output.push(col);
-    }
-  }
-  return output;
-}*/
-/*
-function getDimensions(inputData, inputColumns) {
-  // Receives an array of objects as inputData and array of unique keys as inputColumns.
-  // Outputs array of column names which holds string values (excluding date formats).
-  const output = [];
-  for (let item = 0; item < inputColumns.length; item++) {
-    const col = inputColumns[item];
-    if (_.isString(inputData[col])) {
-      output.push(col);
-    }
-  }
-  return output;
-}*/
-/*
-function getDates(inputData, inputColumns) {
-  // Receives an array of objects as inputData and array of unique keys as inputColumns.
-  // Outputs array of column names which holds date values.
-  const output = [];
-  for (let item = 0; item < inputColumns.length; item++) {
-    const col = inputColumns[item];
-    if (_.isDate(inputData[col])) {
-      output.push(col);
-    }
-  }
-  return output;
-}
-*/
-function formatDate(input) {
-  // Receives an array of objects as input and formats date entries into a "DD. MMM" format. Outputs data as "dataWithDate".
-  const formattedDateArray = [];
-  for (let row = 0; row < input.length; row++) {
-    const entry = { ...input[row] };
-    const oldDate = input[row].Date;
-    const dateFormatted = moment(oldDate, "DD.MM.YYYY").format("DD. MMM");
-    entry.Date = dateFormatted;
-    formattedDateArray.push(entry);
-  }
-  return formattedDateArray;
-}
