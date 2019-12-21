@@ -5,6 +5,7 @@ export function calculateAggregates(array) {
   // First element of the output array is array of aggregated impressions.
   // Second element of the output array is array of aggregated clicks.
   // Third element of the output array is array of unique dates.
+  console.log("array", array);
   let groupByDate = _.groupBy(array, "Date");
   let uniqueDates = _.keys(groupByDate);
   let impressionsArray = [];
@@ -28,5 +29,6 @@ export function calculateAggregates(array) {
     impressionsArray.push(totalImpressions);
     clicksArray.push(totalClicks);
   }
+  console.log([impressionsArray, clicksArray, uniqueDates]);
   return [impressionsArray, clicksArray, uniqueDates];
 }
