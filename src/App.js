@@ -27,8 +27,7 @@ function App() {
   const [selectedValues, setSelectedValues] = useState({});
   const [useFilters, setUseFilters] = useState(false);
   const [filteredData, setFilteredData] = useState(0);
-  console.log("metrics", metrics);
-  console.log("dimensions", dimensions);
+  console.log("selectedValues", selectedValues);
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
