@@ -10,7 +10,7 @@ export function filterArray(filtering, dataForFiltering) {
     !(
       Object.entries(filtering).length === 0 && filtering.constructor === Object
     ) &&
-    (filteredDatasources === undefined || filteredDatasources.length == 0)
+    (filteredDatasources === undefined || filteredDatasources.length === 0)
   ) {
     filteredArray = _.filter(dataForFiltering, function(i) {
       return filteredCampaigns.includes(i.Campaign);
@@ -19,7 +19,7 @@ export function filterArray(filtering, dataForFiltering) {
     !(
       Object.entries(filtering).length === 0 && filtering.constructor === Object
     ) &&
-    (filteredCampaigns === undefined || filteredCampaigns.length == 0)
+    (filteredCampaigns === undefined || filteredCampaigns.length === 0)
   ) {
     filteredArray = _.filter(dataForFiltering, function(i) {
       return filteredDatasources.includes(i.Datasource);
