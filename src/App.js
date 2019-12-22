@@ -72,13 +72,12 @@ function App() {
     // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
 
     const newState = handleClickHelper(selectedValues);
-    console.log(newState);
     setUseFilters(newState[0]);
     setFilteredData(newState[1]);
   }
 
   return (
-    <div className="App">
+    <div className="App" data-testid="app">
       <Container>
         <Header />
         <Subheader dimensionsColumns={dimensions} metricsColumns={metrics} />
