@@ -5,6 +5,7 @@ export function Button({ onClick }) {
   // Defines a button Apply to apply selected filter options on Chart component
   return (
     <button
+      data-testid="button"
       type="submit"
       style={{
         backgroundColor: "#8DA1B9",
