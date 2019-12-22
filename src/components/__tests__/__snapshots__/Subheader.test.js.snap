@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-12"
+    >
+      <div
+        data-testid="subheader"
+        style={
+          Object {
+            "borderBottom": "0.5px solid #E8E8EA",
+            "color": "#828282",
+            "fontSize": "15px",
+            "margin": "20px 0px",
+            "paddingBottom": "20px",
+            "textAlign": "left",
+          }
+        }
+      >
+        <ul
+          style={
+            Object {
+              "paddingLeft": "20px",
+            }
+          }
+        >
+          <li
+            data-testid="list"
+          >
+            Select zero to N 
+            <span
+              style={
+                Object {
+                  "fontStyle": "italic",
+                }
+              }
+            >
+              Datasource
+              s
+            </span>
+          </li>
+          <li
+            data-testid="list"
+          >
+            Select zero to N 
+            <span
+              style={
+                Object {
+                  "fontStyle": "italic",
+                }
+              }
+            >
+              Campaign
+              s
+            </span>
+          </li>
+        </ul>
+        <p
+          style={
+            Object {
+              "fontSize": "12px",
+            }
+          }
+        >
+          [where zero means "All"]
+        </p>
+        <p>
+          Hitting "Apply" filters the chart to show a timeseries for both
+           
+          <span
+            style={
+              Object {
+                "fontStyle": "italic",
+              }
+            }
+          >
+            Clicks
+          </span>
+           and
+           
+          <span
+            style={
+              Object {
+                "fontStyle": "italic",
+              }
+            }
+          >
+            Impressions
+          </span>
+           for given
+           
+          <span
+            style={
+              Object {
+                "fontStyle": "italic",
+              }
+            }
+          >
+            Datasource
+            s
+          </span>
+           and
+           
+          <span
+            style={
+              Object {
+                "fontStyle": "italic",
+              }
+            }
+          >
+            Campaign
+            s
+          </span>
+           - logical AND
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

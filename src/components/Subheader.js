@@ -12,7 +12,6 @@ export function Subheader(props) {
     props.dimensionsColumns.length,
     italics
   );
-
   return (
     <div>
       <Row>
