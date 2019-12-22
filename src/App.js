@@ -17,6 +17,7 @@ import { getMetrics } from "./functions/getMetrics";
 import { getDimensions } from "./functions/getDimensions";
 import { getDates } from "./functions/getDates";
 import { formatDate } from "./functions/formatDate";
+import { handleChangeHelper } from "./functions/handleChangeHelper";
 
 function App() {
   const [data, setData] = useState([]);
@@ -63,17 +64,10 @@ function App() {
     // Function is triggered on every change of Filter component. Receives information about event as input.
     // Sets selectedValues state with information about which columns and their values were selected.
     // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
-    if (data.value === undefined || data.value == 0) {
-      let newState = { ...selectedValues };
-      delete newState[data.placeholder];
-      setSelectedValues(newState);
-    } else {
-      let newState = { ...selectedValues };
-      let key = data.placeholder;
-      newState = Object.assign(newState, { [key]: data.value });
-      setSelectedValues(newState);
-    }
+    const newState = handleChangeHelper(e, data, selectedValues);
+    setSelectedValues(newState);
   }
+
   function handleClick() {
     // Function is triggered on every click on the Button Apply component.
     // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
