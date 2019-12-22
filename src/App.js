@@ -18,6 +18,7 @@ import { getDimensions } from "./functions/getDimensions";
 import { getDates } from "./functions/getDates";
 import { formatDate } from "./functions/formatDate";
 import { handleChangeHelper } from "./functions/handleChangeHelper";
+import { handleClickHelper } from "./functions/handleClickHelper";
 
 function App() {
   const [data, setData] = useState([]);
@@ -27,7 +28,6 @@ function App() {
   const [selectedValues, setSelectedValues] = useState({});
   const [useFilters, setUseFilters] = useState(false);
   const [filteredData, setFilteredData] = useState(0);
-  console.log("selectedValues", selectedValues);
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
@@ -70,19 +70,11 @@ function App() {
   function handleClick() {
     // Function is triggered on every click on the Button Apply component.
     // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
-    if (
-      !(
-        Object.entries(selectedValues).length === 0 &&
-        selectedValues.constructor === Object
-      )
-    ) {
-      let newState = true;
-      setUseFilters(newState);
-      setFilteredData(selectedValues);
-    } else {
-      let newState = false;
-      setUseFilters(newState);
-    }
+
+    const newState = handleClickHelper(selectedValues);
+    console.log(newState);
+    setUseFilters(newState[0]);
+    setFilteredData(newState[1]);
   }
 
   return (
