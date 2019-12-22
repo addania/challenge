@@ -12,17 +12,7 @@ import { parseData } from "./functions/parseData";
 import { handleChangeHelper } from "./functions/handleChangeHelper";
 import { handleClickHelper } from "./functions/handleClickHelper";
 
-import { csvJSON } from "./functions/csvJSON";
-import { formatImpressions } from "./functions/formatImpressions";
-import { extractDate } from "./functions/extractDate";
-import { sortArray } from "./functions/sortArray";
-import { getColumns } from "./functions/getColumns";
-import { getMetrics } from "./functions/getMetrics";
-import { getDimensions } from "./functions/getDimensions";
-import { formatDate } from "./functions/formatDate";
-
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [metrics, setMetrics] = useState([]);
   const [dimensions, setDimensions] = useState([]);
