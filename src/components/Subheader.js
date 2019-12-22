@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { subheaderHelperFunction } from "../functions/subheaderHelperFunction";
 
-export function Subheader(props) {
+export const Subheader = props => {
   // Defines a component Subheaher with more information about the application.
   const italics = { fontStyle: "italic" };
   const listItems = subheaderHelperFunction(
@@ -41,4 +41,4 @@ export function Subheader(props) {
       </Row>
     </div>
   );
-}
+};

@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
 import { calculateOptions } from "../functions/calculateOptions";
 
-export function Chart({ coreData, filters, applyFilters, styling }) {
+export const Chart = ({ coreData, filters, applyFilters, styling }) => {
   // Defines a visualization components which will render a HighchartsReact component
   // based on options generated from data and filters
   let calculatedOptions = calculateOptions(coreData, filters, applyFilters);
@@ -19,4 +19,4 @@ export function Chart({ coreData, filters, applyFilters, styling }) {
       <HighchartsReact highcharts={Highcharts} options={calculatedOptions} />
     </div>
   );
-}
+};

@@ -12,7 +12,7 @@ import { parseData } from "./functions/parseData";
 import { handleChangeHelper } from "./functions/handleChangeHelper";
 import { handleClickHelper } from "./functions/handleClickHelper";
 
-function App() {
+const App = () => {
   const [data, setData] = useState([]);
   const [metrics, setMetrics] = useState([]);
   const [dimensions, setDimensions] = useState([]);
@@ -83,6 +83,6 @@ function App() {
       </Container>
     </div>
   );
-}
+};
 
 export default App;

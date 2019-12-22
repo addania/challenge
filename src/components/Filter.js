@@ -1,7 +1,7 @@
 import React from "react";
 import { filterHelperFunction } from "../functions/filterHelperFunction";
 
-export function Filter({ styling, filterColumns, onChange, dataSet }) {
+export const Filter = ({ styling, filterColumns, onChange, dataSet }) => {
   // Defines a filter which allows users to filter data displayed on graph
   // by selecting certain datasources and/or campaigns.
   const columns = filterHelperFunction(filterColumns, onChange, dataSet);
@@ -12,4 +12,4 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
       {columns}
     </div>
   );
-}
+};

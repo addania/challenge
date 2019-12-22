@@ -1,6 +1,6 @@
 import React from "react";
 
-export function List(props) {
+export const List = props => {
   // Defines a list component to be used in Subheader component
   return (
     <li data-testid="list">
@@ -8,4 +8,4 @@ export function List(props) {
       <span style={props.styling}>{props.columns}s</span>
     </li>
   );
-}
+};

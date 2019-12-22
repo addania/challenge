@@ -1,7 +1,7 @@
 import React from "react";
 import "./Button.css";
 
-export function Button({ onClick }) {
+export const Button = ({ onClick }) => {
   // Defines a button Apply to apply selected filter options on Chart component
   return (
     <button
@@ -20,4 +20,4 @@ export function Button({ onClick }) {
       <span onClick={onClick}>Apply</span>
     </button>
   );
-}
+};
