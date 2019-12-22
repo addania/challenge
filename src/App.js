@@ -41,21 +41,21 @@ const App = () => {
     color: "#8DA1B9"
   };
 
-  function handleChange(e, data) {
+  const handleChange = (e, data) => {
     // Function is triggered on every change of Filter component. Receives information about event as input.
     // Sets selectedValues state with information about which columns and their values were selected.
     // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
     const newState = handleChangeHelper(e, data, selectedValues);
     setSelectedValues(newState);
-  }
+  };
 
-  function handleClick() {
+  const handleClick = () => {
     // Function is triggered on every click on the Button Apply component.
     // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
     const newState = handleClickHelper(selectedValues);
     setUseFilters(newState[0]);
     setFilteredData(newState[1]);
-  }
+  };
   return (
     <div className="App" data-testid="app">
       <Container>
