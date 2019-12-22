@@ -9,6 +9,5 @@ export function handleChangeHelper(e, data, selectedValues) {
     let key = data.placeholder;
     newState = Object.assign(newState, { [key]: data.value });
   }
-  console.log("new state", newState);
   return newState;
 }

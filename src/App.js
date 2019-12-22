@@ -70,7 +70,6 @@ function App() {
   function handleClick() {
     // Function is triggered on every click on the Button Apply component.
     // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
-
     const newState = handleClickHelper(selectedValues);
     setUseFilters(newState[0]);
     setFilteredData(newState[1]);
