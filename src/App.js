@@ -15,7 +15,6 @@ import { sortArray } from "./functions/sortArray";
 import { getColumns } from "./functions/getColumns";
 import { getMetrics } from "./functions/getMetrics";
 import { getDimensions } from "./functions/getDimensions";
-import { getDates } from "./functions/getDates";
 import { formatDate } from "./functions/formatDate";
 import { handleChangeHelper } from "./functions/handleChangeHelper";
 import { handleClickHelper } from "./functions/handleClickHelper";
@@ -24,7 +23,6 @@ function App() {
   const [data, setData] = useState([]);
   const [metrics, setMetrics] = useState([]);
   const [dimensions, setDimensions] = useState([]);
-  const [dates, setDates] = useState([]);
   const [selectedValues, setSelectedValues] = useState({});
   const [useFilters, setUseFilters] = useState(false);
   const [filteredData, setFilteredData] = useState(0);
@@ -43,12 +41,10 @@ function App() {
       const tableColumns = getColumns(sortedData[0]);
       const metricColumns = getMetrics(sortedData[0], tableColumns);
       const dimensionColumns = getDimensions(sortedData[0], tableColumns);
-      const dateColumns = getDates(sortedData[0], tableColumns);
       const finalData = formatDate(sortedData);
       setData(finalData);
       setMetrics(metricColumns);
       setDimensions(dimensionColumns);
-      setDates(dateColumns);
     }
     fetchData();
   }, []);
