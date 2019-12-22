@@ -8,7 +8,7 @@ import { calculateOptions } from "../functions/calculateOptions";
 export const Chart = ({ coreData, filters, applyFilters, styling }) => {
   // Defines a visualization components which will render a HighchartsReact component
   // based on options generated from data and filters
-  let calculatedOptions = calculateOptions(coreData, filters, applyFilters);
+  const calculatedOptions = calculateOptions(coreData, filters, applyFilters);
   return (
     <div data-testid="chart">
       <Row>

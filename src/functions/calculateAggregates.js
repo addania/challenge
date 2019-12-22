@@ -5,8 +5,8 @@ export const calculateAggregates = array => {
   // First element of the output array is array of aggregated impressions.
   // Second element of the output array is array of aggregated clicks.
   // Third element of the output array is array of unique dates.
-  let groupByDate = _.groupBy(array, "Date");
-  let uniqueDates = _.keys(groupByDate);
+  const groupByDate = _.groupBy(array, "Date");
+  const uniqueDates = _.keys(groupByDate);
   let impressionsArray = [];
   let clicksArray = [];
 
