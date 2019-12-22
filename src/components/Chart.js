@@ -1,5 +1,4 @@
 import React from "react";
-import _ from "lodash";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "bootstrap/dist/css/bootstrap.min.css";

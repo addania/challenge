@@ -1,4 +1,3 @@
-import _ from "lodash";
 const moment = require("moment");
 
 export function formatDate(input) {

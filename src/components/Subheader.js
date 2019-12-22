@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { List } from "./List.js";
 import { subheaderHelperFunction } from "../functions/subheaderHelperFunction";
 
 export function Subheader(props) {
