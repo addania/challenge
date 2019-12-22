@@ -1,11 +1,11 @@
 import Highcharts from "highcharts";
 
-export function generateOptions(
+export const generateOptions = (
   impressionsForOptions,
   clicksForOptions,
   datesForOptions,
   messageForOptions
-) {
+) => {
   // Recives array of impressions, array of clicks and array of unique dates as input.
   // Outputs options to visualize data on a HighchartsReact component.
   const options = {
@@ -72,4 +72,4 @@ export function generateOptions(
     ]
   };
   return options;
-}
+};

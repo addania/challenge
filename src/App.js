@@ -21,7 +21,7 @@ const App = () => {
   const [filteredData, setFilteredData] = useState(0);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       const response = await fetch(
         // VERSION FOR PUBLISHING ON GH-PAGES:
         //"https://raw.githubusercontent.com/addania/challenge/master/src/data/source.csv?raw=true"
@@ -31,7 +31,7 @@ const App = () => {
       setData(rawData[0]);
       setMetrics(rawData[1]);
       setDimensions(rawData[2]);
-    }
+    };
     fetchData();
   }, []);
 

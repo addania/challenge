@@ -1,4 +1,4 @@
-export function handleChangeHelper(e, data, selectedValues) {
+export const handleChangeHelper = (e, data, selectedValues) => {
   // Function is triggered on every change of Filter component. Receives information about event as input.
   // Sets selectedValues state with information about which columns and their values were selected.
   // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
@@ -10,4 +10,4 @@ export function handleChangeHelper(e, data, selectedValues) {
     newState = Object.assign(newState, { [key]: data.value });
   }
   return newState;
-}
+};

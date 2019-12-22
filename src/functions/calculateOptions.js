@@ -3,7 +3,7 @@ import { calculateAggregates } from "./calculateAggregates";
 import { generateMessage } from "./generateMessage";
 import { generateOptions } from "./generateOptions";
 
-export function calculateOptions(data, filter, apply) {
+export const calculateOptions = (data, filter, apply) => {
   // As input receives data, filter and condition whether to apply filter or not.
   // Outputs options for HighchartsReact to display either filtered data or entire data set.
   let aggregatedImpressions;
@@ -31,4 +31,4 @@ export function calculateOptions(data, filter, apply) {
     message
   );
   return optionsFilteredData;
-}
+};

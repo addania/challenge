@@ -1,4 +1,4 @@
-export function generateList(filterItem) {
+export const generateList = filterItem => {
   // Receives an array of filter values. Generates a string of maximum 3 values
   // if multiple filter values are selected.
   let string = "";
@@ -13,4 +13,4 @@ export function generateList(filterItem) {
     newString = string.slice(0, -5) + ", etc.";
   }
   return newString;
-}
+};

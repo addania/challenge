@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-export function calculateAggregates(array) {
+export const calculateAggregates = array => {
   // Receives an array of data as input and outputs an array of data aggregated per date.
   // First element of the output array is array of aggregated impressions.
   // Second element of the output array is array of aggregated clicks.
@@ -29,4 +29,4 @@ export function calculateAggregates(array) {
     clicksArray.push(totalClicks);
   }
   return [impressionsArray, clicksArray, uniqueDates];
-}
+};

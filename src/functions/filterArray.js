@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-export function filterArray(filtering, dataForFiltering) {
+export const filterArray = (filtering, dataForFiltering) => {
   // Receives data for filtering and filters in order to calculate subset of data which was filtered.
   // Outputs filtered array.
   const filteredDatasources = filtering.Datasource;
@@ -37,4 +37,4 @@ export function filterArray(filtering, dataForFiltering) {
     });
   }
   return filteredArray;
-}
+};

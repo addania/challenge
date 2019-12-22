@@ -1,4 +1,4 @@
-export function formatImpressions(input) {
+export const formatImpressions = input => {
   // Receives an array of objects as inputs and substitutes empty or null impressions with 0.
   for (let row = 0; row < input.length; row++) {
     if (!input[row].Impressions) {
@@ -9,4 +9,4 @@ export function formatImpressions(input) {
     }
   }
   return input;
-}
+};

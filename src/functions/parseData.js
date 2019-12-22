@@ -7,7 +7,7 @@ import { getMetrics } from "./getMetrics";
 import { getDimensions } from "./getDimensions";
 import { formatDate } from "./formatDate";
 
-export function parseData(csvData) {
+export const parseData = csvData => {
   const jsonData = csvJSON(csvData);
   const formattedImpressions = formatImpressions(jsonData);
   const formattedDates = extractDate(formattedImpressions);
@@ -17,4 +17,4 @@ export function parseData(csvData) {
   const dimensionColumns = getDimensions(sortedData[0], tableColumns);
   const finalData = formatDate(sortedData);
   return [finalData, metricColumns, dimensionColumns];
-}
+};

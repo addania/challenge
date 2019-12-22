@@ -1,4 +1,4 @@
-export function extractDate(input) {
+export const extractDate = input => {
   // Receives an array of objects as input and extracts date entries into a Date format. Outputs data as "dataWithDate".
   const dataWithDate = [];
   for (let row = 0; row < input.length; row++) {
@@ -13,4 +13,4 @@ export function extractDate(input) {
     dataWithDate.push(entry);
   }
   return dataWithDate;
-}
+};

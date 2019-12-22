@@ -1,4 +1,4 @@
-export function csvJSON(csv) {
+export const csvJSON = csv => {
   // Receives a comma separated csv file as input. Outputs array of objects as result.
   var lines = csv.split("\n");
   var result = [];
@@ -18,4 +18,4 @@ export function csvJSON(csv) {
   }
   const newArray = result.slice(0, result.length - 1);
   return newArray;
-}
+};

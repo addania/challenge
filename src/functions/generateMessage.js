@@ -1,6 +1,6 @@
 import { generateList } from "./generateList";
 
-export function generateMessage(filterForMessage) {
+export const generateMessage = filterForMessage => {
   // Receives filter as input and generates corresponding message
   let filterMessage = "";
   let datasourceMessage = "";
@@ -33,4 +33,4 @@ export function generateMessage(filterForMessage) {
   }
   filterMessage = datasourceMessage + "; " + campaignMessage;
   return filterMessage;
-}
+};
