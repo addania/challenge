@@ -7,7 +7,7 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
   const columns = filterHelperFunction(filterColumns, onChange, dataSet);
 
   return (
-    <div>
+    <div data-testid="filter">
       <h2 style={styling}>Filters</h2>
       {columns}
     </div>

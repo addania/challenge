@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  data-testid="filter"
+>
+  <h2
+    style={
+      Object {
+        "color": "#8DA1B9",
+        "margin": "30px 0px",
+        "textAlign": "left",
+      }
+    }
+  >
+    Filters
+  </h2>
+  <div>
+    <p
+      style={
+        Object {
+          "color": "#828282",
+          "marginTop": "20px",
+          "textAlign": "left",
+        }
+      }
+    >
+      Datasource
+    </p>
+    <div
+      aria-expanded={false}
+      aria-multiselectable={true}
+      className="ui fluid multiple selection dropdown"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      role="listbox"
+      style={
+        Object {
+          "marginTop": "5px",
+        }
+      }
+      tabIndex={0}
+    >
+      <div
+        aria-atomic={true}
+        aria-live="polite"
+        className="default text"
+        role="alert"
+      >
+        Datasource
+      </div>
+      <i
+        aria-hidden="true"
+        className="dropdown icon"
+        onClick={[Function]}
+      />
+      <div
+        className="menu transition"
+      >
+        <div
+          aria-checked={false}
+          aria-selected={true}
+          className="selected item"
+          onClick={[Function]}
+          role="option"
+          style={
+            Object {
+              "pointerEvents": "all",
+            }
+          }
+        >
+          <span
+            className="text"
+          >
+            Facebook Ads
+          </span>
+        </div>
+        <div
+          aria-checked={false}
+          aria-selected={false}
+          className="item"
+          onClick={[Function]}
+          role="option"
+          style={
+            Object {
+              "pointerEvents": "all",
+            }
+          }
+        >
+          <span
+            className="text"
+          >
+            Google Adwords
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p
+      style={
+        Object {
+          "color": "#828282",
+          "marginTop": "20px",
+          "textAlign": "left",
+        }
+      }
+    >
+      Campaigns
+    </p>
+    <div
+      aria-expanded={false}
+      aria-multiselectable={true}
+      className="ui fluid multiple selection dropdown"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      role="listbox"
+      style={
+        Object {
+          "marginTop": "5px",
+        }
+      }
+      tabIndex={0}
+    >
+      <div
+        aria-atomic={true}
+        aria-live="polite"
+        className="default text"
+        role="alert"
+      >
+        Campaigns
+      </div>
+      <i
+        aria-hidden="true"
+        className="dropdown icon"
+        onClick={[Function]}
+      />
+      <div
+        className="menu transition"
+      >
+        <div
+          aria-checked={false}
+          aria-selected={true}
+          className="selected item"
+          onClick={[Function]}
+          role="option"
+          style={
+            Object {
+              "pointerEvents": "all",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
