@@ -28,6 +28,7 @@ export function Subheader(props) {
       <Row>
         <Col sm={12}>
           <div
+            data-testid="subheader"
             style={{
               margin: "20px 0px",
               textAlign: "left",

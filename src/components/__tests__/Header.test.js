@@ -16,7 +16,7 @@ it("renders header correctly", () => {
   render(<Header></Header>);
 });
 
-it("renders button correctly", () => {
+it("renders header correctly", () => {
   const { getByTestId } = render(<Header></Header>);
   expect(getByTestId("header")).toHaveTextContent(
     "Advertising Data ETL-V Challenge"
