@@ -2,9 +2,6 @@ import { generateList } from "./generateList";
 
 export const generateMessage = filterForMessage => {
   // Receives filter as input and generates corresponding message
-  /*let filterMessage = "";
-  let datasourceMessage = "";
-  let campaignMessage = "";*/
   if (
     filterForMessage["Campaign"] === undefined &&
     filterForMessage["Datasource"] !== undefined
