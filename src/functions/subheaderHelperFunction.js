@@ -7,16 +7,15 @@ export const subheaderHelperFunction = (
   italicsInput
 ) => {
   const message = "Select zero to N ";
-  const listItems = [];
-  for (let listItem = 0; listItem < dimensionsLength; listItem++) {
-    listItems.push(
+  const listItems = dimensions.map(item => {
+    return (
       <List
         message={message}
-        columns={dimensions[listItem]}
+        columns={item}
         styling={italicsInput}
-        key={listItem}
+        key={item}
       />
     );
-  }
+  });
   return listItems;
 };
