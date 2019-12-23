@@ -2,11 +2,10 @@ export const generateList = filterItem => {
   // Receives an array of filter values. Generates a string of maximum 3 values
   // if multiple filter values are selected.
   //console.log("filterItem",filterItem);
-  let string = "";
-  for (let entry = 0; entry < filterItem.length && entry < 3; entry++) {
-    string = string + JSON.stringify(filterItem[entry]) + " and ";
-  }
-  //console.log("string", string);
+  const valuesArray = filterItem.slice(0, 3).map(item => {
+    return JSON.stringify(item) + " and ";
+  });
+  const string = valuesArray.join("");
   if (filterItem.length <= 3) {
     const newString = string.slice(0, -4);
     return newString;
