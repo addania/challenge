@@ -2,35 +2,41 @@ import { generateList } from "./generateList";
 
 export const generateMessage = filterForMessage => {
   // Receives filter as input and generates corresponding message
-  let filterMessage = "";
+  /*let filterMessage = "";
   let datasourceMessage = "";
-  let campaignMessage = "";
+  let campaignMessage = "";*/
   if (
     filterForMessage["Campaign"] === undefined &&
     filterForMessage["Datasource"] !== undefined
   ) {
-    campaignMessage = "All Campaigns";
-    let datasourcesList = generateList(filterForMessage.Datasource);
-    datasourceMessage = "Datasource " + datasourcesList;
+    const campaignMessage = "All Campaigns";
+    const datasourcesList = generateList(filterForMessage.Datasource);
+    const datasourceMessage = "Datasource " + datasourcesList;
+    const filterMessage = datasourceMessage + "; " + campaignMessage;
+    return filterMessage;
   } else if (
     filterForMessage["Datasource"] === undefined &&
     filterForMessage["Campaign"] !== undefined
   ) {
-    datasourceMessage = "All Datasources";
-    let campaignsList = generateList(filterForMessage.Campaign);
-    campaignMessage = "Campaign " + campaignsList;
+    const datasourceMessage = "All Datasources";
+    const campaignsList = generateList(filterForMessage.Campaign);
+    const campaignMessage = "Campaign " + campaignsList;
+    const filterMessage = datasourceMessage + "; " + campaignMessage;
+    return filterMessage;
   } else if (
     filterForMessage["Campaign"] === undefined &&
     filterForMessage["Datasource"] === undefined
   ) {
-    datasourceMessage = "All Datasources ";
-    campaignMessage = "All Campaigns";
+    const datasourceMessage = "All Datasources ";
+    const campaignMessage = "All Campaigns";
+    const filterMessage = datasourceMessage + "; " + campaignMessage;
+    return filterMessage;
   } else {
-    let datasourcesList = generateList(filterForMessage.Datasource);
-    let campaignsList = generateList(filterForMessage.Campaign);
-    datasourceMessage = "Datasource " + datasourcesList;
-    campaignMessage = "Campaign " + campaignsList;
+    const datasourcesList = generateList(filterForMessage.Datasource);
+    const campaignsList = generateList(filterForMessage.Campaign);
+    const datasourceMessage = "Datasource " + datasourcesList;
+    const campaignMessage = "Campaign " + campaignsList;
+    const filterMessage = datasourceMessage + "; " + campaignMessage;
+    return filterMessage;
   }
-  filterMessage = datasourceMessage + "; " + campaignMessage;
-  return filterMessage;
 };
