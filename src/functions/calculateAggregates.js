@@ -6,7 +6,7 @@ export const calculateAggregates = array => {
   // Second element of the output array is array of aggregated clicks.
   // Third element of the output array is array of unique dates.
   const groupByDate = _.groupBy(array, "Date");
-  const uniqueDates = _.keys(groupByDate);
+  const uniqueDates = Object.keys(groupByDate);
   const impressionsArray = uniqueDates.map(item => {
     const sumImp = groupByDate[item].reduce((acc, obj) => {
       return acc + obj.Impressions;
