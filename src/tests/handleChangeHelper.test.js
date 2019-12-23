@@ -1,4 +1,5 @@
 import { handleChangeHelper } from "../functions/handleChangeHelper";
+
 const selection = {
   Campaign: ["Like Ads"],
   Datasource: ["Facebook Ads"]
@@ -13,6 +14,7 @@ const selectionOutput2 = {
 const selectionOutput3 = {
   Datasource: ["Facebook Ads"]
 };
+
 test("handle change helper", () => {
   expect(
     handleChangeHelper(
