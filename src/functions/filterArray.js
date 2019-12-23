@@ -5,36 +5,40 @@ export const filterArray = (filtering, dataForFiltering) => {
   // Outputs filtered array.
   const filteredDatasources = filtering.Datasource;
   const filteredCampaigns = filtering.Campaign;
-  let filteredArray = [];
   if (
     !(
       Object.entries(filtering).length === 0 && filtering.constructor === Object
     ) &&
     (filteredDatasources === undefined || filteredDatasources.length === 0)
   ) {
-    filteredArray = _.filter(dataForFiltering, function(i) {
+    const filteredArray = _.filter(dataForFiltering, function(i) {
       return filteredCampaigns.includes(i.Campaign);
     });
+    return filteredArray;
   } else if (
     !(
       Object.entries(filtering).length === 0 && filtering.constructor === Object
     ) &&
     (filteredCampaigns === undefined || filteredCampaigns.length === 0)
   ) {
-    filteredArray = _.filter(dataForFiltering, function(i) {
+    const filteredArray = _.filter(dataForFiltering, function(i) {
       return filteredDatasources.includes(i.Datasource);
     });
+    return filteredArray;
   } else if (
     !(
       Object.entries(filtering).length === 0 && filtering.constructor === Object
     )
   ) {
-    filteredArray = _.filter(dataForFiltering, function(i) {
+    const filteredArray = _.filter(dataForFiltering, function(i) {
       return (
         filteredDatasources.includes(i.Datasource) &&
         filteredCampaigns.includes(i.Campaign)
       );
     });
+    return filteredArray;
+  } else {
+    const filteredArray = [];
+    return filteredArray;
   }
-  return filteredArray;
 };
