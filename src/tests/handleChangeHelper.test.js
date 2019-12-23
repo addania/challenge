@@ -1,52 +1,57 @@
 import { handleChangeHelper } from "../functions/handleChangeHelper";
 const selection = {
   Campaign: ["Like Ads"],
+  Datasource: ["Facebook Ads"]
+};
+const selectionOutput = {
+  Campaign: ["Like Ads"],
   Datasource: ["Facebook Ads", "Google Adwords"]
 };
-const selection2 = {};
+const selectionOutput2 = {
+  Datasource: ["Facebook Ads", "Google Adwords"]
+};
+const selectionOutput3 = {
+  Datasource: ["Facebook Ads"]
+};
 test("handle change helper", () => {
   expect(
     handleChangeHelper(
       0,
-      [
-        {
-          Campaign: "Like Ads",
-          Clicks: 274,
-          Datasource: "Facebook Ads",
-          Date: "01.01.2019",
-          Impressions: 1979
-        },
-        {
-          Campaign: "Offer Campaigns – Conversions",
-          Clicks: 10245,
-          Datasource: "Facebook Ads",
-          Date: "01.01.2019",
-          Impressions: 764627
-        }
-      ],
+      {
+        placeholder: "Datasource",
+        value: ["Facebook Ads", "Google Adwords"]
+      },
       selection
     )
-  ).toStrictEqual(selection);
+  ).toStrictEqual(selectionOutput);
   expect(
     handleChangeHelper(
       0,
-      [
-        {
-          Campaign: "Like Ads",
-          Clicks: 274,
-          Datasource: "Facebook Ads",
-          Date: "01.01.2019",
-          Impressions: 1979
-        },
-        {
-          Campaign: "Offer Campaigns – Conversions",
-          Clicks: 10245,
-          Datasource: "Facebook Ads",
-          Date: "01.01.2019",
-          Impressions: 764627
-        }
-      ],
-      selection2
+      {
+        placeholder: "Campaign",
+        value: []
+      },
+      selectionOutput
     )
-  ).toStrictEqual(selection2);
+  ).toStrictEqual(selectionOutput2);
+  expect(
+    handleChangeHelper(
+      0,
+      {
+        placeholder: "Datasource",
+        value: ["Facebook Ads"]
+      },
+      selectionOutput2
+    )
+  ).toStrictEqual(selectionOutput3);
+  expect(
+    handleChangeHelper(
+      0,
+      {
+        placeholder: "Campaign",
+        value: ["Like Ads"]
+      },
+      selectionOutput3
+    )
+  ).toStrictEqual(selection);
 });
