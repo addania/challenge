@@ -1,8 +1,6 @@
 export const csvJSON = csv => {
   // Receives a comma separated csv file as input. Outputs array of objects as result.
   const lines = csv.split("\n");
-  var result = [];
-  const headers = lines[0].split(",");
   const objectArray = lines.map(item => {
     const currentLine = item.split(",");
     return {
