@@ -13,26 +13,8 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
   return (
     <div>
       <Row>
-        <Col sm={10}>
+        <Col sm={12}>
           <h2 style={styling}>Chart</h2>
-        </Col>
-        <Col sm={2}>
-          <button
-            type="submit"
-            style={{
-              backgroundColor: "#8DA1B9",
-              color: "white",
-              borderRadius: "2px",
-              width: "80px",
-              padding: "5px 0px",
-              marginTop: "10px",
-              position: "absolute",
-              right: 0,
-              bottom: 0
-            }}
-          >
-            <span onClick={onClick}>Reset</span>
-          </button>
         </Col>
       </Row>
       <HighchartsReact highcharts={Highcharts} options={calculatedOptions} />
