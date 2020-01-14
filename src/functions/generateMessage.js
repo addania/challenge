@@ -2,7 +2,6 @@ import { generateList } from "./generateList";
 
 export function generateMessage(filterForMessage) {
   // Receives filter as input and generates corresponding message
-  let filterMessage = "";
   let datasourceMessage = "";
   let campaignMessage = "";
   if (
@@ -31,6 +30,5 @@ export function generateMessage(filterForMessage) {
     datasourceMessage = "Datasource " + datasourcesList;
     campaignMessage = "Campaign " + campaignsList;
   }
-  filterMessage = datasourceMessage + "; " + campaignMessage;
-  return filterMessage;
+  return datasourceMessage + "; " + campaignMessage;
 }

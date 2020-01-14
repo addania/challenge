@@ -24,11 +24,10 @@ export function generateOptionsForHighCharts(data, filter, apply) {
     aggregatedDates = aggregatedData[2];
     message = "All Datasources; All Campaigns";
   }
-  const optionsFilteredData = generateOptions(
+  return generateOptions(
     aggregatedImpressions,
     aggregatedClicks,
     aggregatedDates,
     message
   );
-  return optionsFilteredData;
 }
