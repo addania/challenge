@@ -1,8 +1,8 @@
-import { generateOptionsFilter } from "../functions/generateOptionsFilter";
+import { generateOptionsForFilter } from "../functions/generateOptionsForFilter";
 
 test("generate Options Filter", () => {
   expect(
-    generateOptionsFilter("Datasource", [
+    generateOptionsForFilter("Datasource", [
       {
         Date: "01. Jan",
         Datasource: "Facebook Ads",
@@ -30,7 +30,7 @@ test("generate Options Filter", () => {
     { key: "Google Adwords", text: "Google Adwords", value: "Google Adwords" }
   ]);
   expect(
-    generateOptionsFilter("Campaign", [
+    generateOptionsForFilter("Campaign", [
       {
         Date: "01. Jan",
         Datasource: "Facebook Ads",

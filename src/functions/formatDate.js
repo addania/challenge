@@ -5,9 +5,7 @@ export function formatDate(input) {
   const formattedDateArray = [];
   for (let row = 0; row < input.length; row++) {
     const entry = { ...input[row] };
-    const oldDate = input[row].Date;
-    const dateFormatted = moment(oldDate, "DD.MM.YYYY").format("DD. MMM");
-    entry.Date = dateFormatted;
+    entry.Date = moment(input[row].Date, "DD.MM.YYYY").format("DD. MMM");
     formattedDateArray.push(entry);
   }
   return formattedDateArray;

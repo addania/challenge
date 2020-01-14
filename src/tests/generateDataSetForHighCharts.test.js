@@ -1,9 +1,9 @@
-import { generateOptions } from "../functions/generateOptions";
+import { generateDataSetForHighCharts } from "../functions/generateDataSetForHighCharts";
 import Highcharts from "highcharts";
 
 test("generate Options", () => {
   expect(
-    generateOptions(
+    generateDataSetForHighCharts(
       [766606, 444],
       [10519, 7],
       ["01. Jan", "02. Jan"],

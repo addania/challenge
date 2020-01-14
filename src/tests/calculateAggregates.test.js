@@ -25,9 +25,9 @@ test("calculate Aggregates", () => {
         Impressions: 444
       }
     ])
-  ).toStrictEqual([
-    [766606, 444],
-    [10519, 7],
-    ["01. Jan", "02. Jan"]
-  ]);
+  ).toStrictEqual({
+    impressions: [766606, 444],
+    clicks: [10519, 7],
+    dates: ["01. Jan", "02. Jan"]
+  });
 });

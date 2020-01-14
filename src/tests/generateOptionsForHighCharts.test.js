@@ -1,9 +1,9 @@
-import { calculateOptions } from "../functions/calculateOptions";
+import { generateOptionsForHighCharts } from "../functions/generateOptionsForHighCharts";
 import Highcharts from "highcharts";
 
 test("calculate Options", () => {
   expect(
-    calculateOptions(
+    generateOptionsForHighCharts(
       [
         {
           Date: "01. Jan",
@@ -95,7 +95,7 @@ test("calculate Options", () => {
   });
 
   expect(
-    calculateOptions(
+    generateOptionsForHighCharts(
       [
         {
           Date: "01. Jan",
