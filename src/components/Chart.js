@@ -9,7 +9,6 @@ export function Chart({ coreData, filters, applyFilters, onClick, styling }) {
   // Defines a visualization components which will render a HighchartsReact component
   // based on options generated from data and filters
   let calculatedOptions = calculateOptions(coreData, filters, applyFilters);
-
   return (
     <div>
       <Row>
@@ -201,7 +200,6 @@ function generateMessage(filterForMessage) {
   let filterMessage = "";
   let datasourceMessage = "";
   let campaignMessage = "";
-  console.log("FilterForMessage");
   if (
     filterForMessage["Campaign"] == undefined &&
     filterForMessage["Datasource"] != undefined
