@@ -1,6 +1,6 @@
 import Highcharts from "highcharts";
 
-export function generateOptions(
+export function generateDataSetForHighCharts(
   impressionsForOptions,
   clicksForOptions,
   datesForOptions,

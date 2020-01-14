@@ -28,5 +28,9 @@ export function calculateAggregates(array) {
     impressionsArray.push(totalImpressions);
     clicksArray.push(totalClicks);
   }
-  return [impressionsArray, clicksArray, uniqueDates];
+  return {
+    impressions: impressionsArray,
+    clicks: clicksArray,
+    dates: uniqueDates
+  };
 }
