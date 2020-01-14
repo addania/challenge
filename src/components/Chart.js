@@ -3,12 +3,16 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
-import { calculateOptions } from "../functions/calculateOptions";
+import { generateOptionsForHighCharts } from "../functions/generateOptionsForHighCharts";
 
 export function Chart({ coreData, filters, applyFilters, styling }) {
   // Defines a visualization components which will render a HighchartsReact component
   // based on options generated from data and filters
-  let calculatedOptions = calculateOptions(coreData, filters, applyFilters);
+  let calculatedOptions = generateOptionsForHighCharts(
+    coreData,
+    filters,
+    applyFilters
+  );
   return (
     <div data-testid="chart">
       <Row>
