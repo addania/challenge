@@ -3,13 +3,13 @@ export function extractDate(input) {
   const dataWithDate = [];
   for (let row = 0; row < input.length; row++) {
     const entry = { ...input[row] };
-    const oldDate = input[row].Date;
-    const year = oldDate.slice(6, 10);
-    const month = oldDate.slice(3, 5);
-    const day = oldDate.slice(0, 2);
-    const newDate = year + "-" + month + "-" + day;
-    const dateFormatted = new Date(newDate);
-    entry.Date = dateFormatted;
+    entry.Date = new Date(
+      input[row].Date.slice(6, 10) +
+        "-" +
+        input[row].Date.slice(3, 5) +
+        "-" +
+        input[row].Date.slice(0, 2)
+    );
     dataWithDate.push(entry);
   }
   return dataWithDate;
