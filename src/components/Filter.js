@@ -5,11 +5,6 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
   // Defines a filter which allows users to filter data displayed on graph
   // by selecting certain datasources and/or campaigns.
   const columns = [];
-  const styleLink = document.createElement("link");
-  styleLink.rel = "stylesheet";
-  styleLink.href =
-    "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
-  document.head.appendChild(styleLink);
 
   for (let item = 0; item < filterColumns.length; item++) {
     const genOptions = generateOptions(filterColumns[item], dataSet);
@@ -20,7 +15,6 @@ export function Filter({ styling, filterColumns, onChange, dataSet }) {
         </p>
         <Dropdown
           key={item}
-          style={styleLink}
           placeholder={filterColumns[item]}
           fluid
           multiple
