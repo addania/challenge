@@ -1,34 +1,22 @@
 import { generateList } from "./generateList";
 
-export function generateTitleForHighCharts(filterForMessage) {
+export function generateTitleForHighCharts(filter) {
   // Receives filter as input and generates corresponding message
-  let datasourceMessage = "";
-  let campaignMessage = "";
-  if (
-    filterForMessage["Campaign"] == undefined &&
-    filterForMessage["Datasource"] != undefined
-  ) {
-    campaignMessage = "All Campaigns";
-    let datasourcesList = generateList(filterForMessage.Datasource);
-    datasourceMessage = "Datasource " + datasourcesList;
+  let datasourceMessage = "All Datasources";
+  let campaignMessage = "All Campaigns";
+  if (filter["Campaign"] === undefined && filter["Datasource"] !== undefined) {
+    datasourceMessage = "Datasource " + generateList(filter.Datasource);
   } else if (
-    filterForMessage["Datasource"] == undefined &&
-    filterForMessage["Campaign"] != undefined
+    filter["Datasource"] === undefined &&
+    filter["Campaign"] !== undefined
   ) {
-    datasourceMessage = "All Datasources";
-    let campaignsList = generateList(filterForMessage.Campaign);
-    campaignMessage = "Campaign " + campaignsList;
+    campaignMessage = "Campaign " + generateList(filter.Campaign);
   } else if (
-    filterForMessage["Campaign"] == undefined &&
-    filterForMessage["Datasource"] == undefined
+    filter["Campaign"] !== undefined &&
+    filter["Datasource"] !== undefined
   ) {
-    datasourceMessage = "All Datasources ";
-    campaignMessage = "All Campaigns";
-  } else {
-    let datasourcesList = generateList(filterForMessage.Datasource);
-    let campaignsList = generateList(filterForMessage.Campaign);
-    datasourceMessage = "Datasource " + datasourcesList;
-    campaignMessage = "Campaign " + campaignsList;
+    datasourceMessage = "Datasource " + generateList(filter.Datasource);
+    campaignMessage = "Campaign " + generateList(filter.Campaign);
   }
   return datasourceMessage + "; " + campaignMessage;
 }
