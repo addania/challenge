@@ -4,7 +4,6 @@ import { generateOptionsForFilter } from "./generateOptionsForFilter";
 
 export function filterHelperFunction(filterColumns, onChange, dataSet) {
   const columns = [];
-
   for (let item = 0; item < filterColumns.length; item++) {
     const genOptions = generateOptionsForFilter(filterColumns[item], dataSet);
     columns.push(
@@ -25,6 +24,5 @@ export function filterHelperFunction(filterColumns, onChange, dataSet) {
       </div>
     );
   }
-
   return columns;
 }

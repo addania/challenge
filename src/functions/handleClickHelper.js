@@ -9,9 +9,9 @@ export function handleClickHelper(selectedValues) {
     )
   ) {
     newState = true;
-    return [newState, selectedValues];
+    return { applyFilter: newState, filterValue: selectedValues };
   } else {
     newState = false;
-    return [newState, 0];
+    return { applyFilter: newState, filterValue: 0 };
   }
 }
