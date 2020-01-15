@@ -11,7 +11,6 @@ export function generateOptionsForHighCharts(data, filter, apply) {
     return generateDataSetForHighCharts(
       aggregatedData.impressions,
       aggregatedData.clicks,
-      aggregatedData.dates,
       generateTitleForHighCharts(filter)
     );
   } else {
@@ -19,7 +18,6 @@ export function generateOptionsForHighCharts(data, filter, apply) {
     return generateDataSetForHighCharts(
       aggregatedData.impressions,
       aggregatedData.clicks,
-      aggregatedData.dates,
       "All Datasources; All Campaigns"
     );
   }

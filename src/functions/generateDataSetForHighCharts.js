@@ -1,19 +1,22 @@
 import Highcharts from "highcharts";
 
-export function generateDataSetForHighCharts(
-  impressionsForOptions,
-  clicksForOptions,
-  datesForOptions,
-  messageForOptions
-) {
+export function generateDataSetForHighCharts(impressions, clicks, title) {
   // Recives array of impressions, array of clicks and array of unique dates as input.
   // Outputs options to visualize data on a HighchartsReact component.
   const options = {
     chart: {
-      type: "spline"
+      type: "spline",
+      zoomType: "x"
+    },
+    title: {
+      text: title,
+      align: "left"
     },
     xAxis: {
-      categories: datesForOptions
+      type: "datetime",
+      dateTimeLabelFormats: {
+        day: "%e. %b"
+      }
     },
     yAxis: [
       {
@@ -51,23 +54,20 @@ export function generateDataSetForHighCharts(
         opposite: true
       }
     ],
-
-    title: {
-      text: messageForOptions,
-      align: "left"
+    legend: {
+      enabled: true
     },
     series: [
       {
+        type: "line",
         name: "Clicks",
-
-        data: clicksForOptions
+        data: clicks
       },
-
       {
+        type: "line",
         name: "Impressions",
         yAxis: 1,
-
-        data: impressionsForOptions
+        data: impressions
       }
     ]
   };

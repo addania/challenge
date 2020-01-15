@@ -3,7 +3,7 @@ export function extractDate(input) {
   const dataWithDate = [];
   for (let row = 0; row < input.length; row++) {
     const entry = { ...input[row] };
-    entry.Date = new Date(
+    entry.Date = Date.parse(
       input[row].Date.slice(6, 10) +
         "-" +
         input[row].Date.slice(3, 5) +

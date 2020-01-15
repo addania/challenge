@@ -16,7 +16,6 @@ import { getColumns } from "./functions/getColumns";
 import { getMetrics } from "./functions/getMetrics";
 import { getDimensions } from "./functions/getDimensions";
 import { getDates } from "./functions/getDates";
-import { formatDate } from "./functions/formatDate";
 import { handleChangeHelper } from "./functions/handleChangeHelper";
 import { handleClickHelper } from "./functions/handleClickHelper";
 
@@ -44,8 +43,8 @@ function App() {
       const metricColumns = getMetrics(sortedData[0], tableColumns);
       const dimensionColumns = getDimensions(sortedData[0], tableColumns);
       const dateColumns = getDates(sortedData[0], tableColumns);
-      const finalData = formatDate(sortedData);
-      setData(finalData);
+
+      setData(sortedData);
       setMetrics(metricColumns);
       setDimensions(dimensionColumns);
       setDates(dateColumns);
