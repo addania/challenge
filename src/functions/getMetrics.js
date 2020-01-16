@@ -6,7 +6,7 @@ export function getMetrics(inputData, inputColumns) {
   const output = [];
   for (let item = 0; item < inputColumns.length; item++) {
     const col = inputColumns[item];
-    if (_.isNumber(inputData[col])) {
+    if (_.isNumber(inputData[col]) && col !== "Date") {
       output.push(col);
     }
   }
