@@ -4,17 +4,30 @@ import Highcharts from "highcharts";
 test("generate Options", () => {
   expect(
     generateDataSetForHighCharts(
-      [766606, 444],
-      [10519, 7],
-      ["01. Jan", "02. Jan"],
+      [
+        [1546300800000, 1724052],
+        [1546387200000, 1955809]
+      ],
+      [
+        [1546300800000, 24091],
+        [1546387200000, 19479]
+      ],
       "All Datasources; All Campaigns"
     )
   ).toStrictEqual({
     chart: {
-      type: "spline"
+      type: "spline",
+      zoomType: "x"
+    },
+    title: {
+      text: "All Datasources; All Campaigns",
+      align: "left"
     },
     xAxis: {
-      categories: ["01. Jan", "02. Jan"]
+      type: "datetime",
+      dateTimeLabelFormats: {
+        day: "%e. %b"
+      }
     },
     yAxis: [
       {
@@ -52,23 +65,26 @@ test("generate Options", () => {
         opposite: true
       }
     ],
-
-    title: {
-      text: "All Datasources; All Campaigns",
-      align: "left"
+    legend: {
+      enabled: true
     },
     series: [
       {
+        type: "line",
         name: "Clicks",
-
-        data: [10519, 7]
+        data: [
+          [1546300800000, 24091],
+          [1546387200000, 19479]
+        ]
       },
-
       {
+        type: "line",
         name: "Impressions",
         yAxis: 1,
-
-        data: [766606, 444]
+        data: [
+          [1546300800000, 1724052],
+          [1546387200000, 1955809]
+        ]
       }
     ]
   });

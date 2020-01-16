@@ -1,8 +1,8 @@
-import { calculateAggregates } from "../functions/calculateAggregates";
+import { aggregate } from "../functions/aggregate";
 
-test("calculate Aggregates", () => {
+test("aggregate data", () => {
   expect(
-    calculateAggregates([
+    aggregate([
       {
         Date: "01. Jan",
         Datasource: "Facebook Ads",

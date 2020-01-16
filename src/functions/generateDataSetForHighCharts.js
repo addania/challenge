@@ -1,9 +1,9 @@
 import Highcharts from "highcharts";
 
 export function generateDataSetForHighCharts(impressions, clicks, title) {
-  // Recives array of impressions, array of clicks and array of unique dates as input.
+  // Recives series of impressions, series of clicks and title message for Highcharts as input.
   // Outputs options to visualize data on a HighchartsReact component.
-  const options = {
+  return {
     chart: {
       type: "spline",
       zoomType: "x"
@@ -23,7 +23,6 @@ export function generateDataSetForHighCharts(impressions, clicks, title) {
         // Primary yAxis
         labels: {
           format: "{value}",
-
           style: {
             color: Highcharts.getOptions().colors[0]
           }
@@ -57,19 +56,6 @@ export function generateDataSetForHighCharts(impressions, clicks, title) {
     legend: {
       enabled: true
     },
-    series: [
-      {
-        type: "line",
-        name: "Clicks",
-        data: clicks
-      },
-      {
-        type: "line",
-        name: "Impressions",
-        yAxis: 1,
-        data: impressions
-      }
-    ]
+    series: [clicks, impressions]
   };
-  return options;
 }
