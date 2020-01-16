@@ -4,14 +4,23 @@ import Highcharts from "highcharts";
 test("generate Options", () => {
   expect(
     generateDataSetForHighCharts(
-      [
-        [1546300800000, 1724052],
-        [1546387200000, 1955809]
-      ],
-      [
-        [1546300800000, 24091],
-        [1546387200000, 19479]
-      ],
+      {
+        type: "line",
+        name: "Impressions",
+        yAxis: 1,
+        data: [
+          [1546300800000, 1724052],
+          [1546387200000, 1955809]
+        ]
+      },
+      {
+        type: "line",
+        name: "Clicks",
+        data: [
+          [1546300800000, 24091],
+          [1546387200000, 19479]
+        ]
+      },
       "All Datasources; All Campaigns"
     )
   ).toStrictEqual({

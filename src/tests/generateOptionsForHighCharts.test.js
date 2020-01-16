@@ -6,21 +6,21 @@ test("calculate Options", () => {
     generateOptionsForHighCharts(
       [
         {
-          Date: "01. Jan",
+          Date: 1546300800000,
           Datasource: "Facebook Ads",
           Campaign: "Like Ads",
           Clicks: 274,
           Impressions: 1979
         },
         {
-          Date: "01. Jan",
+          Date: 1546300800000,
           Datasource: "Facebook Ads",
           Campaign: "Offer Campaigns - Conversions",
           Clicks: 10245,
           Impressions: 764627
         },
         {
-          Date: "02. Jan",
+          Date: 1546387200000,
           Datasource: "Google Adwords",
           Campaign: "B2B - Leads",
           Clicks: 7,
@@ -32,17 +32,24 @@ test("calculate Options", () => {
     )
   ).toStrictEqual({
     chart: {
-      type: "spline"
+      type: "spline",
+      zoomType: "x"
+    },
+    title: {
+      text: "All Datasources; All Campaigns",
+      align: "left"
     },
     xAxis: {
-      categories: ["01. Jan", "02. Jan"]
+      type: "datetime",
+      dateTimeLabelFormats: {
+        day: "%e. %b"
+      }
     },
     yAxis: [
       {
         // Primary yAxis
         labels: {
           format: "{value}",
-
           style: {
             color: Highcharts.getOptions().colors[0]
           }
@@ -73,23 +80,26 @@ test("calculate Options", () => {
         opposite: true
       }
     ],
-
-    title: {
-      text: "All Datasources; All Campaigns",
-      align: "left"
+    legend: {
+      enabled: true
     },
     series: [
       {
+        type: "line",
         name: "Clicks",
-
-        data: [10519, 7]
+        data: [
+          [1546300800000, 10519],
+          [1546387200000, 7]
+        ]
       },
-
       {
+        type: "line",
         name: "Impressions",
         yAxis: 1,
-
-        data: [766606, 444]
+        data: [
+          [1546300800000, 766606],
+          [1546387200000, 444]
+        ]
       }
     ]
   });
@@ -98,21 +108,21 @@ test("calculate Options", () => {
     generateOptionsForHighCharts(
       [
         {
-          Date: "01. Jan",
+          Date: 1546300800000,
           Datasource: "Facebook Ads",
           Campaign: "Like Ads",
           Clicks: 274,
           Impressions: 1979
         },
         {
-          Date: "01. Jan",
+          Date: 1546300800000,
           Datasource: "Facebook Ads",
           Campaign: "Offer Campaigns - Conversions",
           Clicks: 10245,
           Impressions: 764627
         },
         {
-          Date: "02. Jan",
+          Date: 1546387200000,
           Datasource: "Google Adwords",
           Campaign: "B2B - Leads",
           Clicks: 7,
@@ -124,17 +134,24 @@ test("calculate Options", () => {
     )
   ).toStrictEqual({
     chart: {
-      type: "spline"
+      type: "spline",
+      zoomType: "x"
+    },
+    title: {
+      text: 'Datasource "Facebook Ads" ; All Campaigns',
+      align: "left"
     },
     xAxis: {
-      categories: ["01. Jan"]
+      type: "datetime",
+      dateTimeLabelFormats: {
+        day: "%e. %b"
+      }
     },
     yAxis: [
       {
         // Primary yAxis
         labels: {
           format: "{value}",
-
           style: {
             color: Highcharts.getOptions().colors[0]
           }
@@ -165,23 +182,20 @@ test("calculate Options", () => {
         opposite: true
       }
     ],
-
-    title: {
-      text: 'Datasource "Facebook Ads" ; All Campaigns',
-      align: "left"
+    legend: {
+      enabled: true
     },
     series: [
       {
+        type: "line",
         name: "Clicks",
-
-        data: [10519]
+        data: [[1546300800000, 10519]]
       },
-
       {
+        type: "line",
         name: "Impressions",
         yAxis: 1,
-
-        data: [766606]
+        data: [[1546300800000, 766606]]
       }
     ]
   });
