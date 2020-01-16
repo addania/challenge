@@ -3,7 +3,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
-import { generateOptionsForHighCharts } from "../functions/generateOptionsForHighCharts";
+import { generateChartOptions } from "../functions/generateChartOptions";
 
 export function Chart({ coreData, filters, applyFilters, styling }) {
   // Defines a visualization components which will render a HighchartsReact component
@@ -17,7 +17,7 @@ export function Chart({ coreData, filters, applyFilters, styling }) {
       </Row>
       <HighchartsReact
         highcharts={Highcharts}
-        options={generateOptionsForHighCharts(coreData, filters, applyFilters)}
+        options={generateChartOptions(coreData, filters, applyFilters)}
       />
     </div>
   );

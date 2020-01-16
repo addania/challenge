@@ -1,19 +1,19 @@
 import { filterArray } from "./filterArray";
 import { aggregate } from "./aggregate";
-import { generateTitleForHighCharts } from "./generateTitleForHighCharts";
-import { generateDataSetForHighCharts } from "./generateDataSetForHighCharts";
+import { getChartTitle } from "./getChartTitle";
+import { getChartData } from "./getChartData";
 
-export function generateOptionsForHighCharts(data, filter, apply) {
+export function generateChartOptions(data, filter, apply) {
   // As input receives data, filter and condition whether to apply filter or not.
   // Outputs options for HighchartsReact to display either filtered data or entire data set.
   if (apply) {
-    return generateDataSetForHighCharts(
+    return getChartData(
       aggregate(filterArray(filter, data)).impressions,
       aggregate(filterArray(filter, data)).clicks,
-      generateTitleForHighCharts(filter)
+      getChartTitle(filter)
     );
   } else {
-    return generateDataSetForHighCharts(
+    return getChartData(
       aggregate(data).impressions,
       aggregate(data).clicks,
       "All Datasources; All Campaigns"

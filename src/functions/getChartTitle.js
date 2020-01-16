@@ -1,6 +1,6 @@
 import { generateTitleList } from "./generateTitleList";
 
-export function generateTitleForHighCharts(filter) {
+export function getChartTitle(filter) {
   // Receives filter as input and generates corresponding message
   let datasourceMessage = "All Datasources";
   let campaignMessage = "All Campaigns";

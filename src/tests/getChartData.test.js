@@ -1,15 +1,35 @@
+import { getChartData } from "../functions/getChartData";
 import Highcharts from "highcharts";
 
-export function generateDataSetForHighCharts(impressions, clicks, title) {
-  // Recives series of impressions, series of clicks and title message for Highcharts as input.
-  // Outputs options to visualize data on a HighchartsReact component.
-  return {
+test("generate Options", () => {
+  expect(
+    getChartData(
+      {
+        type: "line",
+        name: "Impressions",
+        yAxis: 1,
+        data: [
+          [1546300800000, 1724052],
+          [1546387200000, 1955809]
+        ]
+      },
+      {
+        type: "line",
+        name: "Clicks",
+        data: [
+          [1546300800000, 24091],
+          [1546387200000, 19479]
+        ]
+      },
+      "All Datasources; All Campaigns"
+    )
+  ).toStrictEqual({
     chart: {
       type: "spline",
       zoomType: "x"
     },
     title: {
-      text: title,
+      text: "All Datasources; All Campaigns",
       align: "left"
     },
     xAxis: {
@@ -23,6 +43,7 @@ export function generateDataSetForHighCharts(impressions, clicks, title) {
         // Primary yAxis
         labels: {
           format: "{value}",
+
           style: {
             color: Highcharts.getOptions().colors[0]
           }
@@ -56,6 +77,24 @@ export function generateDataSetForHighCharts(impressions, clicks, title) {
     legend: {
       enabled: true
     },
-    series: [clicks, impressions]
-  };
-}
+    series: [
+      {
+        type: "line",
+        name: "Clicks",
+        data: [
+          [1546300800000, 24091],
+          [1546387200000, 19479]
+        ]
+      },
+      {
+        type: "line",
+        name: "Impressions",
+        yAxis: 1,
+        data: [
+          [1546300800000, 1724052],
+          [1546387200000, 1955809]
+        ]
+      }
+    ]
+  });
+});

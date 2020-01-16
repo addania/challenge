@@ -1,7 +1,7 @@
 import _ from "lodash";
 
 export function filterArray(filter, data) {
-  // Receives data for filtering and filters in order to calculate subset of data which was filtered.
+  // Receives filter and data in order to calculate subset of data which was filtered.
   // Outputs filtered array.
   let filteredArray = [];
   if (!(Object.entries(filter).length === 0 && filter.constructor === Object)) {

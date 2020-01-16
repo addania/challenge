@@ -1,8 +1,8 @@
-import { generateTitleForHighCharts } from "../functions/generateTitleForHighCharts";
+import { getChartTitle } from "../functions/getChartTitle";
 
 test("generate message", () => {
   expect(
-    generateTitleForHighCharts({
+    getChartTitle({
       Datasource: ["Facebook Ads", "Google Adwords"],
       Campaign: ["Like Ads"]
     })

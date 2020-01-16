@@ -1,4 +1,4 @@
-export function generateOptionsForFilter(inputItem, inputDataSet) {
+export function generateFilterOptions(inputItem, inputDataSet) {
   // Receives input data and input item (based on filters) and dynamically generated options to be used for Dropdown component.
   let uniqueValues = [];
   for (let entry = 0; entry < inputDataSet.length; entry++) {
