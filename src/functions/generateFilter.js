@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown } from "semantic-ui-react";
 import { generateFilterOptions } from "./generateFilterOptions";
 
-export function filterHelperFunction(filterColumns, onChange, dataSet) {
+export function generateFilter(filterColumns, onChange, dataSet) {
   const columns = [];
   for (let item = 0; item < filterColumns.length; item++) {
     columns.push(

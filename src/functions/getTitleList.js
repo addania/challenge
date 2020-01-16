@@ -1,4 +1,4 @@
-export function generateTitleList(filterItem) {
+export function getTitleList(filterItem) {
   // Receives an array of filter values. Generates a string of maximum 3 values
   // if multiple filter values are selected.
   let string = "";
