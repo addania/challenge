@@ -1,8 +1,8 @@
-import { generateMessage } from "../functions/generateMessage";
+import { getChartTitle } from "../functions/getChartTitle";
 
 test("generate message", () => {
   expect(
-    generateMessage({
+    getChartTitle({
       Datasource: ["Facebook Ads", "Google Adwords"],
       Campaign: ["Like Ads"]
     })
