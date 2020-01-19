@@ -9,6 +9,7 @@ export function Header() {
       <Row>
         <Col sm={12}>
           <h2
+            data-testid="header"
             style={{
               margin: "20px 0px",
               textAlign: "left",

@@ -1,33 +1,22 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { List } from "./List.js";
+import { getSubheaderList } from "../functions/getSubheaderList";
 
 export function Subheader(props) {
   // Defines a component Subheaher with more information about the application.
-  const message = "Select zero to N ";
   const italics = { fontStyle: "italic" };
-  const listItems = [];
-  for (
-    let listItem = 0;
-    listItem < props.dimensionsColumns.length;
-    listItem++
-  ) {
-    listItems.push(
-      <List
-        message={message}
-        columns={props.dimensionsColumns[listItem]}
-        styling={italics}
-        key={listItem}
-      />
-    );
-  }
-
+  const listItems = getSubheaderList(
+    props.dimensionsColumns,
+    props.dimensionsColumns.length,
+    italics
+  );
   return (
     <div>
       <Row>
         <Col sm={12}>
           <div
+            data-testid="subheader"
             style={{
               margin: "20px 0px",
               textAlign: "left",

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot1 1`] = `
+<li
+  data-testid="list"
+>
+  <span>
+    s
+  </span>
+</li>
+`;
+
+exports[`matches snapshot2 1`] = `
+<li
+  data-testid="list"
+>
+  Select zero to N 
+  <span
+    style={
+      Object {
+        "fontStyle": "italic",
+      }
+    }
+  >
+    Campaign
+    s
+  </span>
+</li>
+`;

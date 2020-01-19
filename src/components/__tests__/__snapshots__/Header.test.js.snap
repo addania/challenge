@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-12"
+    >
+      <h2
+        data-testid="header"
+        style={
+          Object {
+            "borderBottom": "0.5px solid #E8E8EA",
+            "color": "#7F6A93",
+            "margin": "20px 0px",
+            "paddingBottom": "20px",
+            "textAlign": "left",
+          }
+        }
+      >
+        Advertising Data ETL-V Challenge
+      </h2>
+    </div>
+  </div>
+</div>
+`;
