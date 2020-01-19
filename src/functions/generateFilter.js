@@ -1,12 +1,10 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
-import { generateOptionsFilter } from "./generateOptionsFilter";
+import { generateFilterOptions } from "./generateFilterOptions";
 
-export function filterHelperFunction(filterColumns, onChange, dataSet) {
+export function generateFilter(filterColumns, onChange, dataSet) {
   const columns = [];
-
   for (let item = 0; item < filterColumns.length; item++) {
-    const genOptions = generateOptionsFilter(filterColumns[item], dataSet);
     columns.push(
       <div key={item}>
         <p style={{ textAlign: "left", color: "#828282", marginTop: "20px" }}>
@@ -18,13 +16,12 @@ export function filterHelperFunction(filterColumns, onChange, dataSet) {
           fluid
           multiple
           selection
-          options={genOptions}
+          options={generateFilterOptions(filterColumns[item], dataSet)}
           onChange={onChange}
           style={{ marginTop: "5px" }}
         />
       </div>
     );
   }
-
   return columns;
 }

@@ -1,27 +1,28 @@
-import { generateOptions } from "../functions/generateOptions";
 import Highcharts from "highcharts";
 
-test("generate Options", () => {
-  expect(
-    generateOptions(
-      [766606, 444],
-      [10519, 7],
-      ["01. Jan", "02. Jan"],
-      "All Datasources; All Campaigns"
-    )
-  ).toStrictEqual({
+export function getChartData(impressions, clicks, title) {
+  // Recives series of impressions, series of clicks and title message for Highcharts as input.
+  // Outputs options to visualize data on a HighchartsReact component.
+  return {
     chart: {
-      type: "spline"
+      type: "spline",
+      zoomType: "x"
+    },
+    title: {
+      text: title,
+      align: "left"
     },
     xAxis: {
-      categories: ["01. Jan", "02. Jan"]
+      type: "datetime",
+      dateTimeLabelFormats: {
+        day: "%e. %b"
+      }
     },
     yAxis: [
       {
         // Primary yAxis
         labels: {
           format: "{value}",
-
           style: {
             color: Highcharts.getOptions().colors[0]
           }
@@ -52,24 +53,9 @@ test("generate Options", () => {
         opposite: true
       }
     ],
-
-    title: {
-      text: "All Datasources; All Campaigns",
-      align: "left"
+    legend: {
+      enabled: true
     },
-    series: [
-      {
-        name: "Clicks",
-
-        data: [10519, 7]
-      },
-
-      {
-        name: "Impressions",
-        yAxis: 1,
-
-        data: [766606, 444]
-      }
-    ]
-  });
-});
+    series: [clicks, impressions]
+  };
+}

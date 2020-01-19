@@ -38,9 +38,6 @@ const data = [
 ];
 
 afterEach(cleanup);
-/*const dim = ["Datasource", "Campaign"];
-const met = ["Clicks", "Impressions"];
-*/
 it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(

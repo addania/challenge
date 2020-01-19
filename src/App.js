@@ -15,8 +15,6 @@ import { sortArray } from "./functions/sortArray";
 import { getColumns } from "./functions/getColumns";
 import { getMetrics } from "./functions/getMetrics";
 import { getDimensions } from "./functions/getDimensions";
-import { getDates } from "./functions/getDates";
-import { formatDate } from "./functions/formatDate";
 import { handleChangeHelper } from "./functions/handleChangeHelper";
 import { handleClickHelper } from "./functions/handleClickHelper";
 
@@ -24,7 +22,6 @@ function App() {
   const [data, setData] = useState([]);
   const [metrics, setMetrics] = useState([]);
   const [dimensions, setDimensions] = useState([]);
-  const [dates, setDates] = useState([]);
   const [selectedValues, setSelectedValues] = useState({});
   const [useFilters, setUseFilters] = useState(false);
   const [filteredData, setFilteredData] = useState(0);
@@ -43,12 +40,9 @@ function App() {
       const tableColumns = getColumns(sortedData[0]);
       const metricColumns = getMetrics(sortedData[0], tableColumns);
       const dimensionColumns = getDimensions(sortedData[0], tableColumns);
-      const dateColumns = getDates(sortedData[0], tableColumns);
-      const finalData = formatDate(sortedData);
-      setData(finalData);
+      setData(sortedData);
       setMetrics(metricColumns);
       setDimensions(dimensionColumns);
-      setDates(dateColumns);
     }
     fetchData();
   }, []);
@@ -58,23 +52,18 @@ function App() {
     textAlign: "left",
     color: "#8DA1B9"
   };
-
-  function handleChange(e, data) {
+  function handleChange(event, data) {
     // Function is triggered on every change of Filter component. Receives information about event as input.
     // Sets selectedValues state with information about which columns and their values were selected.
     // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
-    const newState = handleChangeHelper(e, data, selectedValues);
-    setSelectedValues(newState);
+    setSelectedValues(handleChangeHelper(event, data, selectedValues));
   }
-
   function handleClick() {
     // Function is triggered on every click on the Button Apply component.
     // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
-    const newState = handleClickHelper(selectedValues);
-    setUseFilters(newState[0]);
-    setFilteredData(newState[1]);
+    setUseFilters(handleClickHelper(selectedValues).applyFilter);
+    setFilteredData(handleClickHelper(selectedValues).filterValue);
   }
-
   return (
     <div className="App" data-testid="app">
       <Container>
@@ -103,5 +92,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
