@@ -1,8 +1,8 @@
-import { calculateAggregates } from "../functions/calculateAggregates";
+import { aggregate } from "../functions/aggregate";
 
-test("calculate Aggregates", () => {
+test("aggregate data", () => {
   expect(
-    calculateAggregates([
+    aggregate([
       {
         Date: "01. Jan",
         Datasource: "Facebook Ads",
@@ -25,9 +25,9 @@ test("calculate Aggregates", () => {
         Impressions: 444
       }
     ])
-  ).toStrictEqual([
-    [766606, 444],
-    [10519, 7],
-    ["01. Jan", "02. Jan"]
-  ]);
+  ).toStrictEqual({
+    impressions: [766606, 444],
+    clicks: [10519, 7],
+    dates: ["01. Jan", "02. Jan"]
+  });
 });

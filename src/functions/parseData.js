@@ -5,7 +5,6 @@ import { sortArray } from "./sortArray";
 import { getColumns } from "./getColumns";
 import { getMetrics } from "./getMetrics";
 import { getDimensions } from "./getDimensions";
-import { formatDate } from "./formatDate";
 
 export function parseData(csvData) {
   const jsonData = csvJSON(csvData);
@@ -15,6 +14,5 @@ export function parseData(csvData) {
   const tableColumns = getColumns(sortedData[0]);
   const metricColumns = getMetrics(sortedData[0], tableColumns);
   const dimensionColumns = getDimensions(sortedData[0], tableColumns);
-  const finalData = formatDate(sortedData);
-  return [finalData, metricColumns, dimensionColumns];
+  return [sortedData, metricColumns, dimensionColumns];
 }
