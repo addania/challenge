@@ -16,6 +16,5 @@ export function csvJSON(csv) {
     }
     result.push(obj);
   }
-  const newArray = result.slice(0, result.length - 1);
-  return newArray;
+  return result.slice(0, result.length - 1);
 }
