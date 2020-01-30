@@ -8,13 +8,7 @@ import { Subheader } from "./components/Subheader.js";
 import { Chart } from "./components/Chart.js";
 import { Filter } from "./components/Filter.js";
 import { Button } from "./components/Button.js";
-import { csvJSON } from "./functions/csvJSON";
-import { formatImpressions } from "./functions/formatImpressions";
-import { extractDate } from "./functions/extractDate";
-import { sortArray } from "./functions/sortArray";
-import { getColumns } from "./functions/getColumns";
-import { getMetrics } from "./functions/getMetrics";
-import { getDimensions } from "./functions/getDimensions";
+import { parseData } from "./functions/parseData";
 import { handleChangeHelper } from "./functions/handleChangeHelper";
 import { handleClickHelper } from "./functions/handleClickHelper";
 
@@ -25,6 +19,7 @@ function App() {
   const [selectedValues, setSelectedValues] = useState({});
   const [useFilters, setUseFilters] = useState(false);
   const [filteredData, setFilteredData] = useState(0);
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
@@ -32,17 +27,10 @@ function App() {
         //"https://raw.githubusercontent.com/addania/challenge/master/src/data/source.csv?raw=true"
         "http://adverity-challenge.s3-website-eu-west-1.amazonaws.com/DAMKBAoDBwoDBAkOBAYFCw.csv"
       );
-      const csvData = await response.text();
-      const jsonData = csvJSON(csvData);
-      const formattedImpressions = formatImpressions(jsonData);
-      const formattedDates = extractDate(formattedImpressions);
-      const sortedData = sortArray(formattedDates);
-      const tableColumns = getColumns(sortedData[0]);
-      const metricColumns = getMetrics(sortedData[0], tableColumns);
-      const dimensionColumns = getDimensions(sortedData[0], tableColumns);
-      setData(sortedData);
-      setMetrics(metricColumns);
-      setDimensions(dimensionColumns);
+      const rawData = parseData(await response.text());
+      setData(rawData[0]);
+      setMetrics(rawData[1]);
+      setDimensions(rawData[2]);
     }
     fetchData();
   }, []);
