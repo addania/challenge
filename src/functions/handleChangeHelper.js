@@ -3,7 +3,7 @@ export function handleChangeHelper(event, data, selectedValues) {
   // Sets selectedValues state with information about which columns and their values were selected.
   // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
   let newState = { ...selectedValues };
-  if (data.value === undefined || data.value == 0) {
+  if (data.value === undefined || data.value.length === 0) {
     delete newState[data.placeholder];
   } else {
     let key = data.placeholder;

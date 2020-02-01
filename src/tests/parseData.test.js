@@ -8,14 +8,14 @@ test("parse data", () => {
   expect(parseData(data)[2]).toStrictEqual(["Datasource", "Campaign"]);
   expect(parseData(data)[0]).toStrictEqual([
     {
-      Date: "01. Jan",
+      Date: 1546300800000,
       Datasource: "Facebook Ads",
       Campaign: "Like Ads",
       Clicks: 274,
       Impressions: 1979
     },
     {
-      Date: "01. Jan",
+      Date: 1546300800000,
       Datasource: "Facebook Ads",
       Campaign: "Offer Campaigns - Conversions",
       Clicks: 10245,
