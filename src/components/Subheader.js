@@ -6,7 +6,6 @@ import { getSubheaderList } from "../functions/getSubheaderList";
 export const Subheader = props => {
   // Defines a component Subheaher with more information about the application.
   const italics = { fontStyle: "italic" };
-  const listItems = getSubheaderList(props.dimensionsColumns, italics);
   return (
     <div>
       <Row>
@@ -22,7 +21,9 @@ export const Subheader = props => {
               paddingBottom: "20px"
             }}
           >
-            <ul style={{ paddingLeft: "20px" }}>{listItems}</ul>
+            <ul style={{ paddingLeft: "20px" }}>
+              {getSubheaderList(props.dimensionsColumns, italics)}
+            </ul>
             <p style={{ fontSize: "12px" }}>[where zero means "All"]</p>
             <p>
               Hitting "Apply" filters the chart to show a timeseries for both{" "}

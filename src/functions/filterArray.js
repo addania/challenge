@@ -3,20 +3,15 @@ export const filterArray = (filter, data) => {
   // Outputs filtered array.
   if (!(Object.entries(filter).length === 0 && filter.constructor === Object)) {
     if (filter.Datasource === undefined || filter.Datasource.length === 0) {
-      return data.filter(item => {
-        return filter.Campaign.includes(item.Campaign);
-      });
+      return data.filter(item => filter.Campaign.includes(item.Campaign));
     } else if (filter.Campaign === undefined || filter.Campaign.length === 0) {
-      return data.filter(item => {
-        return filter.Datasource.includes(item.Datasource);
-      });
+      return data.filter(item => filter.Datasource.includes(item.Datasource));
     } else {
-      return data.filter(item => {
-        return (
+      return data.filter(
+        item =>
           filter.Datasource.includes(item.Datasource) &&
           filter.Campaign.includes(item.Campaign)
-        );
-      });
+      );
     }
   }
 };

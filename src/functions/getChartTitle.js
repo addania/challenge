@@ -8,7 +8,7 @@ export const getChartTitle = filter => {
     filter["Datasource"] === undefined &&
     filter["Campaign"] !== undefined
   ) {
-    return "All Datasources; Campaign" + getTitleList(filter.Campaign);
+    return "All Datasources; Campaign " + getTitleList(filter.Campaign);
   } else if (
     filter["Campaign"] === undefined &&
     filter["Datasource"] === undefined
