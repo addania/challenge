@@ -1,7 +1,6 @@
 export const formatImpressions = input => {
   // Receives an array of objects as inputs and substitutes empty or null impressions with 0.
-
-  const formatNumbers = row => {
+  return input.map(row => {
     if (!row.Impressions) {
       row.Impressions = 0;
     }
@@ -9,7 +8,5 @@ export const formatImpressions = input => {
       row.Clicks = 0;
     }
     return row;
-  };
-  const output = input.map(formatNumbers);
-  return output;
+  });
 };

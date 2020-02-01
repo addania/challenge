@@ -3,12 +3,11 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
-import { calculateOptions } from "../functions/calculateOptions";
+import { generateChartOptions } from "../functions/generateChartOptions";
 
 export const Chart = ({ coreData, filters, applyFilters, styling }) => {
   // Defines a visualization components which will render a HighchartsReact component
   // based on options generated from data and filters
-  const calculatedOptions = calculateOptions(coreData, filters, applyFilters);
   return (
     <div data-testid="chart">
       <Row>
@@ -16,7 +15,10 @@ export const Chart = ({ coreData, filters, applyFilters, styling }) => {
           <h2 style={styling}>Chart</h2>
         </Col>
       </Row>
-      <HighchartsReact highcharts={Highcharts} options={calculatedOptions} />
+      <HighchartsReact
+        highcharts={Highcharts}
+        options={generateChartOptions(coreData, filters, applyFilters)}
+      />
     </div>
   );
 };

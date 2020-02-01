@@ -1,16 +1,12 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { subheaderHelperFunction } from "../functions/subheaderHelperFunction";
+import { getSubheaderList } from "../functions/getSubheaderList";
 
 export const Subheader = props => {
   // Defines a component Subheaher with more information about the application.
   const italics = { fontStyle: "italic" };
-  const listItems = subheaderHelperFunction(
-    props.dimensionsColumns,
-    props.dimensionsColumns.length,
-    italics
-  );
+  const listItems = getSubheaderList(props.dimensionsColumns, italics);
   return (
     <div>
       <Row>

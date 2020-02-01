@@ -1,26 +1,28 @@
 import Highcharts from "highcharts";
 
-export const generateOptions = (
-  impressionsForOptions,
-  clicksForOptions,
-  datesForOptions,
-  messageForOptions
-) => {
-  // Recives array of impressions, array of clicks and array of unique dates as input.
+export const getChartData = (impressions, clicks, title) => {
+  // Recives series of impressions, series of clicks and title message for Highcharts as input.
   // Outputs options to visualize data on a HighchartsReact component.
-  const options = {
+  return {
     chart: {
-      type: "spline"
+      type: "spline",
+      zoomType: "x"
+    },
+    title: {
+      text: title,
+      align: "left"
     },
     xAxis: {
-      categories: datesForOptions
+      type: "datetime",
+      dateTimeLabelFormats: {
+        day: "%e. %b"
+      }
     },
     yAxis: [
       {
         // Primary yAxis
         labels: {
           format: "{value}",
-
           style: {
             color: Highcharts.getOptions().colors[0]
           }
@@ -51,25 +53,9 @@ export const generateOptions = (
         opposite: true
       }
     ],
-
-    title: {
-      text: messageForOptions,
-      align: "left"
+    legend: {
+      enabled: true
     },
-    series: [
-      {
-        name: "Clicks",
-
-        data: clicksForOptions
-      },
-
-      {
-        name: "Impressions",
-        yAxis: 1,
-
-        data: impressionsForOptions
-      }
-    ]
+    series: [clicks, impressions]
   };
-  return options;
 };

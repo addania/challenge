@@ -7,10 +7,8 @@ export const handleClickHelper = selectedValues => {
       selectedValues.constructor === Object
     )
   ) {
-    const newState = true;
-    return [newState, selectedValues];
+    return { applyFilter: true, filterValue: selectedValues };
   } else {
-    const newState = false;
-    return [newState, 0];
+    return { applyFilter: false, filterValue: 0 };
   }
 };

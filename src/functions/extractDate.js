@@ -1,16 +1,14 @@
 export const extractDate = input => {
   // Receives an array of objects as input and extracts date entries into a Date format. Outputs data as "dataWithDate".
-  const convertDate = row => {
+  return input.map(row => {
     const entry = { ...row };
-    const oldDate = row.Date;
-    const year = oldDate.slice(6, 10);
-    const month = oldDate.slice(3, 5);
-    const day = oldDate.slice(0, 2);
-    const newDate = year + "-" + month + "-" + day;
-    const dateFormatted = new Date(newDate);
-    entry.Date = dateFormatted;
+    entry.Date = Date.parse(
+      row.Date.slice(6, 10) +
+        "-" +
+        row.Date.slice(3, 5) +
+        "-" +
+        row.Date.slice(0, 2)
+    );
     return entry;
-  };
-  const dataWithDate = input.map(convertDate);
-  return dataWithDate;
+  });
 };
