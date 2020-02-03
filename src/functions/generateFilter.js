@@ -2,8 +2,8 @@ import React from "react";
 import { Dropdown } from "semantic-ui-react";
 import { generateFilterOptions } from "./generateFilterOptions";
 
-export const generateFilter = (filterColumns, onChange, dataSet) => {
-  return filterColumns.map(item => (
+export const generateFilter = (filterColumns, onChange, dataSet) =>
+  filterColumns.map(item => (
     <div key={item}>
       <p style={{ textAlign: "left", color: "#828282", marginTop: "20px" }}>
         {item}
@@ -20,4 +20,3 @@ export const generateFilter = (filterColumns, onChange, dataSet) => {
       />
     </div>
   ));
-};

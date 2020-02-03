@@ -12,9 +12,7 @@ export const aggregate = array => {
       yAxis: 1,
       data: Object.keys(groupByDate).map(item => {
         const sumImpressions = groupByDate[item].reduce(
-          (accumulator, object) => {
-            return accumulator + object.Impressions;
-          },
+          (accumulator, object) => accumulator + object.Impressions,
           0
         );
         return [parseInt(item), sumImpressions];
@@ -24,9 +22,10 @@ export const aggregate = array => {
       type: "line",
       name: "Clicks",
       data: Object.keys(groupByDate).map(item => {
-        const sumClicks = groupByDate[item].reduce((accumulator, object) => {
-          return accumulator + object.Clicks;
-        }, 0);
+        const sumClicks = groupByDate[item].reduce(
+          (accumulator, object) => accumulator + object.Clicks,
+          0
+        );
         return [parseInt(item), sumClicks];
       })
     }

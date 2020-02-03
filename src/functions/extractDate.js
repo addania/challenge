@@ -1,6 +1,6 @@
-export const extractDate = input => {
+export const extractDate = input =>
   // Receives an array of objects as input and extracts date entries into a Date format. Outputs data as "dataWithDate".
-  return input.map(row => {
+  input.map(row => {
     const entry = { ...row };
     entry.Date = Date.parse(
       row.Date.slice(6, 10) +
@@ -11,4 +11,3 @@ export const extractDate = input => {
     );
     return entry;
   });
-};

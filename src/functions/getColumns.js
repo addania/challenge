@@ -1,4 +1,3 @@
-export const getColumns = input => {
+export const getColumns = input =>
   // Receives an array of objects as input and outputs an array with unique keys (columns).
-  return Object.keys(input);
-};
+  Object.keys(input);
