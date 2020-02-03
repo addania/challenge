@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { generateChartAggregates } from "./generateChartAggregates";
 
 export const aggregate = array => {
   // Receives an array of data as input and outputs an object of data aggregated per date.
@@ -10,24 +11,12 @@ export const aggregate = array => {
       type: "line",
       name: "Impressions",
       yAxis: 1,
-      data: Object.keys(groupByDate).map(item => {
-        const sumImpressions = groupByDate[item].reduce(
-          (accumulator, object) => accumulator + object.impressions,
-          0
-        );
-        return [parseInt(item), sumImpressions];
-      })
+      data: generateChartAggregates(groupByDate, "impressions")
     },
     clicks: {
       type: "line",
       name: "Clicks",
-      data: Object.keys(groupByDate).map(item => {
-        const sumClicks = groupByDate[item].reduce(
-          (accumulator, object) => accumulator + object.clicks,
-          0
-        );
-        return [parseInt(item), sumClicks];
-      })
+      data: generateChartAggregates(groupByDate, "clicks")
     }
   };
 };
