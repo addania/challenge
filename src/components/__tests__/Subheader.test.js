@@ -6,8 +6,8 @@ import "@testing-library/jest-dom/extend-expect";
 import renderer from "react-test-renderer";
 
 afterEach(cleanup);
-const dim = ["Datasource", "Campaign"];
-const met = ["Clicks", "Impressions"];
+const dim = ["datasource", "campaign"];
+const met = ["clicks", "impressions"];
 
 it("renders without crashing", () => {
   const div = document.createElement("div");

@@ -1,6 +1,6 @@
 import { handleClickHelper } from "../functions/handleClickHelper";
 const selection = {
-  Datasource: ["Facebook Ads"]
+  datasource: ["Facebook Ads"]
 };
 const selection2 = {};
 test("handle click helper", () => {

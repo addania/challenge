@@ -4,12 +4,12 @@ test("get metrics", () => {
   expect(
     getMetrics(
       {
-        Datasource: "Facebook Ads",
-        Date: "01.02.2019",
-        Clicks: 100,
-        Impressions: 2000
+        datasource: "Facebook Ads",
+        date: "01.02.2019",
+        clicks: 100,
+        impressions: 2000
       },
-      ["Datasource", "Date", "Clicks", "Impressions"]
+      ["datasource", "date", "clicks", "impressions"]
     )
-  ).toStrictEqual(["Clicks", "Impressions"]);
+  ).toStrictEqual(["clicks", "impressions"]);
 });

@@ -2,24 +2,24 @@ import { getTitleList } from "./getTitleList";
 
 export const getChartTitle = filter => {
   // Receives filter as input and generates corresponding message
-  if (filter["Campaign"] === undefined && filter["Datasource"] !== undefined) {
-    return "Datasource " + getTitleList(filter.Datasource) + "; All Campaigns";
+  if (filter["campaign"] === undefined && filter["datasource"] !== undefined) {
+    return "Datasource " + getTitleList(filter.datasource) + "; All Campaigns";
   } else if (
-    filter["Datasource"] === undefined &&
-    filter["Campaign"] !== undefined
+    filter["datasource"] === undefined &&
+    filter["campaign"] !== undefined
   ) {
-    return "All Datasources; Campaign " + getTitleList(filter.Campaign);
+    return "All Datasources; Campaign " + getTitleList(filter.campaign);
   } else if (
-    filter["Campaign"] === undefined &&
-    filter["Datasource"] === undefined
+    filter["campaign"] === undefined &&
+    filter["datasource"] === undefined
   ) {
     return "All Datasources; All Campaigns";
   } else {
     return (
       "Datasource " +
-      getTitleList(filter.Datasource) +
+      getTitleList(filter.datasource) +
       "; Campaign " +
-      getTitleList(filter.Campaign)
+      getTitleList(filter.campaign)
     );
   }
 };

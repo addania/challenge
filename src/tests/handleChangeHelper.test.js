@@ -1,18 +1,18 @@
 import { handleChangeHelper } from "../functions/handleChangeHelper";
 
 const selection = {
-  Campaign: ["Like Ads"],
-  Datasource: ["Facebook Ads"]
+  campaign: ["Like Ads"],
+  datasource: ["Facebook Ads"]
 };
 const selectionOutput = {
-  Campaign: ["Like Ads"],
-  Datasource: ["Facebook Ads", "Google Adwords"]
+  campaign: ["Like Ads"],
+  datasource: ["Facebook Ads", "Google Adwords"]
 };
 const selectionOutput2 = {
-  Datasource: ["Facebook Ads", "Google Adwords"]
+  datasource: ["Facebook Ads", "Google Adwords"]
 };
 const selectionOutput3 = {
-  Datasource: ["Facebook Ads"]
+  datasource: ["Facebook Ads"]
 };
 
 test("handle change helper", () => {
@@ -20,7 +20,7 @@ test("handle change helper", () => {
     handleChangeHelper(
       0,
       {
-        placeholder: "Datasource",
+        placeholder: "datasource",
         value: ["Facebook Ads", "Google Adwords"]
       },
       selection
@@ -30,7 +30,7 @@ test("handle change helper", () => {
     handleChangeHelper(
       0,
       {
-        placeholder: "Campaign",
+        placeholder: "campaign",
         value: []
       },
       selectionOutput
@@ -40,7 +40,7 @@ test("handle change helper", () => {
     handleChangeHelper(
       0,
       {
-        placeholder: "Datasource",
+        placeholder: "datasource",
         value: ["Facebook Ads"]
       },
       selectionOutput2
@@ -50,7 +50,7 @@ test("handle change helper", () => {
     handleChangeHelper(
       0,
       {
-        placeholder: "Campaign",
+        placeholder: "campaign",
         value: ["Like Ads"]
       },
       selectionOutput3

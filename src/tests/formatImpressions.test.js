@@ -3,14 +3,14 @@ import { formatImpressions } from "../functions/formatImpressions";
 test("format Impressions", () => {
   expect(
     formatImpressions([
-      { Datasource: "Facebook Ads", Impressions: "", Clicks: "" }
+      { datasource: "Facebook Ads", impressions: "", clicks: "" }
     ])
-  ).toStrictEqual([{ Datasource: "Facebook Ads", Impressions: 0, Clicks: 0 }]);
+  ).toStrictEqual([{ datasource: "Facebook Ads", impressions: 0, clicks: 0 }]);
   expect(
     formatImpressions([
-      { Datasource: "Facebook Ads", Impressions: 123, Clicks: 50 }
+      { datasource: "Facebook Ads", impressions: 123, clicks: 50 }
     ])
   ).toStrictEqual([
-    { Datasource: "Facebook Ads", Impressions: 123, Clicks: 50 }
+    { datasource: "Facebook Ads", impressions: 123, clicks: 50 }
   ]);
 });

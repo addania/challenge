@@ -4,12 +4,12 @@ test("get dimensions", () => {
   expect(
     getDimensions(
       {
-        Datasource: "Facebook Ads",
-        Campaign: "Like Ads",
-        Clicks: 100,
-        Impressions: 2000
+        datasource: "Facebook Ads",
+        campaign: "Like Ads",
+        clicks: 100,
+        impressions: 2000
       },
-      ["Datasource", "Campaign", "Clicks", "Impressions"]
+      ["datasource", "campaign", "clicks", "impressions"]
     )
-  ).toStrictEqual(["Datasource", "Campaign"]);
+  ).toStrictEqual(["datasource", "campaign"]);
 });

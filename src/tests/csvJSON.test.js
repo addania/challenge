@@ -7,18 +7,18 @@ test("parse CSV to JSON", () => {
     )
   ).toStrictEqual([
     {
-      Date: "01.01.2019",
-      Datasource: "Facebook Ads",
-      Campaign: "Like Ads",
-      Clicks: 274,
-      Impressions: 1979
+      date: "01.01.2019",
+      datasource: "Facebook Ads",
+      campaign: "Like Ads",
+      clicks: 274,
+      impressions: 1979
     },
     {
-      Date: "01.01.2019",
-      Datasource: "Facebook Ads",
-      Campaign: "Offer Campaigns - Conversions",
-      Clicks: 10245,
-      Impressions: 764627
+      date: "01.01.2019",
+      datasource: "Facebook Ads",
+      campaign: "Offer Campaigns - Conversions",
+      clicks: 10245,
+      impressions: 764627
     }
   ]);
 });

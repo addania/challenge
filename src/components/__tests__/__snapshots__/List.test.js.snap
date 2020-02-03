@@ -22,7 +22,7 @@ exports[`matches snapshot2 1`] = `
       }
     }
   >
-    Campaign
+    campaign
     s
   </span>
 </li>

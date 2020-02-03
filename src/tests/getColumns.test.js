@@ -2,6 +2,6 @@ import { getColumns } from "../functions/getColumns";
 
 test("get columns", () => {
   expect(
-    getColumns({ Datasource: "Facebook Ads", Date: "01.02.2019" })
-  ).toStrictEqual(["Datasource", "Date"]);
+    getColumns({ datasource: "Facebook Ads", date: "01.02.2019" })
+  ).toStrictEqual(["datasource", "date"]);
 });

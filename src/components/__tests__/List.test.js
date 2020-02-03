@@ -18,7 +18,7 @@ it("renders list correctly", () => {
   render(
     <List
       message="Select zero to N "
-      columns="Datasource"
+      columns="datasource"
       styling={italics}
       key="0"
     ></List>
@@ -29,24 +29,24 @@ it("renders list correctly", () => {
   const { getByTestId } = render(
     <List
       message="Select zero to N "
-      columns="Datasource"
+      columns="datasource"
       styling={italics}
       key="0"
     ></List>
   );
-  expect(getByTestId("list")).toHaveTextContent("Select zero to N Datasources");
+  expect(getByTestId("list")).toHaveTextContent("Select zero to N datasources");
 });
 
 it("renders list correctly", () => {
   const { getByTestId } = render(
     <List
       message="Select zero to N "
-      columns="Campaign"
+      columns="campaign"
       styling={italics}
       key="0"
     ></List>
   );
-  expect(getByTestId("list")).toHaveTextContent("Select zero to N Campaigns");
+  expect(getByTestId("list")).toHaveTextContent("Select zero to N campaigns");
 });
 
 it("matches snapshot1", () => {
@@ -59,7 +59,7 @@ it("matches snapshot2", () => {
     .create(
       <List
         message="Select zero to N "
-        columns="Campaign"
+        columns="campaign"
         styling={italics}
         key="0"
       ></List>

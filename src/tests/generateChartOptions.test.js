@@ -6,25 +6,25 @@ test("calculate Options", () => {
     generateChartOptions(
       [
         {
-          Date: 1546300800000,
-          Datasource: "Facebook Ads",
-          Campaign: "Like Ads",
-          Clicks: 274,
-          Impressions: 1979
+          date: 1546300800000,
+          datasource: "Facebook Ads",
+          campaign: "Like Ads",
+          clicks: 274,
+          impressions: 1979
         },
         {
-          Date: 1546300800000,
-          Datasource: "Facebook Ads",
-          Campaign: "Offer Campaigns - Conversions",
-          Clicks: 10245,
-          Impressions: 764627
+          date: 1546300800000,
+          datasource: "Facebook Ads",
+          campaign: "Offer Campaigns - Conversions",
+          clicks: 10245,
+          impressions: 764627
         },
         {
-          Date: 1546387200000,
-          Datasource: "Google Adwords",
-          Campaign: "B2B - Leads",
-          Clicks: 7,
-          Impressions: 444
+          date: 1546387200000,
+          datasource: "Google Adwords",
+          campaign: "B2B - Leads",
+          clicks: 7,
+          impressions: 444
         }
       ],
       0,
@@ -108,28 +108,28 @@ test("calculate Options", () => {
     generateChartOptions(
       [
         {
-          Date: 1546300800000,
-          Datasource: "Facebook Ads",
-          Campaign: "Like Ads",
-          Clicks: 274,
-          Impressions: 1979
+          date: 1546300800000,
+          datasource: "Facebook Ads",
+          campaign: "Like Ads",
+          clicks: 274,
+          impressions: 1979
         },
         {
-          Date: 1546300800000,
-          Datasource: "Facebook Ads",
-          Campaign: "Offer Campaigns - Conversions",
-          Clicks: 10245,
-          Impressions: 764627
+          date: 1546300800000,
+          datasource: "Facebook Ads",
+          campaign: "Offer Campaigns - Conversions",
+          clicks: 10245,
+          impressions: 764627
         },
         {
-          Date: 1546387200000,
-          Datasource: "Google Adwords",
-          Campaign: "B2B - Leads",
-          Clicks: 7,
-          Impressions: 444
+          date: 1546387200000,
+          datasource: "Google Adwords",
+          campaign: "B2B - Leads",
+          clicks: 7,
+          impressions: 444
         }
       ],
-      { Datasource: ["Facebook Ads"] },
+      { datasource: ["Facebook Ads"] },
       true
     )
   ).toStrictEqual({

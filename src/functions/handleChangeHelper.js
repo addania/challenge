@@ -3,11 +3,11 @@ export const handleChangeHelper = (event, data, selectedValues) => {
   // Sets selectedValues state with information about which columns and their values were selected.
   // Sets useFilter state to false when new filter was selected but button Apply was not yet clicked.
   if (data.value === undefined || data.value.length === 0) {
-    if (data.placeholder === "Campaign") {
-      const { Campaign, ...newArray } = { ...selectedValues };
+    if (data.placeholder === "campaign") {
+      const { campaign, ...newArray } = { ...selectedValues };
       return newArray;
-    } else if (data.placeholder === "Datasource") {
-      const { Datasource, ...newArray } = { ...selectedValues };
+    } else if (data.placeholder === "datasource") {
+      const { datasource, ...newArray } = { ...selectedValues };
       return newArray;
     }
   } else {
