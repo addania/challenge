@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 import { Header } from "./components/Header.js";
 import { Subheader } from "./components/Subheader.js";
 import { Chart } from "./components/Chart.js";
-import { Filter } from "./components/Filter.js";
+import { Filters } from "./components/Filters.js";
 import { Button } from "./components/Button.js";
 import { parseData } from "./functions/parseData";
 import { handleChangeHelper } from "./functions/handleChangeHelper";
@@ -60,7 +60,7 @@ const App = () => {
         <Subheader dimensionsColumns={dimensions} metricsColumns={metrics} />
         <Row style={{ paddingLeft: "15px", paddingRight: "15px" }}>
           <Col sm={4} style={{ backgroundColor: "#EFF2F1" }}>
-            <Filter
+            <Filters
               styling={styles}
               filterColumns={dimensions}
               onChange={handleChange}

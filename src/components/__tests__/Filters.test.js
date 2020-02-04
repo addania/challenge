@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Filter } from "../Filter.js";
+import { Filters } from "../Filters.js";
 import { render, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import renderer from "react-test-renderer";
@@ -41,24 +41,32 @@ afterEach(cleanup);
 it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
-    <Filter
+    <Filters
       styling={styles}
       filterColumns={dimensions}
       dataSet={data}
-    ></Filter>,
+    ></Filters>,
     div
   );
 });
 
 it("renders filter correctly", () => {
   render(
-    <Filter styling={styles} filterColumns={dimensions} dataSet={data}></Filter>
+    <Filters
+      styling={styles}
+      filterColumns={dimensions}
+      dataSet={data}
+    ></Filters>
   );
 });
 
 it("renders filter correctly", () => {
   const { getByTestId } = render(
-    <Filter styling={styles} filterColumns={dimensions} dataSet={data}></Filter>
+    <Filters
+      styling={styles}
+      filterColumns={dimensions}
+      dataSet={data}
+    ></Filters>
   );
   expect(getByTestId("filter")).toHaveTextContent("Filters");
 });
@@ -66,11 +74,11 @@ it("renders filter correctly", () => {
 it("matches snapshot", () => {
   const tree = renderer
     .create(
-      <Filter
+      <Filters
         styling={styles}
         filterColumns={dimensions}
         dataSet={data}
-      ></Filter>
+      ></Filters>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

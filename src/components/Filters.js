@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown } from "semantic-ui-react";
 import { generateFilterOptions } from "../functions/generateFilterOptions";
 
-export const Filter = ({ styling, filterColumns, onChange, dataSet }) => (
+export const Filters = ({ styling, filterColumns, onChange, dataSet }) => (
   // Defines a filter which allows users to filter data displayed on graph
   // by selecting certain datasources and/or campaigns.
   <div data-testid="filter">
