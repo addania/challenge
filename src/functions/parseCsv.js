@@ -1,4 +1,4 @@
-export const csvJSON = csv => {
+export const parseCsv = csv => {
   // Receives a comma separated csv file as input. Outputs array of objects as result.
   const objectArray = csv.split("\n").map(item => ({
     date: item.split(",")[0],

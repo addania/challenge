@@ -1,4 +1,4 @@
-import { csvJSON } from "./csvJSON";
+import { parseCsv } from "./parseCsv";
 import { formatImpressions } from "./formatImpressions";
 import { extractDate } from "./extractDate";
 import { sortArray } from "./sortArray";
@@ -8,7 +8,7 @@ import { getDimensions } from "./getDimensions";
 
 export const parseData = csvData => {
   const sortedData = sortArray(
-    extractDate(formatImpressions(csvJSON(csvData)))
+    extractDate(formatImpressions(parseCsv(csvData)))
   );
   return {
     sortedData: sortedData,

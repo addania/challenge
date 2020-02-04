@@ -1,8 +1,8 @@
-import { csvJSON } from "../functions/csvJSON";
+import { parseCsv } from "../functions/parseCsv";
 
 test("parse CSV to JSON", () => {
   expect(
-    csvJSON(
+    parseCsv(
       "Date,Datasource,Campaign,Clicks,Impression\n01.01.2019,Facebook Ads,Like Ads,274,1979\n01.01.2019,Facebook Ads,Offer Campaigns - Conversions,10245,764627\n"
     )
   ).toStrictEqual([
