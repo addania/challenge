@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getSubheaderList } from "../functions/getSubheaderList";
+import { SubheaderList } from "./SubheaderList";
 
 export const Subheader = ({ dimensionsColumns, metricsColumns }) => {
   // Defines a component Subheaher with more information about the application.
@@ -22,7 +22,10 @@ export const Subheader = ({ dimensionsColumns, metricsColumns }) => {
             }}
           >
             <ul style={{ paddingLeft: "20px" }}>
-              {getSubheaderList(dimensionsColumns, italics)}
+              <SubheaderList
+                dimensions={dimensionsColumns}
+                italicsInput={italics}
+              />
             </ul>
             <p style={{ fontSize: "12px" }}>[where zero means "All"]</p>
             <p>

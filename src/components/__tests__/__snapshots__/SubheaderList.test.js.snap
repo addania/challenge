@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+Array [
+  <li
+    data-testid="list"
+  >
+    Select zero to N 
+    <span
+      style={
+        Object {
+          "fontStyle": "italic",
+        }
+      }
+    >
+      datasource
+      s
+    </span>
+  </li>,
+  <li
+    data-testid="list"
+  >
+    Select zero to N 
+    <span
+      style={
+        Object {
+          "fontStyle": "italic",
+        }
+      }
+    >
+      campaign
+      s
+    </span>
+  </li>,
+]
+`;
