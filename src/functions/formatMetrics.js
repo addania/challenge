@@ -1,5 +1,5 @@
-export const formatImpressions = input =>
-  // Receives an array of objects as inputs and substitutes empty or null impressions with 0.
+export const formatMetrics = input =>
+  // Receives an array of objects as inputs and substitutes empty or null impressions or clicks with 0.
   input.map(row => {
     if (!row.impressions) {
       row.impressions = 0;

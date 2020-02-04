@@ -1,13 +1,11 @@
-import { formatImpressions } from "../functions/formatImpressions";
+import { formatMetrics } from "../functions/formatMetrics";
 
-test("format Impressions", () => {
+test("format metrics", () => {
   expect(
-    formatImpressions([
-      { datasource: "Facebook Ads", impressions: "", clicks: "" }
-    ])
+    formatMetrics([{ datasource: "Facebook Ads", impressions: "", clicks: "" }])
   ).toStrictEqual([{ datasource: "Facebook Ads", impressions: 0, clicks: 0 }]);
   expect(
-    formatImpressions([
+    formatMetrics([
       { datasource: "Facebook Ads", impressions: 123, clicks: 50 }
     ])
   ).toStrictEqual([
