@@ -6,24 +6,35 @@ import "@testing-library/jest-dom/extend-expect";
 import renderer from "react-test-renderer";
 
 afterEach(cleanup);
-const dim = ["Datasource", "Campaign"];
-const met = ["Clicks", "Impressions"];
+const dimensions = ["datasource", "campaign"];
+const metrics = ["clicks", "impressions"];
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
-    <Subheader dimensionsColumns={dim} metricsColumns={met}></Subheader>,
+    <Subheader
+      dimensionsColumns={dimensions}
+      metricsColumns={metrics}
+    ></Subheader>,
     div
   );
 });
 
 it("renders subheader correctly", () => {
-  render(<Subheader dimensionsColumns={dim} metricsColumns={met}></Subheader>);
+  render(
+    <Subheader
+      dimensionsColumns={dimensions}
+      metricsColumns={metrics}
+    ></Subheader>
+  );
 });
 
 it("renders subheader correctly", () => {
   const { getByTestId } = render(
-    <Subheader dimensionsColumns={dim} metricsColumns={met}></Subheader>
+    <Subheader
+      dimensionsColumns={dimensions}
+      metricsColumns={metrics}
+    ></Subheader>
   );
   expect(getByTestId("subheader")).toHaveTextContent(
     'Hitting "Apply" filters the chart to show a timeseries for both'
@@ -33,7 +44,10 @@ it("renders subheader correctly", () => {
 it("matches snapshot", () => {
   const tree = renderer
     .create(
-      <Subheader dimensionsColumns={dim} metricsColumns={met}></Subheader>
+      <Subheader
+        dimensionsColumns={dimensions}
+        metricsColumns={metrics}
+      ></Subheader>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

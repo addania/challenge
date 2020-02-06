@@ -1,26 +1,17 @@
-import _ from "lodash";
-
-export function filterArray(filter, data) {
-  // Receives filter and data in order to calculate subset of data which was filtered.
+export const filterArray = (filter, data) => {
+  // Receives data for filtering and filters in order to calculate subset of data which was filtered.
   // Outputs filtered array.
-  let filteredArray = [];
   if (!(Object.entries(filter).length === 0 && filter.constructor === Object)) {
-    if (filter.Datasource === undefined || filter.Datasource.length === 0) {
-      filteredArray = _.filter(data, function(i) {
-        return filter.Campaign.includes(i.Campaign);
-      });
-    } else if (filter.Campaign === undefined || filter.Campaign.length === 0) {
-      filteredArray = _.filter(data, function(i) {
-        return filter.Datasource.includes(i.Datasource);
-      });
+    if (filter.datasource === undefined || filter.datasource.length === 0) {
+      return data.filter(item => filter.campaign.includes(item.campaign));
+    } else if (filter.campaign === undefined || filter.campaign.length === 0) {
+      return data.filter(item => filter.datasource.includes(item.datasource));
     } else {
-      filteredArray = _.filter(data, function(i) {
-        return (
-          filter.Datasource.includes(i.Datasource) &&
-          filter.Campaign.includes(i.Campaign)
-        );
-      });
+      return data.filter(
+        item =>
+          filter.datasource.includes(item.datasource) &&
+          filter.campaign.includes(item.campaign)
+      );
     }
   }
-  return filteredArray;
-}
+};

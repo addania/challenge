@@ -1,13 +1,12 @@
-export function getTitleList(filterItem) {
+export const getTitleList = filterItem => {
   // Receives an array of filter values. Generates a string of maximum 3 values
   // if multiple filter values are selected.
-  let string = "";
-  for (let entry = 0; entry < filterItem.length && entry < 3; entry++) {
-    string = string + JSON.stringify(filterItem[entry]) + " and ";
-  }
+  const valuesArray = filterItem
+    .slice(0, 3)
+    .map(item => JSON.stringify(item) + " and ");
   if (filterItem.length <= 3) {
-    return string.slice(0, -4);
+    return valuesArray.join("").slice(0, -4);
   } else {
-    return string.slice(0, -5) + ", etc.";
+    return valuesArray.join("").slice(0, -5) + ", etc.";
   }
-}
+};

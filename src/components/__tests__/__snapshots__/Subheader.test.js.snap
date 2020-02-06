@@ -39,7 +39,7 @@ exports[`matches snapshot 1`] = `
                 }
               }
             >
-              Datasource
+              datasource
               s
             </span>
           </li>
@@ -54,7 +54,7 @@ exports[`matches snapshot 1`] = `
                 }
               }
             >
-              Campaign
+              campaign
               s
             </span>
           </li>
@@ -78,7 +78,7 @@ exports[`matches snapshot 1`] = `
               }
             }
           >
-            Clicks
+            clicks
           </span>
            and
            
@@ -89,7 +89,7 @@ exports[`matches snapshot 1`] = `
               }
             }
           >
-            Impressions
+            impressions
           </span>
            for given
            
@@ -100,7 +100,7 @@ exports[`matches snapshot 1`] = `
               }
             }
           >
-            Datasource
+            datasource
             s
           </span>
            and
@@ -112,7 +112,7 @@ exports[`matches snapshot 1`] = `
               }
             }
           >
-            Campaign
+            campaign
             s
           </span>
            - logical AND

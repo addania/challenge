@@ -25,7 +25,7 @@ exports[`matches snapshot 1`] = `
         }
       }
     >
-      Datasource
+      datasource
     </p>
     <div
       aria-expanded={false}
@@ -50,7 +50,7 @@ exports[`matches snapshot 1`] = `
         className="default text"
         role="alert"
       >
-        Datasource
+        datasource
       </div>
       <i
         aria-hidden="true"
@@ -109,7 +109,7 @@ exports[`matches snapshot 1`] = `
         }
       }
     >
-      Campaigns
+      campaigns
     </p>
     <div
       aria-expanded={false}
@@ -134,7 +134,7 @@ exports[`matches snapshot 1`] = `
         className="default text"
         role="alert"
       >
-        Campaigns
+        campaigns
       </div>
       <i
         aria-hidden="true"

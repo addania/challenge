@@ -1,9 +1,9 @@
 import Highcharts from "highcharts";
 
-export function getChartData(impressions, clicks, title) {
+export const getChartData = (impressions, clicks, title) =>
   // Recives series of impressions, series of clicks and title message for Highcharts as input.
   // Outputs options to visualize data on a HighchartsReact component.
-  return {
+  ({
     chart: {
       type: "spline",
       zoomType: "x"
@@ -57,5 +57,4 @@ export function getChartData(impressions, clicks, title) {
       enabled: true
     },
     series: [clicks, impressions]
-  };
-}
+  });

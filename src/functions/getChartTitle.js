@@ -1,22 +1,25 @@
 import { getTitleList } from "./getTitleList";
 
-export function getChartTitle(filter) {
+export const getChartTitle = filter => {
   // Receives filter as input and generates corresponding message
-  let datasourceMessage = "All Datasources";
-  let campaignMessage = "All Campaigns";
-  if (filter["Campaign"] === undefined && filter["Datasource"] !== undefined) {
-    datasourceMessage = "Datasource " + getTitleList(filter.Datasource);
+  if (filter["campaign"] === undefined && filter["datasource"] !== undefined) {
+    return "Datasource " + getTitleList(filter.datasource) + "; All Campaigns";
   } else if (
-    filter["Datasource"] === undefined &&
-    filter["Campaign"] !== undefined
+    filter["datasource"] === undefined &&
+    filter["campaign"] !== undefined
   ) {
-    campaignMessage = "Campaign " + getTitleList(filter.Campaign);
+    return "All Datasources; Campaign " + getTitleList(filter.campaign);
   } else if (
-    filter["Campaign"] !== undefined &&
-    filter["Datasource"] !== undefined
+    filter["campaign"] === undefined &&
+    filter["datasource"] === undefined
   ) {
-    datasourceMessage = "Datasource " + getTitleList(filter.Datasource);
-    campaignMessage = "Campaign " + getTitleList(filter.Campaign);
+    return "All Datasources; All Campaigns";
+  } else {
+    return (
+      "Datasource " +
+      getTitleList(filter.datasource) +
+      "; Campaign " +
+      getTitleList(filter.campaign)
+    );
   }
-  return datasourceMessage + "; " + campaignMessage;
-}
+};

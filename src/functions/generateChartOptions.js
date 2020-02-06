@@ -3,7 +3,7 @@ import { aggregate } from "./aggregate";
 import { getChartTitle } from "./getChartTitle";
 import { getChartData } from "./getChartData";
 
-export function generateChartOptions(data, filter, apply) {
+export const generateChartOptions = (data, filter, apply) => {
   // As input receives data, filter and condition whether to apply filter or not.
   // Outputs options for HighchartsReact to display either filtered data or entire data set.
   if (apply) {
@@ -19,4 +19,4 @@ export function generateChartOptions(data, filter, apply) {
       "All Datasources; All Campaigns"
     );
   }
-}
+};

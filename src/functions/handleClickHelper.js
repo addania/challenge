@@ -1,4 +1,4 @@
-export function handleClickHelper(selectedValues) {
+export const handleClickHelper = selectedValues => {
   // Function is triggered on every click on the Button Apply component.
   // Sets useFilter state to true when the button Apply was clicked (unless filters are empty).
   if (
@@ -11,4 +11,4 @@ export function handleClickHelper(selectedValues) {
   } else {
     return { applyFilter: false, filterValue: 0 };
   }
-}
+};

@@ -1,11 +1,9 @@
 import React from "react";
 
-export function List(props) {
+export const List = ({ message, columns, styling }) => (
   // Defines a list component to be used in Subheader component
-  return (
-    <li data-testid="list">
-      {props.message}
-      <span style={props.styling}>{props.columns}s</span>
-    </li>
-  );
-}
+  <li data-testid="list">
+    {message}
+    <span style={styling}>{columns}s</span>
+  </li>
+);
