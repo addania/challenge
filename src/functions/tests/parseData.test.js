@@ -1,4 +1,4 @@
-import { parseData } from "../functions/parseData";
+import { parseData } from "../parseData";
 
 const data =
   "Date,Datasource,Campaign,Clicks,Impressions\n01.01.2019,Facebook Ads,Like Ads, 274,1979\n01.01.2019,Facebook Ads,Offer Campaigns - Conversions,10245,764627\n";
