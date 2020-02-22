@@ -9,7 +9,7 @@ export const parseData = csvData => {
   };
 };
 
-const parseCsv = csv => {
+export const parseCsv = csv => {
   // Receives a comma separated csv file as input. Outputs array of objects as result.
   const objectArray = csv.split("\n").map(item => ({
     date: item.split(",")[0],
@@ -21,7 +21,7 @@ const parseCsv = csv => {
   return objectArray.slice(1, objectArray.length - 1);
 };
 
-const formatMetrics = input =>
+export const formatMetrics = input =>
   // Receives an array of objects as inputs and substitutes empty or null impressions or clicks with 0.
   input.map(row => {
     if (!row.impressions) {
@@ -33,7 +33,7 @@ const formatMetrics = input =>
     return row;
   });
 
-const extractDate = input =>
+export const extractDate = input =>
   // Receives an array of objects as input and extracts date entries into a Date format. Outputs data as "dataWithDate".
   input.map(row => {
     const entry = { ...row };
@@ -47,22 +47,22 @@ const extractDate = input =>
     return entry;
   });
 
-const sortArray = input =>
+export const sortArray = input =>
   // Receives an array of objects as input and sorts the entries based on Date, Datasource and Campaign as output.
   _.sortBy(input, ["date", "datasource", "campaign"]);
 
-const getColumns = input =>
+export const getColumns = input =>
   // Receives an array of objects as input and outputs an array with unique keys (columns).
   Object.keys(input);
 
-const getMetrics = (inputData, inputColumns) =>
+export const getMetrics = (inputData, inputColumns) =>
   // Receives an array of objects as inputData and array of unique keys as inputColumns.
   // Outputs array of column names which holds numeric values.
   inputColumns.filter(
     column => typeof inputData[column] === "number" && column !== "date"
   );
 
-const getDimensions = (inputData, inputColumns) =>
+export const getDimensions = (inputData, inputColumns) =>
   // Receives an array of objects as inputData and array of unique keys as inputColumns.
   // Outputs array of column names which holds string values (excluding date formats).
   inputColumns.filter(column => typeof inputData[column] === "string");
