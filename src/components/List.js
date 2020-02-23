@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 export const List = ({ message, columns, styling }) => (
   // Defines a list component to be used in Subheader component

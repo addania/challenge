@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import * as React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import * as Bootstrap from "react-bootstrap";
 import { Header } from "./components/Header.js";
 import { Subheader } from "./components/Subheader.js";
 import { Chart } from "./components/Chart.js";
@@ -11,14 +10,14 @@ import { Button } from "./components/Button.js";
 import { parseData } from "./functions/parseData";
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const [metrics, setMetrics] = useState([]);
-  const [dimensions, setDimensions] = useState([]);
-  const [selectedValues, setSelectedValues] = useState({});
-  const [useFilters, setUseFilters] = useState(false);
-  const [filteredData, setFilteredData] = useState(0);
+  const [data, setData] = React.useState([]);
+  const [metrics, setMetrics] = React.useState([]);
+  const [dimensions, setDimensions] = React.useState([]);
+  const [selectedValues, setSelectedValues] = React.useState({});
+  const [useFilters, setUseFilters] = React.useState(false);
+  const [filteredData, setFilteredData] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
         // VERSION FOR PUBLISHING ON GH-PAGES:
@@ -53,11 +52,11 @@ const App = () => {
   };
   return (
     <div className="App" data-testid="app">
-      <Container>
+      <Bootstrap.Container>
         <Header />
         <Subheader dimensionsColumns={dimensions} metricsColumns={metrics} />
-        <Row style={{ paddingLeft: "15px", paddingRight: "15px" }}>
-          <Col sm={4} style={{ backgroundColor: "#EFF2F1" }}>
+        <Bootstrap.Row style={{ paddingLeft: "15px", paddingRight: "15px" }}>
+          <Bootstrap.Col sm={4} style={{ backgroundColor: "#EFF2F1" }}>
             <Filters
               styling={styles}
               filterColumns={dimensions}
@@ -65,17 +64,17 @@ const App = () => {
               dataSet={data}
             />
             <Button onClick={handleClick} />
-          </Col>
-          <Col sm={8}>
+          </Bootstrap.Col>
+          <Bootstrap.Col sm={8}>
             <Chart
               coreData={data}
               filters={filteredData}
               applyFilters={useFilters}
               styling={styles}
             />
-          </Col>
-        </Row>
-      </Container>
+          </Bootstrap.Col>
+        </Bootstrap.Row>
+      </Bootstrap.Container>
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import React from "react";
-import { Row, Col } from "react-bootstrap";
+import * as React from "react";
+import * as Bootstrap from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { SubheaderList } from "./SubheaderList";
 
@@ -8,8 +8,8 @@ export const Subheader = ({ dimensionsColumns, metricsColumns }) => {
   const italics = { fontStyle: "italic" };
   return (
     <div>
-      <Row>
-        <Col sm={12}>
+      <Bootstrap.Row>
+        <Bootstrap.Col sm={12}>
           <div
             data-testid="subheader"
             style={{
@@ -36,8 +36,8 @@ export const Subheader = ({ dimensionsColumns, metricsColumns }) => {
               <span style={italics}>{dimensionsColumns[1]}s</span> - logical AND
             </p>
           </div>
-        </Col>
-      </Row>
+        </Bootstrap.Col>
+      </Bootstrap.Row>
     </div>
   );
 };
