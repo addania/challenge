@@ -1,6 +1,5 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
-import { generateFilterOptions } from "../functions/generateFilterOptions";
 
 export const Filters = ({ styling, filterColumns, onChange, dataSet }) => (
   // Defines a filter which allows users to filter data displayed on graph
@@ -26,3 +25,13 @@ export const Filters = ({ styling, filterColumns, onChange, dataSet }) => (
     ))}
   </div>
 );
+
+export const generateFilterOptions = (inputItem, inputDataSet) => {
+  // Receives input data and input item (based on filters) and dynamically generated options to be used for Dropdown component.
+  const uniqueValues = [...new Set(inputDataSet.map(item => item[inputItem]))];
+  return uniqueValues.map(item => ({
+    key: item,
+    text: item,
+    value: item
+  }));
+};
