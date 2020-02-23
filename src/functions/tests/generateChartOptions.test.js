@@ -256,21 +256,21 @@ test("aggregate data", () => {
   expect(
     aggregate([
       {
-        date: "01. Jan",
+        date: 1546300800000,
         datasource: "Facebook Ads",
         campaign: "Like Ads",
         clicks: 274,
         impressions: 1979
       },
       {
-        date: "01. Jan",
+        date: 1546300800000,
         datasource: "Facebook Ads",
         campaign: "Offer Campaigns - Conversions",
         clicks: 10245,
         impressions: 764627
       },
       {
-        date: "02. Jan",
+        date: 1546387200000,
         datasource: "Google Adwords",
         campaign: "B2B - Leads",
         clicks: 7,
@@ -278,9 +278,23 @@ test("aggregate data", () => {
       }
     ])
   ).toStrictEqual({
-    impressions: [766606, 444],
-    clicks: [10519, 7],
-    dates: ["01. Jan", "02. Jan"]
+    impressions: {
+      type: "line",
+      name: "Impressions",
+      yAxis: 1,
+      data: [
+        [1546300800000, 766606],
+        [1546387200000, 444]
+      ]
+    },
+    clicks: {
+      type: "line",
+      name: "Clicks",
+      data: [
+        [1546300800000, 10519],
+        [1546387200000, 7]
+      ]
+    }
   });
 });
 
