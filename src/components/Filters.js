@@ -1,5 +1,5 @@
-import React from "react";
-import { Dropdown } from "semantic-ui-react";
+import * as React from "react";
+import * as SemanticUi from "semantic-ui-react";
 
 export const Filters = ({ styling, filterColumns, onChange, dataSet }) => (
   // Defines a filter which allows users to filter data displayed on graph
@@ -11,7 +11,7 @@ export const Filters = ({ styling, filterColumns, onChange, dataSet }) => (
         <p style={{ textAlign: "left", color: "#828282", marginTop: "20px" }}>
           {item}
         </p>
-        <Dropdown
+        <SemanticUi.Dropdown
           key={item}
           placeholder={item}
           fluid
