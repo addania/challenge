@@ -19,7 +19,7 @@ export const generateChartOptions = (data, filter, apply) => {
   }
 };
 
-export const filterArray = (filter, data) => {
+const filterArray = (filter, data) => {
   // Receives data for filtering and filters in order to calculate subset of data which was filtered.
   // Outputs filtered array.
   if (!(Object.entries(filter).length === 0 && filter.constructor === Object)) {
@@ -37,7 +37,7 @@ export const filterArray = (filter, data) => {
   }
 };
 
-export const aggregate = array => {
+const aggregate = array => {
   // Receives an array of data as input and outputs an object of data aggregated per date.
   // First key is data series for Highcharts of aggregated impressions.
   // Second key is data series for Highcharts of aggregated clicks.
@@ -57,7 +57,7 @@ export const aggregate = array => {
   };
 };
 
-export const generateChartAggregates = (groupByDate, metric) =>
+const generateChartAggregates = (groupByDate, metric) =>
   // As input receives dataset grouped by day and name of metric.
   // Outputs array of unique dates and aggregated data of that metric.
   Object.keys(groupByDate).map(item => {
@@ -68,7 +68,7 @@ export const generateChartAggregates = (groupByDate, metric) =>
     return [parseInt(item), sum];
   });
 
-export const getChartTitle = filter => {
+const getChartTitle = filter => {
   // Receives filter as input and generates corresponding message
   if (filter["campaign"] === undefined && filter["datasource"] !== undefined) {
     return "Datasource " + getTitleList(filter.datasource) + "; All Campaigns";
@@ -92,7 +92,7 @@ export const getChartTitle = filter => {
   }
 };
 
-export const getTitleList = filterItem => {
+const getTitleList = filterItem => {
   // Receives an array of filter values. Generates a string of maximum 3 values
   // if multiple filter values are selected.
   const valuesArray = filterItem
@@ -105,7 +105,7 @@ export const getTitleList = filterItem => {
   }
 };
 
-export const getChartData = (impressions, clicks, title) =>
+const getChartData = (impressions, clicks, title) =>
   // Recives series of impressions, series of clicks and title message for Highcharts as input.
   // Outputs options to visualize data on a HighchartsReact component.
   ({
