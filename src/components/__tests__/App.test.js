@@ -4,7 +4,8 @@ import App from "../../App.js";
 import { render, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import renderer from "react-test-renderer";
-import { handleChangeHelper, handleClickHelper } from "../../App.js";
+import { handleClickHelper } from "../../functions/handleClickHelper";
+import { handleChangeHelper } from "../../functions/handleChangeHelper";
 
 afterEach(cleanup);
 
