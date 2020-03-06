@@ -1,12 +1,12 @@
-import React from "react";
-import { Row, Col } from "react-bootstrap";
+import * as React from "react";
+import * as Bootstrap from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Header = () => (
   // Defines a header to be displayed as a title on the pages
   <div>
-    <Row>
-      <Col sm={12}>
+    <Bootstrap.Row>
+      <Bootstrap.Col sm={12}>
         <h2
           data-testid="header"
           style={{
@@ -19,7 +19,7 @@ export const Header = () => (
         >
           Advertising Data ETL-V Challenge
         </h2>
-      </Col>
-    </Row>
+      </Bootstrap.Col>
+    </Bootstrap.Row>
   </div>
 );
