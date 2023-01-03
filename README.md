@@ -1,3 +1,32 @@
+To setup the project:
+
+```
+git clone git@github.com:addania/coding.git
+npm install
+```
+
+To start the project:
+
+```
+npm start
+```
+
+Your environment will run at: http://localhost:3000/
+
+To make changes to your environment, checkout master:
+
+```
+git checkout master
+git add .
+git commit -m "X"
+git push origin master
+npm run deploy
+```
+
+Npm run deploy will be deployed to gh-pages
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
